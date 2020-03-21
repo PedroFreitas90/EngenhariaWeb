@@ -1,0 +1,37 @@
+<Area xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="115" gr:y="150" id="sv1#area1" name="Area 1" landmark="true" defaultPage="sv1#area1#page1" landmarks="sv1#area1#page1 sv1#area1#page2 sv1#area1#page5">
+  <OperationUnits>
+    <CreateUnit gr:x="630" gr:y="455" id="sv1#area1#cru1" name="Create1" entity="ent1">
+      <OKLink id="sv1#area1#cru1#oln4" name="OKFlow4" to="sv1#area1#page1" automaticCoupling="true" gr:bendpoints="-249,-4,101,426;-267,-225,83,205"/>
+      <KOLink id="sv1#area1#cru1#kln2" name="KOFlow2" to="sv1#area1#page6" automaticCoupling="true"/>
+    </CreateUnit>
+    <SelectorUnit gr:x="615" gr:y="185" id="sv1#area1#seu1" name="Selector1" entity="ent1">
+      <Selector id="sv1#area1#seu1#su2" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="sv1#area1#seu1#su2#acond1" name="COORDx" predicate="eq" booleanOperator="or" implied="false" attributes="ent1#att4"/>
+        <AttributesCondition id="sv1#area1#seu1#su2#acond2" name="COORDy" predicate="eq" booleanOperator="or" implied="false" attributes="ent1#att5"/>
+      </Selector>
+      <OKLink id="sv1#area1#seu1#oln1" name="OKFlow1" to="sv1#area1#switch1">
+        <LinkParameter id="sv1#area1#seu1#oln1#par17" name="coordx_PASSING" sourceLinkParameter="sv1#area1#page5#enu1#ln8#par1" passing="true"/>
+        <LinkParameter id="sv1#area1#seu1#oln1#par18" name="coordy_PASSING" sourceLinkParameter="sv1#area1#page5#enu1#ln8#par2" passing="true"/>
+        <LinkParameter id="sv1#area1#seu1#oln1#par19" name="state_PASSING" sourceLinkParameter="sv1#area1#page5#enu1#ln8#par3" passing="true"/>
+        <LinkParameter id="sv1#area1#seu1#oln1#par20" name="Data Size_Switch" source="dataSize" target="sv1#area1#switch1.switch"/>
+      </OKLink>
+    </SelectorUnit>
+    <SwitchUnit id="sv1#area1#switch1" name="Apenas Um User" gr:x="625" gr:y="340">
+      <Case value="0"/>
+      <Case value="1"/>
+      <OKLink id="sv1#area1#switch1#oln2" name="OKFlow2" to="sv1#area1#cru1" code="0">
+        <LinkParameter id="sv1#area1#switch1#oln2#par21" name="coordx_PASSING_coord_x" sourceLinkParameter="sv1#area1#seu1#oln1#par17" target="sv1#area1#cru1.ent1#att4"/>
+        <LinkParameter id="sv1#area1#switch1#oln2#par22" name="coordy_PASSING_coord_y" sourceLinkParameter="sv1#area1#seu1#oln1#par18" target="sv1#area1#cru1.ent1#att5"/>
+        <LinkParameter id="sv1#area1#switch1#oln2#par23" name="state_PASSING_state" sourceLinkParameter="sv1#area1#seu1#oln1#par19" target="sv1#area1#cru1.ent1#att6"/>
+      </OKLink>
+      <OKLink id="sv1#area1#switch1#oln3" name="OKFlow3" to="sv1#area1#page6" automaticCoupling="true" code="1"/>
+    </SwitchUnit>
+    <ModifyUnit gr:x="30" gr:y="220" id="sv1#area1#mfu1" name="Update1" entity="ent1">
+      <Selector id="sv1#area1#mfu1#su5" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="sv1#area1#mfu1#su5#kcond3" name="KeyCondition3" predicate="in" implied="false"/>
+      </Selector>
+      <OKLink id="sv1#area1#mfu1#oln8" name="OKFlow8" to="sv1#area1#page1" automaticCoupling="true"/>
+      <KOLink id="sv1#area1#mfu1#kln4" name="KOFlow4" to="sv1#area1#page8" automaticCoupling="true"/>
+    </ModifyUnit>
+  </OperationUnits>
+</Area>

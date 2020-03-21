@@ -1,0 +1,26 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" id="sv1#area1#page8" name="Error" gr:x="35" gr:y="360" linkOrder="sv1#area1#page8#ln20">
+  <ContentUnits>
+    <MultiMessageUnit id="sv1#area1#page8#mssu2" name="Update error" gr:x="0" gr:y="0">
+      <Message xml:space="preserve">Occurs error in update</Message>
+    </MultiMessageUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area1#page8#mssu2"/>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+  <Link id="sv1#area1#page8#ln20" name="Back" to="sv1#area1#page1" automaticCoupling="true" type="normal" validate="true"/>
+</Page>

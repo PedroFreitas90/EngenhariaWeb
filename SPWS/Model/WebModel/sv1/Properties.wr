@@ -1,0 +1,11 @@
+<SiteView xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="sv1" name="SPWS" landmarks="sv1#area1" homePage="sv1#area1#page1">
+  <OperationUnits>
+    <DeleteUnit gr:x="395" gr:y="30" id="sv1#dlu1" name="Delete1" entity="ent1">
+      <Selector id="sv1#dlu1#su4" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="sv1#dlu1#su4#kcond2" name="KeyCondition2" predicate="in" implied="false"/>
+      </Selector>
+      <OKLink id="sv1#dlu1#oln6" name="OKFlow6" to="sv1#area1#page1" automaticCoupling="true"/>
+      <KOLink id="sv1#dlu1#kln3" name="KOFlow3" to="sv1#area1#page1" automaticCoupling="true" gr:bendpoints="5,73,-40,-87"/>
+    </DeleteUnit>
+  </OperationUnits>
+</SiteView>
