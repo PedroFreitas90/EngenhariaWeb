@@ -1,3 +1,5 @@
+use SPWS;
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` FUNCTION `distance`(latA float,latB float,longA float,longB float) RETURNS float
 BEGIN
 Declare distance float;
@@ -7,12 +9,13 @@ Declare distance float;
 ) into distance;   
 RETURN distance;
 END
+$$ DELIMITER ;
 
 
 
 
 
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `closerCar`(in cross_id int ,in car_id int )
 BEGIN
 
@@ -47,22 +50,9 @@ select `SPWS`.`distance`(@latA,@latB,@longA,@longB) into @distance;
     end if;
 end if;
 end
+$$ DELIMITER ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `closerPedestrian`(in cross_id int ,in ped_id int )
 BEGIN
 
@@ -96,11 +86,11 @@ start transaction;
     end if;
 end if;
 end
+$$ DELIMITER ;
 
 
 
-
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `closerCars`(in cross_id int)
 BEGIN
 DECLARE x  int default 1;
@@ -121,8 +111,9 @@ select count(*) into @countC from car;
        end loop;
        
 END
+$$ DELIMITER ;
 
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `closerPedestrians`(in cross_id int)
 BEGIN
 DECLARE x  int default 1;
@@ -143,6 +134,7 @@ select count(*) into @countC from pedestrian;
        end loop;
        
 END
+$$ DELIMITER ;
 
 
 
