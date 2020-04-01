@@ -1,30 +1,48 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="225" gr:y="0" id="sv1#area1#page1" name="List Crosswalks" landmark="true" linkOrder="sv1#area1#page1#ln6">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="520" gr:y="10" id="sv1#area1#page1" name="List Crosswalks" landmark="true" linkOrder="sv1#area1#page1#ln6">
   <ContentUnits>
-    <IndexUnit gr:x="0" gr:y="0" id="sv1#area1#page1#inu1" name="Crosswalks" entity="ent1" displayAttributes="ent1#att4 ent1#att5 ent1#att6" linkOrder="sv1#area1#page1#inu1#ln3 sv1#area1#page1#inu1#ln13 sv1#area1#page1#inu1#ln17">
-      <Link id="sv1#area1#page1#inu1#ln3" name="Details" to="sv1#area1#page3#dau1" type="normal" automaticCoupling="true" validate="true"/>
-      <Link id="sv1#area1#page1#inu1#ln13" to="sv1#dlu1" type="normal" validate="true" name="Delete">
-        <LinkParameter id="sv1#area1#page1#inu1#ln13#par25" name="oid_KeyCondition2 [oid]" source="data[].ent1#att1" target="sv1#dlu1#su4#kcond2.ent1#att1"/>
+    <IndexUnit gr:x="0" gr:y="0" id="sv1#area1#page1#inu3" name="Simple List3" linkOrder="sv1#area1#page1#inu3#ln17 sv1#area1#page1#inu3#ln26 sv1#area1#page1#inu3#ln29" entity="ent16" displayAttributes="ent16#att51 ent16#att52 ent16#att53 ent16#att54">
+      <Link id="sv1#area1#page1#inu3#ln17" name="Update" to="sv1#area1#page7#enu3" type="normal" validate="true">
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par38" name="latitude_Latitude" source="data[].ent16#att52" target="sv1#area1#page7#enu3#fld5_slot"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par39" name="longitude_Longitude" source="data[].ent16#att53" target="sv1#area1#page7#enu3#fld6_slot"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par40" name="state_State" source="data[].ent16#att54" target="sv1#area1#page7#enu3#fld7_slot"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par42" name="oid_PASSING" source="data[].ent16#att51" passing="true"/>
       </Link>
-      <Link id="sv1#area1#page1#inu1#ln17" name="update" to="sv1#area1#page7#enu3" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page1#inu1#ln17#par26" name="oid_Key Condition [oid]" source="data[].ent1#att1" target="sv1#area1#page7#enu3.ent1#att1"/>
-        <LinkParameter id="sv1#area1#page1#inu1#ln17#par27" name="coord_x_COORDx" source="data[].ent1#att4" target="sv1#area1#page7#enu3#fld5_slot"/>
-        <LinkParameter id="sv1#area1#page1#inu1#ln17#par28" name="coord_y_COORDy" source="data[].ent1#att5" target="sv1#area1#page7#enu3#fld6_slot"/>
-        <LinkParameter id="sv1#area1#page1#inu1#ln17#par29" name="state_state" source="data[].ent1#att6" target="sv1#area1#page7#enu3#fld7_slot"/>
+      <Link id="sv1#area1#page1#inu3#ln26" name="Details" to="sv1#area1#miu1" type="normal" validate="true">
+        <LinkParameter id="sv1#area1#page1#inu3#ln26#par13" name="oid_X1" source="data[].ent16#att51" target="sv1#area1#miu1.mov1#opm2#icu2#icp2"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln26#par56" name="oid_PASSING" source="data[].ent16#att51" passing="true"/>
+      </Link>
+      <Link id="sv1#area1#page1#inu3#ln29" name="Delete" to="sv1#dlu1" type="normal" validate="true">
+        <LinkParameter id="sv1#area1#page1#inu3#ln29#par45" name="oid_KeyCondition2 [oid]" source="data[].ent16#att51" target="sv1#dlu1#su4#kcond2.ent16#att51"/>
       </Link>
     </IndexUnit>
   </ContentUnits>
   <layout:Grid containerType="grid">
     <layout:Row>
       <layout:Cell colspan="12">
-        <layout:Unit unitId="sv1#area1#page1#inu1">
-          <layout:Attribute attribute="ent1#att4"/>
-          <layout:Attribute attribute="ent1#att5"/>
-          <layout:Attribute attribute="ent1#att6"/>
-          <layout:Link link="sv1#area1#page1#inu1#ln3"/>
-          <layout:Link link="sv1#area1#page1#inu1#ln13"/>
-          <layout:Link link="sv1#area1#page1#inu1#ln17"/>
+        <layout:Unit unitId="sv1#area1#page1#inu3">
+          <layout:Link link="sv1#area1#page1#inu3#ln17"/>
+          <layout:Link link="sv1#area1#page1#inu3#ln26"/>
+          <layout:Link link="sv1#area1#page1#inu3#ln29"/>
+          <layout:Attribute attribute="ent16#att51"/>
+          <layout:Attribute attribute="ent16#att52"/>
+          <layout:Attribute attribute="ent16#att53"/>
+          <layout:Attribute attribute="ent16#att54"/>
         </layout:Unit>
       </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+    <layout:Row>
+      <layout:Cell colspan="12"/>
       <layout:Cell/>
       <layout:Cell/>
       <layout:Cell/>

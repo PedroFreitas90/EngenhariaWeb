@@ -1,41 +1,23 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="590" gr:y="5" id="sv1#area1#page5" name="Add CrossWalks" landmark="true">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="1040" gr:y="0" id="sv1#area1#page5" name="Add CrossWalks" landmark="true">
   <ContentUnits>
-    <EntryUnit gr:x="0" gr:y="0" id="sv1#area1#page5#enu1" name="Add Crosswalk" entity="ent1" linkOrder="sv1#area1#page5#enu1#ln8">
-      <Field id="sv1#area1#page5#enu1#fld1" name="coordx" type="float" modifiable="true" attribute="ent1#att4">
-        <VRules>
-          <MandatoryValidationRule id="sv1#area1#page5#enu1#fld1#mnd1" name="Mandatory1"/>
-          <TypeValidationRule id="sv1#area1#page5#enu1#fld1#tvr1" name="Type Validation1"/>
-        </VRules>
-      </Field>
-      <Field id="sv1#area1#page5#enu1#fld2" name="coordy" type="float" modifiable="true" attribute="ent1#att5">
-        <VRules>
-          <MandatoryValidationRule id="sv1#area1#page5#enu1#fld2#mnd2" name="Mandatory2"/>
-          <TypeValidationRule id="sv1#area1#page5#enu1#fld2#tvr2" name="Type Validation2"/>
-        </VRules>
-      </Field>
-      <Field id="sv1#area1#page5#enu1#fld3" name="state" type="string" modifiable="true" attribute="ent1#att6">
-        <VRules>
-          <MandatoryValidationRule id="sv1#area1#page5#enu1#fld3#mnd3" name="Mandatory3"/>
-          <TypeValidationRule id="sv1#area1#page5#enu1#fld3#tvr3" name="Type Validation3"/>
-        </VRules>
-      </Field>
-      <Link id="sv1#area1#page5#enu1#ln8" name="Flow8" to="sv1#area1#seu1" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page5#enu1#ln8#par1" name="coordx_PASSING" source="sv1#area1#page5#enu1#fld1" passing="true"/>
-        <LinkParameter id="sv1#area1#page5#enu1#ln8#par2" name="coordy_PASSING" source="sv1#area1#page5#enu1#fld2" passing="true"/>
-        <LinkParameter id="sv1#area1#page5#enu1#ln8#par3" name="state_PASSING" source="sv1#area1#page5#enu1#fld3" passing="true"/>
-        <LinkParameter id="sv1#area1#page5#enu1#ln8#par4" name="coordx_COORDx" source="sv1#area1#page5#enu1#fld1" target="sv1#area1#seu1#su2#acond1"/>
-        <LinkParameter id="sv1#area1#page5#enu1#ln8#par5" name="coordy_COORDy" source="sv1#area1#page5#enu1#fld2" target="sv1#area1#seu1#su2#acond2"/>
+    <EntryUnit gr:x="0" gr:y="0" id="sv1#area1#page5#enu5" name="Form5" fieldOrder="sv1#area1#page5#enu5#fld3 sv1#area1#page5#enu5#fld4" linkOrder="sv1#area1#page5#enu5#ln3">
+      <Field id="sv1#area1#page5#enu5#fld4" name="longitude" type="float" modifiable="true"/>
+      <Field id="sv1#area1#page5#enu5#fld3" name="latitude" type="float" modifiable="true"/>
+      <Link id="sv1#area1#page5#enu5#ln3" name="Flow3" to="sv1#area1#seu2" type="normal" validate="true">
+        <LinkParameter id="sv1#area1#page5#enu5#ln3#par34" name="latitude_AttCondition1" source="sv1#area1#page5#enu5#fld3" target="sv1#area1#seu2#su3#acond1"/>
+        <LinkParameter id="sv1#area1#page5#enu5#ln3#par35" name="longitude_AttCondition2" source="sv1#area1#page5#enu5#fld4" target="sv1#area1#seu2#su3#acond2"/>
+        <LinkParameter id="sv1#area1#page5#enu5#ln3#par37" name="latitude_PASSING" source="sv1#area1#page5#enu5#fld3" passing="true"/>
+        <LinkParameter id="sv1#area1#page5#enu5#ln3#par41" name="longitude_PASSING" source="sv1#area1#page5#enu5#fld4" passing="true"/>
       </Link>
     </EntryUnit>
   </ContentUnits>
   <layout:Grid containerType="grid">
     <layout:Row>
       <layout:Cell colspan="12">
-        <layout:Unit unitId="sv1#area1#page5#enu1">
-          <layout:Field field="sv1#area1#page5#enu1#fld1"/>
-          <layout:Field field="sv1#area1#page5#enu1#fld2"/>
-          <layout:Field field="sv1#area1#page5#enu1#fld3"/>
-          <layout:Link link="sv1#area1#page5#enu1#ln8"/>
+        <layout:Unit unitId="sv1#area1#page5#enu5">
+          <layout:Field field="sv1#area1#page5#enu5#fld3"/>
+          <layout:Field field="sv1#area1#page5#enu5#fld4"/>
+          <layout:Link link="sv1#area1#page5#enu5#ln3"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>

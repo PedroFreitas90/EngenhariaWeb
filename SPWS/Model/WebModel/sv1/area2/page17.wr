@@ -1,0 +1,36 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="0" gr:y="175" id="sv1#area2#page17" name="Update Vehicle" linkOrder="sv1#area2#page17#ln33">
+  <ContentUnits>
+    <EntryUnit gr:x="0" gr:y="0" id="sv1#area2#page17#enu6" name="Update Vehicle" fieldOrder="sv1#area2#page17#enu6#fld10 sv1#area2#page17#enu6#fld11" linkOrder="sv1#area2#page17#enu6#ln32">
+      <Field id="sv1#area2#page17#enu6#fld11" name="longitude" type="float" preloaded="true" modifiable="true"/>
+      <Field id="sv1#area2#page17#enu6#fld10" name="latitude" type="float" preloaded="true" modifiable="true"/>
+      <Link id="sv1#area2#page17#enu6#ln32" name="Update" to="sv1#area2#mfu3" type="normal" validate="true">
+        <LinkParameter id="sv1#area2#page17#enu6#ln32#par30" name="oid_PASSING_KeyCondition5 [oid]" sourceLinkParameter="sv1#area2#page9#inu7#ln31#par29" target="sv1#area2#mfu3#su9#kcond5.ent15#att48"/>
+        <LinkParameter id="sv1#area2#page17#enu6#ln32#par31" name="latitude_latitude" source="sv1#area2#page17#enu6#fld10" target="sv1#area2#mfu3.ent15#att49"/>
+        <LinkParameter id="sv1#area2#page17#enu6#ln32#par32" name="longitude_longitude" source="sv1#area2#page17#enu6#fld11" target="sv1#area2#mfu3.ent15#att50"/>
+      </Link>
+    </EntryUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area2#page17#enu6">
+          <layout:Field field="sv1#area2#page17#enu6#fld10"/>
+          <layout:Field field="sv1#area2#page17#enu6#fld11"/>
+          <layout:Link link="sv1#area2#page17#enu6#ln32"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+  <Link id="sv1#area2#page17#ln33" name="Back" to="sv1#area2#page9" automaticCoupling="true" type="normal" validate="true"/>
+</Page>

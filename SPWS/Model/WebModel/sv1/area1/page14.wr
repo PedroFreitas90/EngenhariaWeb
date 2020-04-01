@@ -1,0 +1,56 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="580" gr:y="800" id="sv1#area1#page14" name="History per day Vehicles">
+  <ContentUnits>
+    <MultiMessageUnit gr:x="0" gr:y="0" id="sv1#area1#page14#mssu4" name="Day" linkOrder="sv1#area1#page14#mssu4#ln36">
+      <Link id="sv1#area1#page14#mssu4#ln2" name="Flow2" to="sv1#area1#page14#inu5" type="transport" validate="true" gr:bendpoints="78,-10,58,-95">
+        <LinkParameter id="sv1#area1#page14#mssu4#ln2#par72" name="oid_PASSING_crosswalkOID" sourceLinkParameter="sv1#area1#page18#inu9#ln35#par65" target="sv1#area1#page14#inu5#su10#acond6"/>
+        <LinkParameter id="sv1#area1#page14#mssu4#ln2#par73" name="day_PASSING_current day" sourceLinkParameter="sv1#area1#page18#inu9#ln35#par63" target="sv1#area1#page14#inu5.current.ent18#att59"/>
+      </Link>
+      <Link id="sv1#area1#page14#mssu4#ln36" name="Back" to="sv1#area1#page3#dau1" type="normal" validate="true" gr:bendpoints="217,-187,282,333">
+        <LinkParameter id="sv1#area1#page14#mssu4#ln36#par70" name="oid_PASSING_KeyCondition1 [oid]" sourceLinkParameter="sv1#area1#page18#inu9#ln35#par65" target="sv1#area1#page3#dau1#su1#kcond1.ent16#att51"/>
+      </Link>
+    </MultiMessageUnit>
+    <IndexUnit gr:x="5" gr:y="75" id="sv1#area1#page14#inu5" name="Simple List5" entity="ent18" displayAttributes="ent18#att61">
+      <Selector id="sv1#area1#page14#inu5#su10" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="sv1#area1#page14#inu5#su10#acond6" name="crosswalkOID" predicate="eq" booleanOperator="or" implied="false" attributes="ent18#att60"/>
+      </Selector>
+    </IndexUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area1#page14#mssu4">
+          <layout:Link link="sv1#area1#page14#mssu4#ln36"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area1#page14#inu5">
+          <layout:Attribute attribute="ent18#att61"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+</Page>

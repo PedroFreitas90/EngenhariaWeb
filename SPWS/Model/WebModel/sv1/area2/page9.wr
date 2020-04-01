@@ -1,0 +1,35 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" id="sv1#area2#page9" name="List Vehicles" linkOrder="sv1#area2#page9#ln21" landmark="true" gr:x="10" gr:y="0">
+  <ContentUnits>
+    <IndexUnit id="sv1#area2#page9#inu7" name="Pedestrians" gr:x="0" gr:y="0" entity="ent15" linkOrder="sv1#area2#page9#inu7#ln31" displayAttributes="ent15#att48 ent15#att49 ent15#att50">
+      <Link id="sv1#area2#page9#inu7#ln31" name="Update" to="sv1#area2#page17#enu6" type="normal" validate="true" gr:bendpoints="-55,82,-50,-83">
+        <LinkParameter id="sv1#area2#page9#inu7#ln31#par27" name="latitude_latitude" source="data[].ent15#att49" target="sv1#area2#page17#enu6#fld10_slot"/>
+        <LinkParameter id="sv1#area2#page9#inu7#ln31#par28" name="longitude_longitude" source="data[].ent15#att50" target="sv1#area2#page17#enu6#fld11_slot"/>
+        <LinkParameter id="sv1#area2#page9#inu7#ln31#par29" name="oid_PASSING" source="data[].ent15#att48" passing="true"/>
+      </Link>
+    </IndexUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area2#page9#inu7">
+          <layout:Link link="sv1#area2#page9#inu7#ln31"/>
+          <layout:Attribute attribute="ent15#att48"/>
+          <layout:Attribute attribute="ent15#att49"/>
+          <layout:Attribute attribute="ent15#att50"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+  <Link id="sv1#area2#page9#ln21" name="Add Vehicles" to="sv1#area2#page2" type="normal" automaticCoupling="true" validate="true"/>
+</Page>

@@ -1,8 +1,24 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="285" gr:y="370" id="sv1#area1#page4" name="Historic">
-  <ContentUnits/>
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="260" gr:y="560" id="sv1#area1#page4" name="History  Pedestrians" linkOrder="sv1#area1#page4#ln19">
+  <ContentUnits>
+    <IndexUnit gr:x="0" gr:y="0" id="sv1#area1#page4#inu6" name="Days" distinct="true" linkOrder="sv1#area1#page4#inu6#ln24" entity="ent19" displayAttributes="ent19#att62">
+      <Selector id="sv1#area1#page4#inu6#su8" defaultPolicy="fill" booleanOperator="and">
+        <AttributesCondition id="sv1#area1#page4#inu6#su8#acond8" name="cross_oid" predicate="eq" booleanOperator="or" implied="false" attributes="ent19#att63"/>
+      </Selector>
+      <Link id="sv1#area1#page4#inu6#ln24" name="See movement Pedestrians" to="sv1#area1#page13#mssu5" type="normal" validate="true">
+        <LinkParameter id="sv1#area1#page4#inu6#ln24#par23" name="day_Shown Messages" source="data[].ent19#att62" target="sv1#area1#page13#mssu5.shownMessages"/>
+        <LinkParameter id="sv1#area1#page4#inu6#ln24#par59" name="day_PASSING" source="data[].ent19#att62" passing="true"/>
+        <LinkParameter id="sv1#area1#page4#inu6#ln24#par62" name="oid_PASSING" sourceLinkParameter="sv1#area1#page3#dau1#ln9#par61" passing="true"/>
+      </Link>
+    </IndexUnit>
+  </ContentUnits>
   <layout:Grid containerType="grid">
     <layout:Row>
-      <layout:Cell colspan="12"/>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area1#page4#inu6">
+          <layout:Attribute attribute="ent19#att62"/>
+          <layout:Link link="sv1#area1#page4#inu6#ln24"/>
+        </layout:Unit>
+      </layout:Cell>
       <layout:Cell/>
       <layout:Cell/>
       <layout:Cell/>
@@ -16,4 +32,5 @@
       <layout:Cell/>
     </layout:Row>
   </layout:Grid>
+  <Link id="sv1#area1#page4#ln19" name="Back to Crosswalks" to="sv1#area1#page1" type="normal" validate="true" gr:bendpoints="-239,-89,-294,481" automaticCoupling="true"/>
 </Page>

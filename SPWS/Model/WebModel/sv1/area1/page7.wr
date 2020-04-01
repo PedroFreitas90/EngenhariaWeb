@@ -1,13 +1,22 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="0" gr:y="10" id="sv1#area1#page7" name="Page 7" linkOrder="sv1#area1#page7#ln15">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="10" gr:y="10" id="sv1#area1#page7" name="Page 7" linkOrder="sv1#area1#page7#ln15">
   <ContentUnits>
-    <EntryUnit gr:x="0" gr:y="0" id="sv1#area1#page7#enu3" name="Update Crosswalk" entity="ent1" linkOrder="sv1#area1#page7#enu3#ln19">
-      <Field id="sv1#area1#page7#enu3#fld5" name="COORDx" type="float" modifiable="false" attribute="ent1#att4" preloaded="true"/>
-      <Field id="sv1#area1#page7#enu3#fld6" name="COORDy" type="float" modifiable="false" attribute="ent1#att5" preloaded="true"/>
-      <Field id="sv1#area1#page7#enu3#fld7" name="state" type="string" modifiable="true" preloaded="true" attribute="ent1#att6"/>
-      <Link id="sv1#area1#page7#enu3#ln19" name="Flow19" to="sv1#area1#mfu1" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page7#enu3#ln19#par30" name="Crosswalk Object_Crosswalk Object" source="entityBean" target="sv1#area1#mfu1.entityBeans"/>
-        <LinkParameter id="sv1#area1#page7#enu3#ln19#par31" name="Key [oid]_KeyCondition3 [oid]" source="key.ent1#att1" target="sv1#area1#mfu1#su5#kcond3.ent1#att1"/>
-        <LinkParameter id="sv1#area1#page7#enu3#ln19#par32" name="state_state" source="sv1#area1#page7#enu3#fld7" target="sv1#area1#mfu1.ent1#att6"/>
+    <EntryUnit gr:x="0" gr:y="0" id="sv1#area1#page7#enu3" name="Update Crosswalk" fieldOrder="sv1#area1#page7#enu3#fld5 sv1#area1#page7#enu3#fld6 sv1#area1#page7#enu3#fld7" linkOrder="sv1#area1#page7#enu3#ln5">
+      <Field id="sv1#area1#page7#enu3#fld5" name="Latitude" type="float" modifiable="false" preloaded="true">
+        <VRules>
+          <MandatoryValidationRule id="sv1#area1#page7#enu3#fld5#mnd4" name="Mandatory4"/>
+          <TypeValidationRule id="sv1#area1#page7#enu3#fld5#tvr4" name="Type Validation4"/>
+        </VRules>
+      </Field>
+      <Field id="sv1#area1#page7#enu3#fld6" name="Longitude" type="float" modifiable="false" preloaded="true">
+        <VRules>
+          <MandatoryValidationRule id="sv1#area1#page7#enu3#fld6#mnd5" name="Mandatory4"/>
+          <TypeValidationRule id="sv1#area1#page7#enu3#fld6#tvr5" name="Type Validation4"/>
+        </VRules>
+      </Field>
+      <Field id="sv1#area1#page7#enu3#fld7" name="State" type="string" modifiable="true" preloaded="true"/>
+      <Link id="sv1#area1#page7#enu3#ln5" name="Update" to="sv1#area1#mfu1" type="normal" validate="true">
+        <LinkParameter id="sv1#area1#page7#enu3#ln5#par43" name="oid_PASSING_KeyCondition3 [oid]" sourceLinkParameter="sv1#area1#page1#inu3#ln17#par42" target="sv1#area1#mfu1#su5#kcond3.ent16#att51"/>
+        <LinkParameter id="sv1#area1#page7#enu3#ln5#par44" name="State_state" source="sv1#area1#page7#enu3#fld7" target="sv1#area1#mfu1.ent16#att54"/>
       </Link>
     </EntryUnit>
   </ContentUnits>
@@ -15,10 +24,10 @@
     <layout:Row>
       <layout:Cell colspan="12">
         <layout:Unit unitId="sv1#area1#page7#enu3">
+          <layout:Link link="sv1#area1#page7#enu3#ln5"/>
           <layout:Field field="sv1#area1#page7#enu3#fld5"/>
           <layout:Field field="sv1#area1#page7#enu3#fld6"/>
           <layout:Field field="sv1#area1#page7#enu3#fld7"/>
-          <layout:Link link="sv1#area1#page7#enu3#ln19"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>
@@ -34,5 +43,5 @@
       <layout:Cell/>
     </layout:Row>
   </layout:Grid>
-  <Link id="sv1#area1#page7#ln15" name="Back" to="sv1#area1#page1" automaticCoupling="true" type="normal" validate="true"/>
+  <Link id="sv1#area1#page7#ln15" name="Back" to="sv1#area1#page1" automaticCoupling="true" type="normal" validate="true" gr:bendpoints="162,-60,-167,-34"/>
 </Page>

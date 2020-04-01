@@ -1,0 +1,26 @@
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" id="sv1#area2#page15" name="Error" linkOrder="sv1#area2#page15#ln22" gr:x="205" gr:y="290">
+  <ContentUnits>
+    <MultiMessageUnit id="sv1#area2#page15#mssu6" name="Vehicle Error" gr:x="0" gr:y="0">
+      <Message xml:space="preserve">Error in insert Vehicle</Message>
+    </MultiMessageUnit>
+  </ContentUnits>
+  <layout:Grid containerType="grid">
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area2#page15#mssu6"/>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+  </layout:Grid>
+  <Link id="sv1#area2#page15#ln22" name="Back" to="sv1#area2#page9" type="normal" automaticCoupling="true" validate="true"/>
+</Page>

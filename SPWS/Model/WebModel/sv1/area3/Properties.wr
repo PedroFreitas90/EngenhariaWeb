@@ -1,0 +1,15 @@
+<Area xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="1395" gr:y="190" id="sv1#area3" name="Pedestrians" landmark="true" defaultPage="sv1#area3#page10" landmarks="sv1#area3#page10 sv1#area3#page11">
+  <OperationUnits>
+    <CreateUnit gr:x="260" gr:y="185" id="sv1#area3#cru2" name="Add Pedestrian" entity="ent20">
+      <OKLink id="sv1#area3#cru2#oln5" name="OKFlow5" to="sv1#area3#page10" automaticCoupling="true"/>
+      <KOLink id="sv1#area3#cru2#kln1" name="KOFlow1" to="sv1#area3#page12" automaticCoupling="true"/>
+    </CreateUnit>
+    <ModifyUnit gr:x="30" gr:y="350" id="sv1#area3#mfu2" name="Update Coords" entity="ent20">
+      <Selector id="sv1#area3#mfu2#su7" defaultPolicy="fill" booleanOperator="and">
+        <KeyCondition id="sv1#area3#mfu2#su7#kcond4" name="KeyCondition4" predicate="in" implied="false"/>
+      </Selector>
+      <KOLink id="sv1#area3#mfu2#kln6" name="KOFlow6" to="sv1#area3#page12" automaticCoupling="true"/>
+      <OKLink id="sv1#area3#mfu2#oln9" name="OKFlow9" to="sv1#area3#page10" automaticCoupling="true" gr:bendpoints="161,-163,151,167"/>
+    </ModifyUnit>
+  </OperationUnits>
+</Area>
