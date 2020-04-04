@@ -1,16 +1,16 @@
-<Area xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="60" gr:y="115" id="sv1#area1" name="CrossWalks" landmark="true" defaultPage="sv1#area1#page1" landmarks="sv1#area1#page1 sv1#area1#page5">
+<Area xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="70" gr:y="125" id="sv1#area1" name="CrossWalks" landmark="true" defaultPage="sv1#area1#page1" landmarks="sv1#area1#page1 sv1#area1#page5">
   <OperationUnits>
-    <ModifyUnit gr:x="10" gr:y="265" id="sv1#area1#mfu1" name="Update1" entity="ent16">
+    <ModifyUnit gr:x="10" gr:y="265" id="sv1#area1#mfu1" name="Update1" entity="ent3">
       <Selector id="sv1#area1#mfu1#su5" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="sv1#area1#mfu1#su5#kcond3" name="KeyCondition3" predicate="in" implied="false"/>
       </Selector>
       <OKLink id="sv1#area1#mfu1#oln8" name="OKFlow8" to="sv1#area1#page1" automaticCoupling="true"/>
       <KOLink id="sv1#area1#mfu1#kln4" name="KOFlow4" to="sv1#area1#page8" automaticCoupling="true"/>
     </ModifyUnit>
-    <SelectorUnit gr:x="1085" gr:y="180" id="sv1#area1#seu2" name="Selector2" entity="ent16">
+    <SelectorUnit gr:x="1085" gr:y="180" id="sv1#area1#seu2" name="Selector2" entity="ent3">
       <Selector id="sv1#area1#seu2#su3" defaultPolicy="fill" booleanOperator="and">
-        <AttributesCondition id="sv1#area1#seu2#su3#acond1" name="Latitude" predicate="eq" booleanOperator="or" implied="false" attributes="ent16#att52"/>
-        <AttributesCondition id="sv1#area1#seu2#su3#acond2" name="longitude" predicate="eq" booleanOperator="or" implied="false" attributes="ent16#att53"/>
+        <AttributesCondition id="sv1#area1#seu2#su3#acond1" name="Latitude" predicate="eq" booleanOperator="or" implied="false" attributes="ent3#att9"/>
+        <AttributesCondition id="sv1#area1#seu2#su3#acond2" name="longitude" predicate="eq" booleanOperator="or" implied="false" attributes="ent3#att10"/>
       </Selector>
       <OKLink id="sv1#area1#seu2#oln7" name="OKFlow7" to="sv1#area1#switch1">
         <LinkParameter id="sv1#area1#seu2#oln7#par48" name="Data Size_Switch" source="dataSize" target="sv1#area1#switch1.switch"/>
@@ -23,18 +23,18 @@
       <Case value="1"/>
       <OKLink id="sv1#area1#switch1#oln2" name="OKFlow2" to="sv1#area1#page6" automaticCoupling="true" code="1"/>
       <OKLink id="sv1#area1#switch1#oln3" name="OKFlow3" to="sv1#area1#cru5" code="0">
-        <LinkParameter id="sv1#area1#switch1#oln3#par46" name="latitude_PASSING_latitude" sourceLinkParameter="sv1#area1#seu2#oln7#par49" target="sv1#area1#cru5.ent16#att52"/>
-        <LinkParameter id="sv1#area1#switch1#oln3#par47" name="longitude_PASSING_longitude" sourceLinkParameter="sv1#area1#seu2#oln7#par50" target="sv1#area1#cru5.ent16#att53"/>
-        <LinkParameter id="sv1#area1#switch1#oln3#par51" name="GO GO GO_state" sourceValue="GO GO GO" target="sv1#area1#cru5.ent16#att54"/>
+        <LinkParameter id="sv1#area1#switch1#oln3#par20" name="latitude_PASSING_latitude" sourceLinkParameter="sv1#area1#seu2#oln7#par49" target="sv1#area1#cru5.ent3#att9"/>
+        <LinkParameter id="sv1#area1#switch1#oln3#par21" name="longitude_PASSING_longitude" sourceLinkParameter="sv1#area1#seu2#oln7#par50" target="sv1#area1#cru5.ent3#att10"/>
+        <LinkParameter id="sv1#area1#switch1#oln3#par22" name="GO GO GO_state" sourceValue="GO GO GO" target="sv1#area1#cru5.ent3#att11"/>
       </OKLink>
     </SwitchUnit>
-    <CreateUnit gr:x="1095" gr:y="460" id="sv1#area1#cru5" name="Create5" entity="ent16">
+    <CreateUnit gr:x="1095" gr:y="460" id="sv1#area1#cru5" name="Create5" entity="ent3">
       <OKLink id="sv1#area1#cru5#oln4" name="OKFlow4" to="sv1#area1#page1" automaticCoupling="true" gr:bendpoints="-208,16,312,442;-248,-258,272,168"/>
       <KOLink id="sv1#area1#cru5#kln5" name="KOFlow5" to="sv1#area1#page6" automaticCoupling="true" gr:bendpoints="-163,-79,12,117"/>
     </CreateUnit>
     <ModuleInstanceUnit gr:x="215" gr:y="315" id="sv1#area1#miu1" action="true" moduleId="mov1#opm2">
       <OKLink id="sv1#area1#miu1#oln11" name="OKFlow11" to="sv1#area1#page3#dau1">
-        <LinkParameter id="sv1#area1#miu1#oln11#par57" name="crossoid_KeyCondition1 [oid]" source="mov1#opm2#okcu2#ocp5" target="sv1#area1#page3#dau1#su1#kcond1.ent16#att51"/>
+        <LinkParameter id="sv1#area1#miu1#oln11#par46" name="crossoid_KeyCondition1 [oid]" source="mov1#opm2#okcu2#ocp5" target="sv1#area1#page3#dau1#su1#kcond1.ent3#att8"/>
       </OKLink>
       <KOLink id="sv1#area1#miu1#kln2" name="KOFlow2" to="sv1#area1#page8" automaticCoupling="true"/>
     </ModuleInstanceUnit>

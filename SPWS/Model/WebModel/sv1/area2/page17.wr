@@ -4,9 +4,9 @@
       <Field id="sv1#area2#page17#enu6#fld11" name="longitude" type="float" preloaded="true" modifiable="true"/>
       <Field id="sv1#area2#page17#enu6#fld10" name="latitude" type="float" preloaded="true" modifiable="true"/>
       <Link id="sv1#area2#page17#enu6#ln32" name="Update" to="sv1#area2#mfu3" type="normal" validate="true">
-        <LinkParameter id="sv1#area2#page17#enu6#ln32#par30" name="oid_PASSING_KeyCondition5 [oid]" sourceLinkParameter="sv1#area2#page9#inu7#ln31#par29" target="sv1#area2#mfu3#su9#kcond5.ent15#att48"/>
-        <LinkParameter id="sv1#area2#page17#enu6#ln32#par31" name="latitude_latitude" source="sv1#area2#page17#enu6#fld10" target="sv1#area2#mfu3.ent15#att49"/>
-        <LinkParameter id="sv1#area2#page17#enu6#ln32#par32" name="longitude_longitude" source="sv1#area2#page17#enu6#fld11" target="sv1#area2#mfu3.ent15#att50"/>
+        <LinkParameter id="sv1#area2#page17#enu6#ln32#par52" name="oid_PASSING_KeyCondition5 [oid]" sourceLinkParameter="sv1#area2#page9#inu7#ln31#par51" target="sv1#area2#mfu3#su9#kcond5.ent2#att5"/>
+        <LinkParameter id="sv1#area2#page17#enu6#ln32#par53" name="latitude_latitude" source="sv1#area2#page17#enu6#fld10" target="sv1#area2#mfu3.ent2#att6"/>
+        <LinkParameter id="sv1#area2#page17#enu6#ln32#par57" name="longitude_longitude" source="sv1#area2#page17#enu6#fld11" target="sv1#area2#mfu3.ent2#att7"/>
       </Link>
     </EntryUnit>
   </ContentUnits>

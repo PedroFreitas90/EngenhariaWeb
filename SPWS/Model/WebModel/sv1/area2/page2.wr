@@ -1,4 +1,4 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" id="sv1#area2#page2" name="Add Vehicles" landmark="true" gr:x="225" gr:y="0">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" id="sv1#area2#page2" name="Add Vehicles" landmark="true" gr:x="225" gr:y="0" linkOrder="sv1#area2#page2#ln34">
   <ContentUnits>
     <EntryUnit id="sv1#area2#page2#enu4" name="Add Vehicles" linkOrder="sv1#area2#page2#enu4#ln16" gr:x="0" gr:y="0" fieldOrder="sv1#area2#page2#enu4#fld13 sv1#area2#page2#enu4#fld12">
       <Field id="sv1#area2#page2#enu4#fld12" name="Longitude" type="float" modifiable="true">
@@ -13,9 +13,9 @@
           <TypeValidationRule id="sv1#area2#page2#enu4#fld13#tvr12" name="Type Validation7"/>
         </VRules>
       </Field>
-      <Link id="sv1#area2#page2#enu4#ln16" name="Flow10" to="sv1#area2#cru3" type="normal" validate="true">
-        <LinkParameter id="sv1#area2#page2#enu4#ln16#par54" name="Latitude_latitude" source="sv1#area2#page2#enu4#fld13" target="sv1#area2#cru3.ent15#att49"/>
-        <LinkParameter id="sv1#area2#page2#enu4#ln16#par55" name="Longitude_longitude" source="sv1#area2#page2#enu4#fld12" target="sv1#area2#cru3.ent15#att50"/>
+      <Link id="sv1#area2#page2#enu4#ln16" name="Add" to="sv1#area2#cru3" type="normal" validate="true">
+        <LinkParameter id="sv1#area2#page2#enu4#ln16#par66" name="Latitude_latitude" source="sv1#area2#page2#enu4#fld13" target="sv1#area2#cru3.ent2#att6"/>
+        <LinkParameter id="sv1#area2#page2#enu4#ln16#par67" name="Longitude_longitude" source="sv1#area2#page2#enu4#fld12" target="sv1#area2#cru3.ent2#att7"/>
       </Link>
     </EntryUnit>
   </ContentUnits>
@@ -41,4 +41,5 @@
       <layout:Cell/>
     </layout:Row>
   </layout:Grid>
+  <Link id="sv1#area2#page2#ln34" name="Back" to="sv1#area2#page9" automaticCoupling="true" type="normal" validate="true" gr:bendpoints="-97,19,108,9"/>
 </Page>

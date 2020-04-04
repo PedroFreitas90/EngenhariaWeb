@@ -1,15 +1,15 @@
 <DataModel xmlns:db="http://www.webratio.com/2006/WebML/Database" xmlns:gr="http://www.webratio.com/2006/WebML/Graph">
-  <Entity id="User" name="User" duration="persistent" gr:x="45" gr:y="480" gr:hideAttributes="false" attributeOrder="userOID userName password email" db:database="db1" db:table="user">
+  <Entity id="User" name="User" duration="persistent" gr:x="20" gr:y="675" gr:hideAttributes="false" attributeOrder="userOID userName password email" db:database="db1" db:table="user">
     <Attribute name="oid" id="userOID" type="integer" key="true" db:column="oid"/>
     <Attribute name="userName" id="userName" type="string" db:column="username"/>
     <Attribute name="password" id="password" type="password" db:column="password"/>
     <Attribute name="email" id="email" type="string" db:column="email"/>
   </Entity>
-  <Entity id="Group" name="Group" duration="persistent" gr:x="345" gr:y="485" gr:hideAttributes="false" attributeOrder="groupOID groupName" db:database="db1" db:table="group">
+  <Entity id="Group" name="Group" duration="persistent" gr:x="350" gr:y="585" gr:hideAttributes="false" attributeOrder="groupOID groupName" db:database="db1" db:table="group">
     <Attribute name="oid" id="groupOID" type="integer" key="true" db:column="oid"/>
     <Attribute name="groupName" id="groupName" type="string" db:column="groupname"/>
   </Entity>
-  <Entity id="Module" name="Module" duration="persistent" gr:x="670" gr:y="455" gr:hideAttributes="false" attributeOrder="moduleOID moduleID moduleName" db:database="db1" db:table="module">
+  <Entity id="Module" name="Module" duration="persistent" gr:x="610" gr:y="650" gr:hideAttributes="false" attributeOrder="moduleOID moduleID moduleName" db:database="db1" db:table="module">
     <Attribute name="oid" id="moduleOID" type="integer" key="true" db:column="oid"/>
     <Attribute name="moduleID" id="moduleID" type="string" db:column="moduleid"/>
     <Attribute name="moduleName" id="moduleName" type="string" db:column="modulename"/>
@@ -46,119 +46,120 @@
       <db:JoinColumn attribute="moduleOID" name="module_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <db:Database id="db1" name="SPWS" type="MySQL" url="jdbc:mysql://localhost:3306/SPWS" username="root" cryptedPassword="true" password="cGFzc3dvcmQ=" readProcedures="true"/>
-  <Entity id="ent15" name="Car" db:database="db1" duration="persistent" db:table="car" gr:x="60" gr:y="220">
-    <Attribute id="ent15#att48" name="oid" db:column="oid" type="integer" key="true"/>
-    <Attribute id="ent15#att49" name="latitude" db:column="latitude" type="float" key="false"/>
-    <Attribute id="ent15#att50" name="longitude" db:column="longitude" type="float" key="false"/>
+  <db:Database id="db1" name="SPWS" type="MySQL" url="jdbc:mysql://localhost:3306/SPWS" username="root" cryptedPassword="true" password="cGFzc3dvcmQ=" readProcedures="true">
+  </db:Database>
+  <Entity id="ent2" name="Car" db:database="db1" duration="persistent" db:table="car" gr:x="30" gr:y="270">
+    <Attribute id="ent2#att5" name="oid" db:column="oid" type="integer" key="true"/>
+    <Attribute id="ent2#att6" name="latitude" db:column="latitude" type="float" key="false"/>
+    <Attribute id="ent2#att7" name="longitude" db:column="longitude" type="float" key="false"/>
   </Entity>
-  <Entity id="ent16" name="Crosswalk" db:database="db1" duration="persistent" db:table="crosswalk" gr:x="405" gr:y="205">
-    <Attribute id="ent16#att51" name="oid" db:column="oid" type="integer" key="true"/>
-    <Attribute id="ent16#att52" name="latitude" db:column="latitude" type="float" key="false"/>
-    <Attribute id="ent16#att53" name="longitude" db:column="longitude" type="float" key="false"/>
-    <Attribute id="ent16#att54" name="state" db:column="state" type="string" key="false"/>
+  <Entity id="ent3" name="Crosswalk" db:database="db1" duration="persistent" db:table="crosswalk" gr:x="375" gr:y="115">
+    <Attribute id="ent3#att8" name="oid" db:column="oid" type="integer" key="true"/>
+    <Attribute id="ent3#att9" name="latitude" db:column="latitude" type="float" key="false"/>
+    <Attribute id="ent3#att10" name="longitude" db:column="longitude" type="float" key="false"/>
+    <Attribute id="ent3#att11" name="state" db:column="state" type="string" key="false"/>
   </Entity>
-  <Entity id="ent17" name="CrosswalkCar" db:database="db1" duration="persistent" db:table="crosswalk_car" gr:x="215" gr:y="315">
-    <Attribute id="ent17#att55" name="crosswalkOid" db:column="crosswalk_oid" type="integer" key="true"/>
-    <Attribute id="ent17#att56" name="carOid" db:column="car_oid" type="integer" key="true"/>
-    <Attribute id="ent17#att57" name="distance" db:column="distance" type="float" key="false"/>
-    <Attribute id="ent17#att58" name="day" db:column="day" type="date" key="false"/>
+  <Entity id="ent4" name="CrosswalkCar" db:database="db1" duration="persistent" db:table="crosswalk_car" gr:x="20" gr:y="95">
+    <Attribute id="ent4#att12" name="crosswalkOid" db:column="crosswalk_oid" type="integer" key="true"/>
+    <Attribute id="ent4#att13" name="carOid" db:column="car_oid" type="integer" key="true"/>
+    <Attribute id="ent4#att14" name="distance" db:column="distance" type="float" key="false"/>
+    <Attribute id="ent4#att15" name="day" db:column="day" type="date" key="false"/>
   </Entity>
-  <Entity id="ent18" name="HistoricCar" db:database="db1" duration="persistent" db:table="historic_car" gr:x="210" gr:y="20">
-    <Attribute id="ent18#att59" name="day" db:column="day" type="date" key="true"/>
-    <Attribute id="ent18#att60" name="crosswalkOid" db:column="crosswalk_oid" type="integer" key="true"/>
-    <Attribute id="ent18#att61" name="carOid" db:column="car_oid" type="integer" key="true"/>
+  <Entity id="ent5" name="Historic" db:database="db1" duration="persistent" db:table="historic" gr:x="395" gr:y="370">
+    <Attribute id="ent5#att16" name="oid" db:column="oid" type="integer" key="true"/>
+    <Attribute id="ent5#att17" name="day" db:column="day" type="date" key="false"/>
   </Entity>
-  <Entity id="ent19" name="HistoricPedestrian" db:database="db1" duration="persistent" db:table="historic_pedestrian" gr:x="595" gr:y="10" attributeOrder="ent19#att62 ent19#att63 ent19#att64">
-    <Attribute id="ent19#att62" name="day" db:column="day" type="date" key="true"/>
-    <Attribute id="ent19#att63" name="crosswalkOid" db:column="crosswalk_oid" type="integer" key="true"/>
-    <Attribute id="ent19#att64" name="pedestrianOid" db:column="pedestrian_oid" type="integer" key="true"/>
+  <Entity id="ent6" name="HistoricCar" db:database="db1" duration="persistent" db:table="historic_car" gr:x="45" gr:y="460">
+    <Attribute id="ent6#att18" name="oid" db:column="oid" type="integer" key="true"/>
   </Entity>
-  <Entity id="ent20" name="Pedestrian" db:database="db1" duration="persistent" db:table="pedestrian" gr:x="800" gr:y="210">
-    <Attribute id="ent20#att65" name="oid" db:column="oid" type="integer" key="true"/>
-    <Attribute id="ent20#att66" name="latitude" db:column="latitude" type="float" key="false"/>
-    <Attribute id="ent20#att67" name="longitude" db:column="longitude" type="float" key="false"/>
+  <Entity id="ent7" name="HistoricPedestrian" db:database="db1" duration="persistent" db:table="historic_pedestrian" gr:x="795" gr:y="505">
+    <Attribute id="ent7#att19" name="oid" db:column="oid" type="integer" key="true"/>
   </Entity>
-  <Entity id="ent21" name="PedestrianCrosswalk" db:database="db1" duration="persistent" db:table="pedestrian_crosswalk" gr:x="590" gr:y="320">
-    <Attribute id="ent21#att68" name="pedestrianOid" db:column="pedestrian_oid" type="integer" key="true"/>
-    <Attribute id="ent21#att69" name="crosswalkOid" db:column="crosswalk_oid" type="integer" key="true"/>
-    <Attribute id="ent21#att70" name="distance" db:column="distance" type="float" key="false"/>
-    <Attribute id="ent21#att71" name="day" db:column="day" type="date" key="false"/>
+  <Entity id="ent8" name="Pedestrian" db:database="db1" duration="persistent" db:table="pedestrian" gr:x="785" gr:y="340">
+    <Attribute id="ent8#att20" name="oid" db:column="oid" type="integer" key="true"/>
+    <Attribute id="ent8#att21" name="latitude" db:column="latitude" type="float" key="false"/>
+    <Attribute id="ent8#att22" name="longitude" db:column="longitude" type="float" key="false"/>
   </Entity>
-  <Relationship id="rel19" name="HistoriccarCar" db:database="db1" db:table="historic_car" sourceEntity="ent18" targetEntity="ent15">
-    <RelationshipRole1 id="rel19#role37" name="HistoriccarToCar" maxCard="1">
-      <db:JoinColumn attribute="ent18#att59" name="day"/>
-      <db:JoinColumn attribute="ent18#att60" name="crosswalk_oid"/>
-      <db:JoinColumn attribute="ent18#att61" name="car_oid"/>
+  <Entity id="ent9" name="PedestrianCrosswalk" db:database="db1" duration="persistent" db:table="pedestrian_crosswalk" gr:x="755" gr:y="100">
+    <Attribute id="ent9#att23" name="pedestrianOid" db:column="pedestrian_oid" type="integer" key="true"/>
+    <Attribute id="ent9#att24" name="crosswalkOid" db:column="crosswalk_oid" type="integer" key="true"/>
+    <Attribute id="ent9#att25" name="distance" db:column="distance" type="float" key="false"/>
+    <Attribute id="ent9#att26" name="day" db:column="day" type="date" key="false"/>
+  </Entity>
+  <Relationship id="rel8" name="HistoricCrosswalk" db:database="db1" db:table="historic" sourceEntity="ent5" targetEntity="ent3">
+    <RelationshipRole1 id="rel8#role15" name="HistoricToCrosswalk" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent5#att16" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel19#role38" name="CarToHistoriccar" maxCard="N">
-      <db:JoinColumn attribute="ent15#att48" name="car_oid"/>
+    <RelationshipRole2 id="rel8#role16" name="CrosswalkToHistoric" maxCard="N">
+      <db:JoinColumn attribute="ent3#att8" name="crosswalk_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel20" name="HistoriccarCrosswalk" db:database="db1" db:table="historic_car" sourceEntity="ent18" targetEntity="ent16">
-    <RelationshipRole1 id="rel20#role39" name="HistoriccarToCrosswalk" maxCard="1">
-      <db:JoinColumn attribute="ent18#att59" name="day"/>
-      <db:JoinColumn attribute="ent18#att60" name="crosswalk_oid"/>
-      <db:JoinColumn attribute="ent18#att61" name="car_oid"/>
+  <Relationship id="rel9" name="PedestriancrosswalkCrosswalk" db:database="db1" db:table="pedestrian_crosswalk" sourceEntity="ent9" targetEntity="ent3">
+    <RelationshipRole1 id="rel9#role17" name="PedestriancrosswalkToCrosswalk" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent9#att23" name="pedestrian_oid"/>
+      <db:JoinColumn attribute="ent9#att24" name="crosswalk_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel20#role40" name="CrosswalkToHistoriccar" maxCard="N">
-      <db:JoinColumn attribute="ent16#att51" name="crosswalk_oid"/>
+    <RelationshipRole2 id="rel9#role18" name="CrosswalkToPedestriancrosswalk" maxCard="N">
+      <db:JoinColumn attribute="ent3#att8" name="crosswalk_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel21" name="CrosswalkcarCar" db:database="db1" db:table="crosswalk_car" sourceEntity="ent17" targetEntity="ent15">
-    <RelationshipRole1 id="rel21#role41" name="CrosswalkcarToCar" maxCard="1">
-      <db:JoinColumn attribute="ent17#att55" name="crosswalk_oid"/>
-      <db:JoinColumn attribute="ent17#att56" name="car_oid"/>
+  <Relationship id="rel10" name="PedestriancrosswalkPedestrian" db:database="db1" db:table="pedestrian_crosswalk" sourceEntity="ent9" targetEntity="ent8">
+    <RelationshipRole1 id="rel10#role19" name="PedestriancrosswalkToPedestrian" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent9#att23" name="pedestrian_oid"/>
+      <db:JoinColumn attribute="ent9#att24" name="crosswalk_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel21#role42" name="CarToCrosswalkcar" maxCard="N">
-      <db:JoinColumn attribute="ent15#att48" name="car_oid"/>
+    <RelationshipRole2 id="rel10#role20" name="PedestrianToPedestriancrosswalk" maxCard="N">
+      <db:JoinColumn attribute="ent8#att20" name="pedestrian_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel22" name="CrosswalkcarCrosswalk" db:database="db1" db:table="crosswalk_car" sourceEntity="ent17" targetEntity="ent16">
-    <RelationshipRole1 id="rel22#role43" name="CrosswalkcarToCrosswalk" maxCard="1">
-      <db:JoinColumn attribute="ent17#att55" name="crosswalk_oid"/>
-      <db:JoinColumn attribute="ent17#att56" name="car_oid"/>
+  <Relationship id="rel11" name="CrosswalkcarCar" db:database="db1" db:table="crosswalk_car" sourceEntity="ent4" targetEntity="ent2">
+    <RelationshipRole1 id="rel11#role21" name="CrosswalkcarToCar" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent4#att12" name="crosswalk_oid"/>
+      <db:JoinColumn attribute="ent4#att13" name="car_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel22#role44" name="CrosswalkToCrosswalkcar" maxCard="N">
-      <db:JoinColumn attribute="ent16#att51" name="crosswalk_oid"/>
+    <RelationshipRole2 id="rel11#role22" name="CarToCrosswalkcar" maxCard="N">
+      <db:JoinColumn attribute="ent2#att5" name="car_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel23" name="HistoricpedestrianCrosswalk" db:database="db1" db:table="historic_pedestrian" sourceEntity="ent19" targetEntity="ent16">
-    <RelationshipRole1 id="rel23#role45" name="HistoricpedestrianToCrosswalk" maxCard="1">
-      <db:JoinColumn attribute="ent19#att62" name="day"/>
-      <db:JoinColumn attribute="ent19#att63" name="crosswalk_oid"/>
-      <db:JoinColumn attribute="ent19#att64" name="pedestrian_oid"/>
+  <Relationship id="rel12" name="CrosswalkcarCrosswalk" db:database="db1" db:table="crosswalk_car" sourceEntity="ent4" targetEntity="ent3">
+    <RelationshipRole1 id="rel12#role23" name="CrosswalkcarToCrosswalk" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent4#att12" name="crosswalk_oid"/>
+      <db:JoinColumn attribute="ent4#att13" name="car_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel23#role46" name="CrosswalkToHistoricpedestrian" maxCard="N">
-      <db:JoinColumn attribute="ent16#att51" name="crosswalk_oid"/>
+    <RelationshipRole2 id="rel12#role24" name="CrosswalkToCrosswalkcar" maxCard="N">
+      <db:JoinColumn attribute="ent3#att8" name="crosswalk_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel24" name="HistoricpedestrianPedestrian" db:database="db1" db:table="historic_pedestrian" sourceEntity="ent19" targetEntity="ent20">
-    <RelationshipRole1 id="rel24#role47" name="HistoricpedestrianToPedestrian" maxCard="1">
-      <db:JoinColumn attribute="ent19#att62" name="day"/>
-      <db:JoinColumn attribute="ent19#att63" name="crosswalk_oid"/>
-      <db:JoinColumn attribute="ent19#att64" name="pedestrian_oid"/>
+  <Relationship id="rel13" name="HistoriccarCar" db:database="db1" db:table="historic_car" sourceEntity="ent6" targetEntity="ent2">
+    <RelationshipRole1 id="rel13#role25" name="HistoriccarToCar" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent6#att18" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel24#role48" name="PedestrianToHistoricpedestrian" maxCard="N">
-      <db:JoinColumn attribute="ent20#att65" name="pedestrian_oid"/>
+    <RelationshipRole2 id="rel13#role26" name="CarToHistoriccar" maxCard="N">
+      <db:JoinColumn attribute="ent2#att5" name="car_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel25" name="PedestriancrosswalkCrosswalk" db:database="db1" db:table="pedestrian_crosswalk" sourceEntity="ent21" targetEntity="ent16">
-    <RelationshipRole1 id="rel25#role49" name="PedestriancrosswalkToCrosswalk" maxCard="1">
-      <db:JoinColumn attribute="ent21#att68" name="pedestrian_oid"/>
-      <db:JoinColumn attribute="ent21#att69" name="crosswalk_oid"/>
+  <Relationship id="rel14" name="HistoriccarHistoric" db:database="db1" db:table="historic_car" sourceEntity="ent6" targetEntity="ent5">
+    <RelationshipRole1 id="rel14#role27" name="HistoriccarToHistoric" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent6#att18" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel25#role50" name="CrosswalkToPedestriancrosswalk" maxCard="N">
-      <db:JoinColumn attribute="ent16#att51" name="crosswalk_oid"/>
+    <RelationshipRole2 id="rel14#role28" name="HistoricToHistoriccar" maxCard="N">
+      <db:JoinColumn attribute="ent5#att16" name="historic_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <Relationship id="rel26" name="PedestriancrosswalkPedestrian" db:database="db1" db:table="pedestrian_crosswalk" sourceEntity="ent21" targetEntity="ent20">
-    <RelationshipRole1 id="rel26#role51" name="PedestriancrosswalkToPedestrian" maxCard="1">
-      <db:JoinColumn attribute="ent21#att68" name="pedestrian_oid"/>
-      <db:JoinColumn attribute="ent21#att69" name="crosswalk_oid"/>
+  <Relationship id="rel15" name="HistoricpedestrianHistoric" db:database="db1" db:table="historic_pedestrian" sourceEntity="ent7" targetEntity="ent5">
+    <RelationshipRole1 id="rel15#role29" name="HistoricpedestrianToHistoric" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent7#att19" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel26#role52" name="PedestrianToPedestriancrosswalk" maxCard="N">
-      <db:JoinColumn attribute="ent20#att65" name="pedestrian_oid"/>
+    <RelationshipRole2 id="rel15#role30" name="HistoricToHistoricpedestrian" maxCard="N">
+      <db:JoinColumn attribute="ent5#att16" name="historic_oid"/>
+    </RelationshipRole2>
+  </Relationship>
+  <Relationship id="rel16" name="HistoricpedestrianPedestrian" db:database="db1" db:table="historic_pedestrian" sourceEntity="ent7" targetEntity="ent8">
+    <RelationshipRole1 id="rel16#role31" name="HistoricpedestrianToPedestrian" maxCard="1" cascadeDelete="false">
+      <db:JoinColumn attribute="ent7#att19" name="oid"/>
+    </RelationshipRole1>
+    <RelationshipRole2 id="rel16#role32" name="PedestrianToHistoricpedestrian" maxCard="N">
+      <db:JoinColumn attribute="ent8#att20" name="pedestrian_oid"/>
     </RelationshipRole2>
   </Relationship>
 </DataModel>

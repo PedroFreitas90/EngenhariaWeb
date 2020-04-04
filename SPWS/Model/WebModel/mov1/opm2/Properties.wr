@@ -1,11 +1,16 @@
 <OperationModule xmlns:gr="http://www.webratio.com/2006/WebML/Graph" gr:x="130" gr:y="100" id="mov1#opm2" name="closerPedestrians">
   <OperationUnits>
-    <InputCollectorUnit id="mov1#opm2#icu2" gr:x="30" gr:y="60">
-      <OKLink id="mov1#opm2#icu2#oln1" name="OKFlow1" to="mov1#opm2#spu2">
-        <LinkParameter id="mov1#opm2#icu2#oln1#par3" name="X1" source="mov1#opm2#icu2#icp2" target="mov1#opm2#spu2.mov1#opm2#spu2#spp2"/>
-        <LinkParameter id="mov1#opm2#icu2#oln1#par7" name="X1_PASSING" source="mov1#opm2#icu2#icp2" passing="true"/>
+    <InputCollectorUnit id="mov1#opm2#icu2" gr:x="30" gr:y="60" linkOrder="mov1#opm2#icu2#ln1">
+      <OKLink id="mov1#opm2#icu2#oln15" name="OKFlow15" to="mov1#opm2#spu1">
+        <LinkParameter id="mov1#opm2#icu2#oln15#par69" name="X1_X1" source="mov1#opm2#icu2#icp1" target="mov1#opm2#spu1.mov1#opm2#spu1#spp1"/>
+        <LinkParameter id="mov1#opm2#icu2#oln15#par84" name="X1" source="mov1#opm2#icu2#icp1" target="mov1#opm2#spu1.mov1#opm2#spu1#spp1"/>
+        <LinkParameter id="mov1#opm2#icu2#oln15#par85" name="X1_PASSING" source="mov1#opm2#icu2#icp1" passing="true"/>
       </OKLink>
-      <InputCollectorParameter id="mov1#opm2#icu2#icp2" name="X1"/>
+      <InputCollectorParameter id="mov1#opm2#icu2#icp1" name="X1"/>
+      <Link id="mov1#opm2#icu2#ln1" name="Flow1" to="mov1#opm2#spu3" type="transport" validate="true">
+        <LinkParameter id="mov1#opm2#icu2#ln1#par88" name="X1_X3" source="mov1#opm2#icu2#icp1" target="mov1#opm2#spu3.mov1#opm2#spu3#spp3"/>
+        <LinkParameter id="mov1#opm2#icu2#ln1#par89" name="X1_PASSING" source="mov1#opm2#icu2#icp1" passing="true"/>
+      </Link>
     </InputCollectorUnit>
     <OKCollectorUnit gr:x="575" gr:y="175" id="mov1#opm2#okcu2" name="OK Port2">
       <OutputCollectorParameter id="mov1#opm2#okcu2#ocp3" name="Error Message"/>
@@ -13,19 +18,17 @@
       <OutputCollectorParameter id="mov1#opm2#okcu2#ocp5" name="crossoid"/>
     </OKCollectorUnit>
     <KOCollectorUnit gr:x="575" gr:y="45" id="mov1#opm2#kocu1" name="KO Port1"/>
-    <StoredProcedureUnit gr:x="235" gr:y="215" id="mov1#opm2#spu2" name="Store Procedure2" resultType="plain" db="db1" procedure="closerPedestrians">
-      <StoredProcedureParameter id="mov1#opm2#spu2#spp2" name="X1" type="integer" direction="input" position="1"/>
-      <OKLink id="mov1#opm2#spu2#oln12" name="OKFlow12" to="mov1#opm2#spu4">
-        <LinkParameter id="mov1#opm2#spu2#oln12#par10" name="X1_PASSING" sourceLinkParameter="mov1#opm2#icu2#oln1#par7" passing="true"/>
-        <LinkParameter id="mov1#opm2#spu2#oln12#par14" name="X1_PASSING_X4" sourceLinkParameter="mov1#opm2#icu2#oln1#par7" target="mov1#opm2#spu4.mov1#opm2#spu4#spp4"/>
-      </OKLink>
+    <StoredProcedureUnit gr:x="235" gr:y="180" id="mov1#opm2#spu1" name="Store Procedure1" resultType="plain" db="db1" procedure="closerPedestrians">
+      <StoredProcedureParameter id="mov1#opm2#spu1#spp1" name="X1" type="integer" direction="input" position="1"/>
+      <OKLink id="mov1#opm2#spu1#oln19" name="OKFlow19" to="mov1#opm2#spu3" automaticCoupling="true"/>
+      <KOLink id="mov1#opm2#spu1#kln11" name="KOFlow11" to="mov1#opm2#kocu1" automaticCoupling="true" gr:bendpoints="195,9,-190,144"/>
     </StoredProcedureUnit>
-    <StoredProcedureUnit gr:x="390" gr:y="55" id="mov1#opm2#spu4" name="Store Procedure4" resultType="plain" db="db1" procedure="closerCars">
-      <StoredProcedureParameter id="mov1#opm2#spu4#spp4" name="X4" type="integer" direction="input" position="1"/>
-      <OKLink id="mov1#opm2#spu4#oln14" name="OKFlow14" to="mov1#opm2#okcu2">
-        <LinkParameter id="mov1#opm2#spu4#oln14#par16" name="X1_PASSING_crossoid" sourceLinkParameter="mov1#opm2#spu2#oln12#par10" target="mov1#opm2#okcu2#ocp5"/>
+    <StoredProcedureUnit gr:x="410" gr:y="80" id="mov1#opm2#spu3" name="Store Procedure3" resultType="plain" db="db1" procedure="closerCars">
+      <StoredProcedureParameter id="mov1#opm2#spu3#spp3" name="X3" type="integer" direction="input" position="1"/>
+      <OKLink id="mov1#opm2#spu3#oln20" name="OKFlow20" to="mov1#opm2#okcu2">
+        <LinkParameter id="mov1#opm2#spu3#oln20#par90" name="X1_PASSING_crossoid" sourceLinkParameter="mov1#opm2#icu2#ln1#par89" target="mov1#opm2#okcu2#ocp5"/>
       </OKLink>
-      <KOLink id="mov1#opm2#spu4#kln8" name="KOFlow8" to="mov1#opm2#kocu1" automaticCoupling="true"/>
+      <KOLink id="mov1#opm2#spu3#kln10" name="KOFlow10" to="mov1#opm2#kocu1" automaticCoupling="true"/>
     </StoredProcedureUnit>
   </OperationUnits>
 </OperationModule>

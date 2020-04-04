@@ -1,10 +1,10 @@
 <Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="0" gr:y="0" id="sv1#area3#page10" name="List Pedestrians" linkOrder="sv1#area3#page10#ln8" landmark="true">
   <ContentUnits>
-    <IndexUnit gr:x="0" gr:y="0" id="sv1#area3#page10#inu1" name="Pedestrians" entity="ent20" displayAttributes="ent20#att65 ent20#att66 ent20#att67" linkOrder="sv1#area3#page10#inu1#ln18">
+    <IndexUnit gr:x="0" gr:y="0" id="sv1#area3#page10#inu1" name="Pedestrians" linkOrder="sv1#area3#page10#inu1#ln18" entity="ent8" displayAttributes="ent8#att20 ent8#att21 ent8#att22">
       <Link id="sv1#area3#page10#inu1#ln18" name="Update" to="sv1#area3#page16#enu1" type="normal" validate="true" gr:bendpoints="-45,72,-60,-83">
-        <LinkParameter id="sv1#area3#page10#inu1#ln18#par11" name="latitude_latitude" source="data[].ent20#att66" target="sv1#area3#page16#enu1#fld1_slot"/>
-        <LinkParameter id="sv1#area3#page10#inu1#ln18#par12" name="longitude_longitude" source="data[].ent20#att67" target="sv1#area3#page16#enu1#fld2_slot"/>
-        <LinkParameter id="sv1#area3#page10#inu1#ln18#par15" name="oid_PASSING" source="data[].ent20#att65" passing="true"/>
+        <LinkParameter id="sv1#area3#page10#inu1#ln18#par11" name="latitude_latitude" source="data[].ent8#att21" target="sv1#area3#page16#enu1#fld1_slot"/>
+        <LinkParameter id="sv1#area3#page10#inu1#ln18#par12" name="longitude_longitude" source="data[].ent8#att22" target="sv1#area3#page16#enu1#fld2_slot"/>
+        <LinkParameter id="sv1#area3#page10#inu1#ln18#par26" name="oid_PASSING" source="data[].ent8#att20" passing="true"/>
       </Link>
     </IndexUnit>
   </ContentUnits>
@@ -12,10 +12,10 @@
     <layout:Row>
       <layout:Cell colspan="12">
         <layout:Unit unitId="sv1#area3#page10#inu1">
-          <layout:Attribute attribute="ent20#att65"/>
-          <layout:Attribute attribute="ent20#att66"/>
-          <layout:Attribute attribute="ent20#att67"/>
           <layout:Link link="sv1#area3#page10#inu1#ln18"/>
+          <layout:Attribute attribute="ent8#att20"/>
+          <layout:Attribute attribute="ent8#att21"/>
+          <layout:Attribute attribute="ent8#att22"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>

@@ -1,6 +1,6 @@
 <SiteView xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="sv1" name="CrossWalks" landmarks="sv1#area1 sv1#area3 sv1#area2" homePage="sv1#area1#page1">
   <OperationUnits>
-    <DeleteUnit gr:x="505" gr:y="5" id="sv1#dlu1" name="Delete1" entity="ent16">
+    <DeleteUnit gr:x="505" gr:y="5" id="sv1#dlu1" name="Delete1" entity="ent3">
       <Selector id="sv1#dlu1#su4" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="sv1#dlu1#su4#kcond2" name="KeyCondition2" predicate="in" implied="false"/>
       </Selector>
