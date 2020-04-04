@@ -1,3 +1,7 @@
+create schema if not exists SPWS;
+
+use SPWS;
+
 -- Group [Group]
 create table `group` (
    `oid`  integer  not null,
