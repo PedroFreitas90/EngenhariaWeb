@@ -1,8 +1,18 @@
 <Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="1040" gr:y="0" id="sv1#area1#page5" name="Add CrossWalks" landmark="true" linkOrder="sv1#area1#page5#ln2">
   <ContentUnits>
     <EntryUnit gr:x="0" gr:y="0" id="sv1#area1#page5#enu5" name="Add Crosswalk" fieldOrder="sv1#area1#page5#enu5#fld3 sv1#area1#page5#enu5#fld4" linkOrder="sv1#area1#page5#enu5#ln3">
-      <Field id="sv1#area1#page5#enu5#fld4" name="longitude" type="float" modifiable="true"/>
-      <Field id="sv1#area1#page5#enu5#fld3" name="latitude" type="float" modifiable="true"/>
+      <Field id="sv1#area1#page5#enu5#fld4" name="longitude" type="float" modifiable="true">
+        <VRules>
+          <MandatoryValidationRule id="sv1#area1#page5#enu5#fld4#mnd2" name="Mandatory2"/>
+          <TypeValidationRule id="sv1#area1#page5#enu5#fld4#tvr2" name="Type Validation2" type="float"/>
+        </VRules>
+      </Field>
+      <Field id="sv1#area1#page5#enu5#fld3" name="latitude" type="float" modifiable="true">
+        <VRules>
+          <TypeValidationRule id="sv1#area1#page5#enu5#fld3#tvr1" name="Type Validation1" type="float"/>
+          <MandatoryValidationRule id="sv1#area1#page5#enu5#fld3#mnd1" name="Mandatory1"/>
+        </VRules>
+      </Field>
       <Link id="sv1#area1#page5#enu5#ln3" name="Add" to="sv1#area1#seu2" type="normal" validate="true">
         <LinkParameter id="sv1#area1#page5#enu5#ln3#par34" name="latitude_AttCondition1" source="sv1#area1#page5#enu5#fld3" target="sv1#area1#seu2#su3#acond1"/>
         <LinkParameter id="sv1#area1#page5#enu5#ln3#par35" name="longitude_AttCondition2" source="sv1#area1#page5#enu5#fld4" target="sv1#area1#seu2#su3#acond2"/>
