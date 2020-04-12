@@ -145,6 +145,13 @@ select count(*) into @countC from car;
        SET x= x+1;
 
        end loop;
+ select count(*) into @countP from pedestrian_crosswalk;
+ select count(*) into @countC from crosswalk_car;
+    IF @countP + @countC > 0 then
+    UPDATE crosswalk SET state = "STOP" WHERE oid = cross_id;
+ 	else
+     UPDATE crosswalk SET state = "GO GO GO" WHERE oid = cross_id;
+     end IF;   
 
 END
 
@@ -168,6 +175,14 @@ select count(*) into @countC from pedestrian;
        SET x= x+1;
 
        end loop;
+
+ select count(*) into @countP from pedestrian_crosswalk;
+ select count(*) into @countC from crosswalk_car;
+    IF @countP + @countC > 0 then
+    UPDATE crosswalk SET state = "STOP" WHERE oid = cross_id;
+ 	else
+     UPDATE crosswalk SET state = "GO GO GO" WHERE oid = cross_id;
+     end IF;       
 
 END
 $$
