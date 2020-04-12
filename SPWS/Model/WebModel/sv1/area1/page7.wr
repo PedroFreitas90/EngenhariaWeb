@@ -5,6 +5,8 @@
         <VRules>
           <MandatoryValidationRule id="sv1#area1#page7#enu3#fld5#mnd4" name="Mandatory4"/>
           <TypeValidationRule id="sv1#area1#page7#enu3#fld5#tvr4" name="Type Validation4"/>
+          <CompareValidationRule id="sv1#area1#page7#enu3#fld5#cmp1" name="Compare1" predicate="gteq" value="-90"/>
+          <CompareValidationRule id="sv1#area1#page7#enu3#fld5#cmp2" name="Compare2" predicate="lteq" value="90"/>
         </VRules>
       </Field>
       <Field id="sv1#area1#page7#enu3#fld6" name="Longitude" type="float" modifiable="false" preloaded="true">

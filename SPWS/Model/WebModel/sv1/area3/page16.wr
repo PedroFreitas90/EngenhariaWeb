@@ -5,12 +5,16 @@
         <VRules>
           <MandatoryValidationRule id="sv1#area3#page16#enu1#fld2#mnd6" name="Mandatory6"/>
           <TypeValidationRule id="sv1#area3#page16#enu1#fld2#tvr6" name="Type Validation6" type="float"/>
+          <CompareValidationRule id="sv1#area3#page16#enu1#fld2#cmp17" name="Compare14" predicate="lteq" value="180"/>
+          <CompareValidationRule id="sv1#area3#page16#enu1#fld2#cmp18" name="Compare13" predicate="gt" value="-180"/>
         </VRules>
       </Field>
       <Field id="sv1#area3#page16#enu1#fld1" name="latitude" type="float" preloaded="true" modifiable="true">
         <VRules>
           <MandatoryValidationRule id="sv1#area3#page16#enu1#fld1#mnd3" name="Mandatory3"/>
           <TypeValidationRule id="sv1#area3#page16#enu1#fld1#tvr3" name="Type Validation3" type="float"/>
+          <CompareValidationRule id="sv1#area3#page16#enu1#fld1#cmp7" name="Compare1" predicate="gteq" value="-90"/>
+          <CompareValidationRule id="sv1#area3#page16#enu1#fld1#cmp8" name="Compare2" predicate="lteq" value="90"/>
         </VRules>
       </Field>
       <Link id="sv1#area3#page16#enu1#ln23" to="sv1#area3#mfu2" type="normal" validate="true" name="Update">
