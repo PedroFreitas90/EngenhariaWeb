@@ -1,32 +1,28 @@
 <Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="505" gr:y="255" id="sv1#area1#page3" name="Crosswalk" linkOrder="sv1#area1#page3#ln4" linkVisibilityPolicy="inactive">
   <ContentUnits>
-    <DataUnit gr:x="0" gr:y="10" id="sv1#area1#page3#dau1" name="Details1" linkOrder="sv1#area1#page3#dau1#ln9 sv1#area1#page3#dau1#ln34" entity="ent16" displayAll="true">
+    <DataUnit gr:x="0" gr:y="10" id="sv1#area1#page3#dau1" name="Details1" linkOrder="sv1#area1#page3#dau1#ln9" displayAll="true" entity="ent3">
       <Selector id="sv1#area1#page3#dau1#su1" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="sv1#area1#page3#dau1#su1#kcond1" name="KeyCondition1" predicate="in" implied="false"/>
       </Selector>
       <Link id="sv1#area1#page3#dau1#ln13" name="Flow13" to="sv1#area1#page3#inu2" type="transport" validate="true">
-        <LinkParameter id="sv1#area1#page3#dau1#ln13#par1" name="oid_AttCondition3" source="data.ent16#att51" target="sv1#area1#page3#inu2#su2#acond3"/>
+        <LinkParameter id="sv1#area1#page3#dau1#ln13#par1" name="oid_AttCondition3" source="data.ent3#att8" target="sv1#area1#page3#inu2#su2#acond3"/>
       </Link>
       <Link id="sv1#area1#page3#dau1#ln14" name="Flow14" to="sv1#area1#page3#inu4" type="transport" validate="true">
-        <LinkParameter id="sv1#area1#page3#dau1#ln14#par2" name="oid_AttCondition4" source="data.ent16#att51" target="sv1#area1#page3#inu4#su6#acond4"/>
+        <LinkParameter id="sv1#area1#page3#dau1#ln14#par2" name="oid_AttCondition4" source="data.ent3#att8" target="sv1#area1#page3#inu4#su6#acond4"/>
       </Link>
-      <Link id="sv1#area1#page3#dau1#ln9" to="sv1#area1#page4#inu6" type="normal" validate="true" gr:bendpoints="-50,143,-50,-167" name="History Pedestrians">
-        <LinkParameter id="sv1#area1#page3#dau1#ln9#par58" name="oid_cross_oid" source="data.ent16#att51" target="sv1#area1#page4#inu6#su8#acond8"/>
-        <LinkParameter id="sv1#area1#page3#dau1#ln9#par61" name="oid_PASSING" source="data.ent16#att51" passing="true"/>
-      </Link>
-      <Link id="sv1#area1#page3#dau1#ln34" name="History Vehicles" to="sv1#area1#page18#inu9" type="normal" validate="true" gr:bendpoints="-243,138,-33,-332;-407,270,-197,-200">
-        <LinkParameter id="sv1#area1#page3#dau1#ln34#par33" name="oid_current crosswalkOid" source="data.ent16#att51" target="sv1#area1#page18#inu9.current.ent18#att60"/>
-        <LinkParameter id="sv1#area1#page3#dau1#ln34#par36" name="oid_PASSING" source="data.ent16#att51" passing="true"/>
+      <Link id="sv1#area1#page3#dau1#ln9" to="sv1#area1#page4#inu6" type="normal" validate="true" gr:bendpoints="-50,143,-50,-167" name="History ">
+        <LinkParameter id="sv1#area1#page3#dau1#ln9#par3" name="oid_Historic_Crosswalk [oid]" source="data.ent3#att8" target="sv1#area1#page4#inu6#su12#rcond1.ent3#att8"/>
+        <LinkParameter id="sv1#area1#page3#dau1#ln9#par19" name="oid_PASSING" source="data.ent3#att8" passing="true"/>
       </Link>
     </DataUnit>
-    <IndexUnit gr:x="185" gr:y="0" id="sv1#area1#page3#inu2" name="Pedestrians Closer" entity="ent21" displayAttributes="ent21#att68 ent21#att70 ent21#att71">
+    <IndexUnit gr:x="185" gr:y="0" id="sv1#area1#page3#inu2" name="Pedestrians Closer" entity="ent9" displayAttributes="ent9#att23 ent9#att24 ent9#att25 ent9#att26">
       <Selector id="sv1#area1#page3#inu2#su2" defaultPolicy="fill" booleanOperator="and">
-        <AttributesCondition id="sv1#area1#page3#inu2#su2#acond3" name="AttCondition3" predicate="eq" booleanOperator="or" implied="false" attributes="ent21#att69"/>
+        <AttributesCondition id="sv1#area1#page3#inu2#su2#acond3" name="AttCondition3" predicate="eq" booleanOperator="or" implied="false" attributes="ent9#att24"/>
       </Selector>
     </IndexUnit>
-    <IndexUnit gr:x="215" gr:y="125" id="sv1#area1#page3#inu4" name="Vehicles Closer" entity="ent17" displayAttributes="ent17#att56 ent17#att57 ent17#att58">
+    <IndexUnit gr:x="215" gr:y="125" id="sv1#area1#page3#inu4" name="Vehicles Closer" entity="ent4" displayAttributes="ent4#att12 ent4#att13 ent4#att14 ent4#att15">
       <Selector id="sv1#area1#page3#inu4#su6" defaultPolicy="fill" booleanOperator="and">
-        <AttributesCondition id="sv1#area1#page3#inu4#su6#acond4" name="AttCondition4" predicate="eq" booleanOperator="or" implied="false" attributes="ent17#att55"/>
+        <AttributesCondition id="sv1#area1#page3#inu4#su6#acond4" name="AttCondition4" predicate="eq" booleanOperator="or" implied="false" attributes="ent4#att12"/>
       </Selector>
     </IndexUnit>
   </ContentUnits>
@@ -34,11 +30,10 @@
     <layout:Row>
       <layout:Cell colspan="12">
         <layout:Unit unitId="sv1#area1#page3#dau1">
-          <layout:Attribute attribute="ent16#att54"/>
-          <layout:Attribute attribute="ent16#att53"/>
-          <layout:Attribute attribute="ent16#att52"/>
           <layout:Link link="sv1#area1#page3#dau1#ln9"/>
-          <layout:Link link="sv1#area1#page3#dau1#ln34"/>
+          <layout:Attribute attribute="ent3#att11"/>
+          <layout:Attribute attribute="ent3#att10"/>
+          <layout:Attribute attribute="ent3#att9"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>
@@ -56,9 +51,10 @@
     <layout:Row>
       <layout:Cell colspan="12">
         <layout:Unit unitId="sv1#area1#page3#inu2">
-          <layout:Attribute attribute="ent21#att68"/>
-          <layout:Attribute attribute="ent21#att70"/>
-          <layout:Attribute attribute="ent21#att71"/>
+          <layout:Attribute attribute="ent9#att23"/>
+          <layout:Attribute attribute="ent9#att24"/>
+          <layout:Attribute attribute="ent9#att25"/>
+          <layout:Attribute attribute="ent9#att26"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>
@@ -76,9 +72,10 @@
     <layout:Row>
       <layout:Cell colspan="12">
         <layout:Unit unitId="sv1#area1#page3#inu4">
-          <layout:Attribute attribute="ent17#att56"/>
-          <layout:Attribute attribute="ent17#att57"/>
-          <layout:Attribute attribute="ent17#att58"/>
+          <layout:Attribute attribute="ent4#att12"/>
+          <layout:Attribute attribute="ent4#att13"/>
+          <layout:Attribute attribute="ent4#att14"/>
+          <layout:Attribute attribute="ent4#att15"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>

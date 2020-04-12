@@ -1,17 +1,24 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="555" gr:y="545" id="sv1#area1#page13" name="History per day Pedestrians">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="555" gr:y="545" id="sv1#area1#page13" name="History per day ">
   <ContentUnits>
     <MultiMessageUnit gr:x="0" gr:y="0" id="sv1#area1#page13#mssu5" name="Day" linkOrder="sv1#area1#page13#mssu5#ln27">
       <Link id="sv1#area1#page13#mssu5#ln27" name="Back " to="sv1#area1#page3#dau1" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page13#mssu5#ln27#par64" name="oid_PASSING_KeyCondition1 [oid]" sourceLinkParameter="sv1#area1#page4#inu6#ln24#par62" target="sv1#area1#page3#dau1#su1#kcond1.ent16#att51"/>
+        <LinkParameter id="sv1#area1#page13#mssu5#ln27#par30" name="oid_PASSING_KeyCondition1 [oid]" sourceLinkParameter="sv1#area1#page4#inu6#ln24#par29" target="sv1#area1#page3#dau1#su1#kcond1.ent3#att8"/>
       </Link>
-      <Link id="sv1#area1#page13#mssu5#ln28" name="Flow28" to="sv1#area1#page13#inu8" type="transport" validate="true" gr:bendpoints="67,15,42,-85">
-        <LinkParameter id="sv1#area1#page13#mssu5#ln28#par68" name="day_PASSING_current day" sourceLinkParameter="sv1#area1#page4#inu6#ln24#par59" target="sv1#area1#page13#inu8.current.ent19#att62"/>
-        <LinkParameter id="sv1#area1#page13#mssu5#ln28#par71" name="oid_PASSING_crosswalkoid" sourceLinkParameter="sv1#area1#page4#inu6#ln24#par62" target="sv1#area1#page13#inu8#su11#acond5"/>
+      <Link id="sv1#area1#page13#mssu5#ln25" name="Flow25" to="sv1#area1#page13#inu8" type="transport" validate="true">
+        <LinkParameter id="sv1#area1#page13#mssu5#ln25#par7" name="oid_PASSING_pedestrianHistoric [oid]" sourceLinkParameter="sv1#area1#page4#inu6#ln24#par16" target="sv1#area1#page13#inu8#su15#rcond3.ent5#att16"/>
+      </Link>
+      <Link id="sv1#area1#page13#mssu5#ln28" name="Flow28" to="sv1#area1#page13#inu10" type="transport" validate="true" newWindow="true">
+        <LinkParameter id="sv1#area1#page13#mssu5#ln28#par14" name="oid_PASSING_carHistory [oid]" sourceLinkParameter="sv1#area1#page4#inu6#ln24#par16" target="sv1#area1#page13#inu10#su16#rcond4.ent5#att16"/>
       </Link>
     </MultiMessageUnit>
-    <IndexUnit gr:x="0" gr:y="90" id="sv1#area1#page13#inu8" name="Pedestrians" entity="ent19" displayAttributes="ent19#att64">
-      <Selector id="sv1#area1#page13#inu8#su11" defaultPolicy="fill" booleanOperator="and">
-        <AttributesCondition id="sv1#area1#page13#inu8#su11#acond5" name="crosswalkoid" predicate="eq" booleanOperator="or" implied="false" attributes="ent19#att63"/>
+    <IndexUnit gr:x="175" gr:y="10" id="sv1#area1#page13#inu8" name="Pedestrians" entity="ent7" displayAttributes="rel16#role31.ent8#att20">
+      <Selector id="sv1#area1#page13#inu8#su15" defaultPolicy="fill" booleanOperator="and">
+        <RelationshipRoleCondition id="sv1#area1#page13#inu8#su15#rcond3" name="pedestrianHistoric" predicate="in" implied="false" role="rel15#role30"/>
+      </Selector>
+    </IndexUnit>
+    <IndexUnit gr:x="20" gr:y="140" id="sv1#area1#page13#inu10" name="Vehicles" entity="ent6" displayAttributes="rel13#role25.ent2#att5">
+      <Selector id="sv1#area1#page13#inu10#su16" defaultPolicy="fill" booleanOperator="and">
+        <RelationshipRoleCondition id="sv1#area1#page13#inu10#su16#rcond4" name="carHistory" predicate="in" implied="false" role="rel14#role28"/>
       </Selector>
     </IndexUnit>
   </ContentUnits>
@@ -51,7 +58,25 @@
     <layout:Row>
       <layout:Cell colspan="12">
         <layout:Unit unitId="sv1#area1#page13#inu8">
-          <layout:Attribute attribute="ent19#att64"/>
+          <layout:Attribute attribute="rel16#role31.ent8#att20"/>
+        </layout:Unit>
+      </layout:Cell>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+      <layout:Cell/>
+    </layout:Row>
+    <layout:Row>
+      <layout:Cell colspan="12">
+        <layout:Unit unitId="sv1#area1#page13#inu10">
+          <layout:Attribute attribute="rel13#role25.ent2#att5"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>

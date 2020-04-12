@@ -1,18 +1,17 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="520" gr:y="10" id="sv1#area1#page1" name="List Crosswalks" landmark="true" linkOrder="sv1#area1#page1#ln6">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="520" gr:y="10" id="sv1#area1#page1" name="Crosswalks" landmark="true" linkOrder="sv1#area1#page1#ln6">
   <ContentUnits>
-    <IndexUnit gr:x="0" gr:y="0" id="sv1#area1#page1#inu3" name="Simple List3" linkOrder="sv1#area1#page1#inu3#ln17 sv1#area1#page1#inu3#ln26 sv1#area1#page1#inu3#ln29" entity="ent16" displayAttributes="ent16#att51 ent16#att52 ent16#att53 ent16#att54">
+    <IndexUnit gr:x="0" gr:y="0" id="sv1#area1#page1#inu3" name="Crosswalks" linkOrder="sv1#area1#page1#inu3#ln17 sv1#area1#page1#inu3#ln26 sv1#area1#page1#inu3#ln29" entity="ent3" displayAttributes="ent3#att8 ent3#att9 ent3#att10 ent3#att11">
       <Link id="sv1#area1#page1#inu3#ln17" name="Update" to="sv1#area1#page7#enu3" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page1#inu3#ln17#par38" name="latitude_Latitude" source="data[].ent16#att52" target="sv1#area1#page7#enu3#fld5_slot"/>
-        <LinkParameter id="sv1#area1#page1#inu3#ln17#par39" name="longitude_Longitude" source="data[].ent16#att53" target="sv1#area1#page7#enu3#fld6_slot"/>
-        <LinkParameter id="sv1#area1#page1#inu3#ln17#par40" name="state_State" source="data[].ent16#att54" target="sv1#area1#page7#enu3#fld7_slot"/>
-        <LinkParameter id="sv1#area1#page1#inu3#ln17#par42" name="oid_PASSING" source="data[].ent16#att51" passing="true"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par38" name="latitude_Latitude" source="data[].ent3#att9" target="sv1#area1#page7#enu3#fld5_slot"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par39" name="longitude_Longitude" source="data[].ent3#att10" target="sv1#area1#page7#enu3#fld6_slot"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par40" name="state_State" source="data[].ent3#att11" target="sv1#area1#page7#enu3#fld7_slot"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln17#par8" name="oid_PASSING" source="data[].ent3#att8" passing="true"/>
       </Link>
       <Link id="sv1#area1#page1#inu3#ln26" name="Details" to="sv1#area1#miu1" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page1#inu3#ln26#par13" name="oid_X1" source="data[].ent16#att51" target="sv1#area1#miu1.mov1#opm2#icu2#icp2"/>
-        <LinkParameter id="sv1#area1#page1#inu3#ln26#par56" name="oid_PASSING" source="data[].ent16#att51" passing="true"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln26#par87" name="oid_X1" source="data[].ent3#att8" target="sv1#area1#miu1.mov1#opm2#icu2#icp1"/>
       </Link>
       <Link id="sv1#area1#page1#inu3#ln29" name="Delete" to="sv1#dlu1" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page1#inu3#ln29#par45" name="oid_KeyCondition2 [oid]" source="data[].ent16#att51" target="sv1#dlu1#su4#kcond2.ent16#att51"/>
+        <LinkParameter id="sv1#area1#page1#inu3#ln29#par47" name="oid_KeyCondition2 [oid]" source="data[].ent3#att8" target="sv1#dlu1#su4#kcond2.ent3#att8"/>
       </Link>
     </IndexUnit>
   </ContentUnits>
@@ -23,10 +22,10 @@
           <layout:Link link="sv1#area1#page1#inu3#ln17"/>
           <layout:Link link="sv1#area1#page1#inu3#ln26"/>
           <layout:Link link="sv1#area1#page1#inu3#ln29"/>
-          <layout:Attribute attribute="ent16#att51"/>
-          <layout:Attribute attribute="ent16#att52"/>
-          <layout:Attribute attribute="ent16#att53"/>
-          <layout:Attribute attribute="ent16#att54"/>
+          <layout:Attribute attribute="ent3#att8"/>
+          <layout:Attribute attribute="ent3#att9"/>
+          <layout:Attribute attribute="ent3#att10"/>
+          <layout:Attribute attribute="ent3#att11"/>
         </layout:Unit>
       </layout:Cell>
       <layout:Cell/>

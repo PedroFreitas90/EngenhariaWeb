@@ -15,8 +15,10 @@
       </Field>
       <Field id="sv1#area1#page7#enu3#fld7" name="State" type="string" modifiable="true" preloaded="true"/>
       <Link id="sv1#area1#page7#enu3#ln5" name="Update" to="sv1#area1#mfu1" type="normal" validate="true">
-        <LinkParameter id="sv1#area1#page7#enu3#ln5#par43" name="oid_PASSING_KeyCondition3 [oid]" sourceLinkParameter="sv1#area1#page1#inu3#ln17#par42" target="sv1#area1#mfu1#su5#kcond3.ent16#att51"/>
-        <LinkParameter id="sv1#area1#page7#enu3#ln5#par44" name="State_state" source="sv1#area1#page7#enu3#fld7" target="sv1#area1#mfu1.ent16#att54"/>
+        <LinkParameter id="sv1#area1#page7#enu3#ln5#par4" name="Latitude_latitude" source="sv1#area1#page7#enu3#fld5" target="sv1#area1#mfu1.ent3#att9"/>
+        <LinkParameter id="sv1#area1#page7#enu3#ln5#par5" name="Longitude_longitude" source="sv1#area1#page7#enu3#fld6" target="sv1#area1#mfu1.ent3#att10"/>
+        <LinkParameter id="sv1#area1#page7#enu3#ln5#par6" name="State_state" source="sv1#area1#page7#enu3#fld7" target="sv1#area1#mfu1.ent3#att11"/>
+        <LinkParameter id="sv1#area1#page7#enu3#ln5#par9" name="oid_PASSING_KeyCondition3 [oid]" sourceLinkParameter="sv1#area1#page1#inu3#ln17#par8" target="sv1#area1#mfu1#su5#kcond3.ent3#att8"/>
       </Link>
     </EntryUnit>
   </ContentUnits>

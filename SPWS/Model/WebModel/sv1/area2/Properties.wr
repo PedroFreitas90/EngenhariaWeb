@@ -1,10 +1,10 @@
 <Area xmlns:gr="http://www.webratio.com/2006/WebML/Graph" id="sv1#area2" name="Vehicles" defaultPage="sv1#area2#page9" landmarks="sv1#area2#page9 sv1#area2#page2" landmark="true" gr:x="1385" gr:y="970">
   <OperationUnits>
-    <CreateUnit id="sv1#area2#cru3" name="Add Vehicles" gr:x="240" gr:y="165" entity="ent15">
+    <CreateUnit id="sv1#area2#cru3" name="Add Vehicles" gr:x="240" gr:y="165" entity="ent2">
       <OKLink id="sv1#area2#cru3#oln10" name="OKFlow5" to="sv1#area2#page9" automaticCoupling="true"/>
       <KOLink id="sv1#area2#cru3#kln7" name="KOFlow1" to="sv1#area2#page15" automaticCoupling="true"/>
     </CreateUnit>
-    <ModifyUnit gr:x="15" gr:y="340" id="sv1#area2#mfu3" name="Update3" entity="ent15">
+    <ModifyUnit gr:x="15" gr:y="340" id="sv1#area2#mfu3" name="Update3" entity="ent2">
       <Selector id="sv1#area2#mfu3#su9" defaultPolicy="fill" booleanOperator="and">
         <KeyCondition id="sv1#area2#mfu3#su9#kcond5" name="KeyCondition5" predicate="in" implied="false"/>
       </Selector>

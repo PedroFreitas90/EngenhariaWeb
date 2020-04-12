@@ -1,4 +1,4 @@
-<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="245" gr:y="20" id="sv1#area3#page11" name="Add Pedestrians" landmark="true">
+<Page xmlns:gr="http://www.webratio.com/2006/WebML/Graph" xmlns:layout="http://www.webratio.com/2006/WebML/Layout" gr:x="245" gr:y="20" id="sv1#area3#page11" name="Add Pedestrians" landmark="true" linkOrder="sv1#area3#page11#ln30">
   <ContentUnits>
     <EntryUnit gr:x="0" gr:y="0" id="sv1#area3#page11#enu2" name="Add Pedestrians" fieldOrder="sv1#area3#page11#enu2#fld8 sv1#area3#page11#enu2#fld9" linkOrder="sv1#area3#page11#enu2#ln10">
       <Field id="sv1#area3#page11#enu2#fld9" name="longitude" type="float" modifiable="true">
@@ -13,9 +13,9 @@
           <TypeValidationRule id="sv1#area3#page11#enu2#fld8#tvr7" name="Type Validation7"/>
         </VRules>
       </Field>
-      <Link id="sv1#area3#page11#enu2#ln10" name="Flow10" to="sv1#area3#cru2" type="normal" validate="true">
-        <LinkParameter id="sv1#area3#page11#enu2#ln10#par52" name="latitude_latitude" source="sv1#area3#page11#enu2#fld8" target="sv1#area3#cru2.ent20#att66"/>
-        <LinkParameter id="sv1#area3#page11#enu2#ln10#par53" name="longitude_longitude" source="sv1#area3#page11#enu2#fld9" target="sv1#area3#cru2.ent20#att67"/>
+      <Link id="sv1#area3#page11#enu2#ln10" name="Add " to="sv1#area3#cru2" type="normal" validate="true">
+        <LinkParameter id="sv1#area3#page11#enu2#ln10#par24" name="latitude_latitude" source="sv1#area3#page11#enu2#fld8" target="sv1#area3#cru2.ent8#att21"/>
+        <LinkParameter id="sv1#area3#page11#enu2#ln10#par25" name="longitude_longitude" source="sv1#area3#page11#enu2#fld9" target="sv1#area3#cru2.ent8#att22"/>
       </Link>
     </EntryUnit>
   </ContentUnits>
@@ -41,4 +41,5 @@
       <layout:Cell/>
     </layout:Row>
   </layout:Grid>
+  <Link id="sv1#area3#page11#ln30" name="Back" to="sv1#area3#page10" automaticCoupling="true" type="normal" validate="true" gr:bendpoints="-114,10,121,20"/>
 </Page>
