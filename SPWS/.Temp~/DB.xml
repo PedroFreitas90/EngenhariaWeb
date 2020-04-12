@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DBMetaData driverMajorVersion="5" driverMinorVersion="1" driverVersion="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" productVersion="5.7.29-0ubuntu0.18.04.1" identifierQuoteString="`" transactionLevel="Repeatable read" driverName="MySQL Connector Java" productName="MySQL">
+  <StoredProcedure catalog="SPWS" name="closerCar" resultType="noResult"/>
+  <StoredProcedure catalog="SPWS" name="closerCars" resultType="noResult"/>
+  <StoredProcedure catalog="SPWS" name="closerPedestrian" resultType="noResult"/>
+  <StoredProcedure catalog="SPWS" name="closerPedestrians" resultType="noResult"/>
+  <StoredProcedure catalog="SPWS" name="distance" resultType="result"/>
+  <Table schema="" ignoreIndexes="false" name="car" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="8" indexed="unknown" autoIncrement="false" type="DOUBLE" size="22" decimalDigits="0" name="latitude" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="8" indexed="unknown" autoIncrement="false" type="DOUBLE" size="22" decimalDigits="0" name="longitude" primaryKey="false" notNull="false"/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="crosswalk" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="8" indexed="unknown" autoIncrement="false" type="DOUBLE" size="22" decimalDigits="0" name="latitude" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="8" indexed="unknown" autoIncrement="false" type="DOUBLE" size="22" decimalDigits="0" name="longitude" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="state" primaryKey="false" notNull="false"/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="crosswalk_car" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="crosswalk_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="car_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="7" indexed="unknown" autoIncrement="false" type="FLOAT" size="12" decimalDigits="0" name="distance" primaryKey="false" notNull="true"/>
+    <Column sqlTypeId="91" indexed="unknown" autoIncrement="false" type="DATE" size="10" decimalDigits="0" name="day" primaryKey="false" notNull="true"/>
+    <ForeignKey localColumnName="car_oid" foreignColumnName="oid" name="fk_crosswalk_car_car" foreignTableName="car" foreignSchemaName=""/>
+    <ForeignKey localColumnName="crosswalk_oid" foreignColumnName="oid" name="fk_crosswalk_car_crosswalk" foreignTableName="crosswalk" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="group" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="groupname" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="false" notNull="false"/>
+    <ForeignKey localColumnName="module_oid" foreignColumnName="oid" name="fk_group_module" foreignTableName="module" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="group_module" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="module_oid" primaryKey="true" notNull="true"/>
+    <ForeignKey localColumnName="group_oid" foreignColumnName="oid" name="fk_group_module_group" foreignTableName="group" foreignSchemaName=""/>
+    <ForeignKey localColumnName="module_oid" foreignColumnName="oid" name="fk_group_module_module" foreignTableName="module" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="historic_car" type="TABLE" refreshed="true">
+    <Column sqlTypeId="91" indexed="unknown" autoIncrement="false" type="DATE" size="10" decimalDigits="0" name="day" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="crosswalk_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="car_oid" primaryKey="true" notNull="true"/>
+    <ForeignKey localColumnName="car_oid" foreignColumnName="oid" name="fk_historic_car_car" foreignTableName="car" foreignSchemaName=""/>
+    <ForeignKey localColumnName="crosswalk_oid" foreignColumnName="oid" name="fk_historic_car_crosswalk" foreignTableName="crosswalk" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="historic_pedestrian" type="TABLE" refreshed="true">
+    <Column sqlTypeId="91" indexed="unknown" autoIncrement="false" type="DATE" size="10" decimalDigits="0" name="day" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="crosswalk_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="pedestrian_oid" primaryKey="true" notNull="true"/>
+    <ForeignKey localColumnName="crosswalk_oid" foreignColumnName="oid" name="fk_historic_pedestrian_crosswalk" foreignTableName="crosswalk" foreignSchemaName=""/>
+    <ForeignKey localColumnName="pedestrian_oid" foreignColumnName="oid" name="fk_historic_pedestrian_pedestrian" foreignTableName="pedestrian" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="module" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="moduleid" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="modulename" primaryKey="false" notNull="false"/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="pedestrian" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="8" indexed="unknown" autoIncrement="false" type="DOUBLE" size="22" decimalDigits="0" name="latitude" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="8" indexed="unknown" autoIncrement="false" type="DOUBLE" size="22" decimalDigits="0" name="longitude" primaryKey="false" notNull="false"/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="pedestrian_crosswalk" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="pedestrian_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="crosswalk_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="7" indexed="unknown" autoIncrement="false" type="FLOAT" size="12" decimalDigits="0" name="distance" primaryKey="false" notNull="true"/>
+    <Column sqlTypeId="91" indexed="unknown" autoIncrement="false" type="DATE" size="10" decimalDigits="0" name="day" primaryKey="false" notNull="true"/>
+    <ForeignKey localColumnName="crosswalk_oid" foreignColumnName="oid" name="fk_pedestrian_crosswalk_cross" foreignTableName="crosswalk" foreignSchemaName=""/>
+    <ForeignKey localColumnName="pedestrian_oid" foreignColumnName="oid" name="fk_pedestrian_crosswalk_pedre" foreignTableName="pedestrian" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="user" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="email" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="password" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="12" indexed="unknown" autoIncrement="false" type="VARCHAR" size="255" decimalDigits="0" name="username" primaryKey="false" notNull="false"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="false" notNull="false"/>
+    <ForeignKey localColumnName="group_oid" foreignColumnName="oid" name="fk_user_group" foreignTableName="group" foreignSchemaName=""/>
+  </Table>
+  <Table schema="" ignoreIndexes="false" name="user_group" type="TABLE" refreshed="true">
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="user_oid" primaryKey="true" notNull="true"/>
+    <Column sqlTypeId="4" indexed="unknown" autoIncrement="false" type="INT" size="10" decimalDigits="0" name="group_oid" primaryKey="true" notNull="true"/>
+    <ForeignKey localColumnName="group_oid" foreignColumnName="oid" name="fk_user_group_group" foreignTableName="group" foreignSchemaName=""/>
+    <ForeignKey localColumnName="user_oid" foreignColumnName="oid" name="fk_user_group_user" foreignTableName="user" foreignSchemaName=""/>
+  </Table>
+</DBMetaData>

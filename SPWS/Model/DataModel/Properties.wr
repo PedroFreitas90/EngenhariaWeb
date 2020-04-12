@@ -46,8 +46,7 @@
       <db:JoinColumn attribute="moduleOID" name="module_oid"/>
     </RelationshipRole2>
   </Relationship>
-  <db:Database id="db1" name="SPWS" type="MySQL" url="jdbc:mysql://localhost:3306/SPWS" username="root" cryptedPassword="true" password="cGFzc3dvcmQ=" readProcedures="true">
-  </db:Database>
+  <db:Database id="db1" name="SPWS" type="MySQL" url="jdbc:mysql://localhost:3306/SPWS" username="root" cryptedPassword="true" password="cGFzc3dvcmQ=" readProcedures="true"/>
   <Entity id="ent2" name="Car" db:database="db1" duration="persistent" db:table="car" gr:x="30" gr:y="270">
     <Attribute id="ent2#att5" name="oid" db:column="oid" type="integer" key="true"/>
     <Attribute id="ent2#att6" name="latitude" db:column="latitude" type="float" key="false"/>
@@ -90,7 +89,7 @@
     <RelationshipRole1 id="rel8#role15" name="HistoricToCrosswalk" maxCard="1" cascadeDelete="false">
       <db:JoinColumn attribute="ent5#att16" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel8#role16" name="CrosswalkToHistoric" maxCard="N">
+    <RelationshipRole2 id="rel8#role16" name="CrosswalkToHistoric" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent3#att8" name="crosswalk_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -99,7 +98,7 @@
       <db:JoinColumn attribute="ent9#att23" name="pedestrian_oid"/>
       <db:JoinColumn attribute="ent9#att24" name="crosswalk_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel9#role18" name="CrosswalkToPedestriancrosswalk" maxCard="N">
+    <RelationshipRole2 id="rel9#role18" name="CrosswalkToPedestriancrosswalk" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent3#att8" name="crosswalk_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -108,7 +107,7 @@
       <db:JoinColumn attribute="ent9#att23" name="pedestrian_oid"/>
       <db:JoinColumn attribute="ent9#att24" name="crosswalk_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel10#role20" name="PedestrianToPedestriancrosswalk" maxCard="N">
+    <RelationshipRole2 id="rel10#role20" name="PedestrianToPedestriancrosswalk" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent8#att20" name="pedestrian_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -117,7 +116,7 @@
       <db:JoinColumn attribute="ent4#att12" name="crosswalk_oid"/>
       <db:JoinColumn attribute="ent4#att13" name="car_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel11#role22" name="CarToCrosswalkcar" maxCard="N">
+    <RelationshipRole2 id="rel11#role22" name="CarToCrosswalkcar" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent2#att5" name="car_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -126,7 +125,7 @@
       <db:JoinColumn attribute="ent4#att12" name="crosswalk_oid"/>
       <db:JoinColumn attribute="ent4#att13" name="car_oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel12#role24" name="CrosswalkToCrosswalkcar" maxCard="N">
+    <RelationshipRole2 id="rel12#role24" name="CrosswalkToCrosswalkcar" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent3#att8" name="crosswalk_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -134,7 +133,7 @@
     <RelationshipRole1 id="rel13#role25" name="HistoriccarToCar" maxCard="1" cascadeDelete="false">
       <db:JoinColumn attribute="ent6#att18" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel13#role26" name="CarToHistoriccar" maxCard="N">
+    <RelationshipRole2 id="rel13#role26" name="CarToHistoriccar" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent2#att5" name="car_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -142,7 +141,7 @@
     <RelationshipRole1 id="rel14#role27" name="HistoriccarToHistoric" maxCard="1" cascadeDelete="false">
       <db:JoinColumn attribute="ent6#att18" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel14#role28" name="HistoricToHistoriccar" maxCard="N">
+    <RelationshipRole2 id="rel14#role28" name="HistoricToHistoriccar" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent5#att16" name="historic_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -150,7 +149,7 @@
     <RelationshipRole1 id="rel15#role29" name="HistoricpedestrianToHistoric" maxCard="1" cascadeDelete="false">
       <db:JoinColumn attribute="ent7#att19" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel15#role30" name="HistoricToHistoricpedestrian" maxCard="N">
+    <RelationshipRole2 id="rel15#role30" name="HistoricToHistoricpedestrian" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent5#att16" name="historic_oid"/>
     </RelationshipRole2>
   </Relationship>
@@ -158,7 +157,7 @@
     <RelationshipRole1 id="rel16#role31" name="HistoricpedestrianToPedestrian" maxCard="1" cascadeDelete="false">
       <db:JoinColumn attribute="ent7#att19" name="oid"/>
     </RelationshipRole1>
-    <RelationshipRole2 id="rel16#role32" name="PedestrianToHistoricpedestrian" maxCard="N">
+    <RelationshipRole2 id="rel16#role32" name="PedestrianToHistoricpedestrian" maxCard="N" cascadeDelete="false">
       <db:JoinColumn attribute="ent8#att20" name="pedestrian_oid"/>
     </RelationshipRole2>
   </Relationship>

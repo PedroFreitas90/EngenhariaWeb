@@ -1,0 +1,27 @@
+[01 Apr 2020 02:37:46] DEBUG Executing SQL script
+[01 Apr 2020 02:37:46] INFO ================================================================================
+[01 Apr 2020 02:37:46] INFO onError= 'stop'
+[01 Apr 2020 02:37:46] INFO autoCommit= 'false'
+[01 Apr 2020 02:37:46] INFO username= 'root'
+[01 Apr 2020 02:37:46] INFO outputPath= '/home/francisco/SPWS/.Temp~/UpdateSQL.xml'
+[01 Apr 2020 02:37:46] INFO outputLogPath= '/home/francisco/SPWS/.Temp~/UpdateSQL.xml.log'
+[01 Apr 2020 02:37:46] INFO encoding= ''
+[01 Apr 2020 02:37:46] INFO driverClass= 'com.mysql.jdbc.Driver'
+[01 Apr 2020 02:37:46] INFO sqlScript= '/home/francisco/SPWS/.Temp~/UpdateSQL.sql'
+[01 Apr 2020 02:37:46] INFO eventSocketPort= '45315'
+[01 Apr 2020 02:37:46] INFO statementSeparator= ';'
+[01 Apr 2020 02:37:46] INFO derby.system.home= '/home/francisco/.metadata/.plugins/com.webratio.commons.db/derby'
+[01 Apr 2020 02:37:46] INFO password= 'password'
+[01 Apr 2020 02:37:46] INFO url= 'jdbc:mysql://localhost:3306/SPWS'
+[01 Apr 2020 02:37:46] INFO ================================================================================
+[01 Apr 2020 02:37:46] INFO Connecting to the Database...
+[01 Apr 2020 02:37:46] INFO Database connection estabilished
+[01 Apr 2020 02:37:46] INFO transaction isolation: 4
+[01 Apr 2020 02:37:46] DEBUG ================================================================================
+[01 Apr 2020 02:37:46] DEBUG Executing SQL script file: /home/francisco/SPWS/.Temp~/UpdateSQL.sql
+[01 Apr 2020 02:37:46] DEBUG Executing statement:  alter table `historic_car`   add index fk_car_historic_car (`day`, `crosswalk_oid`), add constraint fk_car_historic_car foreign key (`day`, `crosswalk_oid`) references `historic_car` (`day`, `crosswalk_oid`)
+[01 Apr 2020 02:37:46] DEBUG Executing statement:    alter table `historic_car`   add index fk_crosswalk_historic_car (`day`, `crosswalk_oid`), add constraint fk_crosswalk_historic_car foreign key (`day`, `crosswalk_oid`) references `historic_car` (`day`, `crosswalk_oid`)
+[01 Apr 2020 02:37:46] DEBUG ================================================================================
+[01 Apr 2020 02:37:46] DEBUG SQL SCRIPT SUCCESSFULLY EXECUTED
+[01 Apr 2020 02:37:46] INFO Database connection closed
+[01 Apr 2020 02:37:46] DEBUG Total time: 350 milliseconds
