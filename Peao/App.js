@@ -1,33 +1,24 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect,} from 'react';
 import { getCrosswalks,distancePedestrian } from "./src/api/crosswalks";
-import createMockServer from "./src/mock/server"
-import { Container, Text, List, ListItem, View,Icon } from 'native-base';
+
 import MapView, {Marker,Circle} from 'react-native-maps'
-import {StyleSheet, Image } from 'react-native'
+import {StyleSheet, Image,Dimensions,View,Text } from 'react-native'
 import * as Location from 'expo-location';
 
 
-//createMockServer();
-
 const styles = StyleSheet.create({
-    container: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    },
-    map: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
     text: {
-      color : "white"
+      color : 'white'
     },
     crosswalk:{
       height: 35, 
@@ -42,39 +33,67 @@ export default function App (){
     const [markers, setMarkers] = useState([]);
     const [isLoadingCrosswalks, setIsLoadingCrosswalks] = useState(false);
     const [error, setError] = useState(null);
-    const [position , setPosition] =useState(null)
+    const [position , setPosition] =useState({latitude : 0 , longitude :0})
+    const [watchid,setWatchid] = useState()
 
-  
- 
-    useEffect(() => {
-        setIsLoadingCrosswalks(true);
-        
-        (async () => {
-          let { status } = await Location.requestPermissionsAsync();
-          if (status !== 'granted') {
-            setError('Permission to access location was denied');
-          }
+
+   function success(pos) {
+    const location = {
+      latitude: pos.coords.latitude,
+      longitude: pos.coords.longitude,
+    }
+    setPosition({
+      latitude: pos.coords.latitude,
+      longitude: pos.coords.longitude,
+    })
+      if(markers.length>0)
+    distancePedestrian(markers,location).then((isNear) => {
+        if(isNear)
+        console.log("SOCKETSSS")
+        else {
+          console.log("NAO SOCKETSSS")
+        }
+    })
     
-          let location = await Location.getCurrentPositionAsync({accuracy:Location.Accuracy.Highest});
-          setPosition({
-            latitude: Number (location.coords.latitude),
-            longitude: Number (location.coords.longitude),
-          })
+  }
 
-          
 
-        })();
+    
+  
 
-      
+      useEffect(()=>{
         getCrosswalks().then((crosswalks) => {
           setMarkers(crosswalks);
-          distancePedestrian(markers,position)
           setIsLoadingCrosswalks(false);
-        });
+        })
+        return () => {
+          console.log("cleaned up");
+        };
+      },[])
 
-       
-      }, []);
+
+      useEffect(() => {
+        const location = async () =>{
+           let {status} = await Location.requestPermissionsAsync()
+            if (status !== 'granted') {
+              setError('Permission to access location was denied');
+            }
+               
+        let  watchid =await Location.watchPositionAsync(options,success)        
+            setWatchid(watchid)
+        }
+
+          location()
+          
+            return function cleanup(){
+              if(watchid)
+              watchid.remove()
+              console.log("cleaned upffff");
+              
+            };
         
+      }, [markers]);
+
         let text = 'Waiting..';
         if (error) {
           text = error;
@@ -82,51 +101,28 @@ export default function App (){
           text = JSON.stringify(position);
         }
 
-        
+      
+   
     
     
-    function success(pos) {
-      setPosition({
-        latitude: Number (pos.coords.latitude),
-        longitude: Number (pos.coords.longitude),
-      })
-    }
-    
-
-    var options = {
-      accuracy: Location.Accuracy.Highest,
-      timeInterval: 10000,
+    const options = {
+      accuracy: Location.Accuracy.BestForNavigation,
+      timeInterval : 1000,
+      distanceInterval:5
     };
-    
+        
+        
 
-       
-        
-      //  Location.watchPositionAsync(options,success)
-        //.then(watchid => console.log(watchid))
-        
         
 
     return (
-        <Container>
+        <View style = {styles.container}>
            <Text> Crosswalks </Text>
             {isLoadingCrosswalks ? (
         <Text>Loading...</Text>
       ) : (
-        <List>
-            {markers.map((point) => {
-                return (
-                    <ListItem key ={point.id} >
-                        <Text>{point.title}: [{point.latitude}, {point.longitude}] </Text>
-                    </ListItem>
-                );
-            })}
-
-        </List>
-        )}
-         { position ? (
-            <MapView
-            style = {styles.map}
-            provider = "google"
+        <MapView
+            style = {styles.mapStyle}
             showsUserLocation= {true}
             userLocationUpdateInterval ={1000}
             region={{
@@ -135,7 +131,7 @@ export default function App (){
                 latitudeDelta: 0.001,
                 longitudeDelta: 0.001,
             }}>
-             {markers.map(({ latitude, longitude, title, id }) => {
+               {markers.map(({ latitude, longitude, title, id }) => {
                   return (
                     <Marker key ={id}
                             coordinate={{latitude, longitude}}
@@ -146,27 +142,23 @@ export default function App (){
 
                     </Marker>
                   );
-                })}
+                })}<Marker    
+                key ={"me"}
+                        coordinate={position}
+                        title = {"me"}
+          >
+          </Marker>
 
-              
-              <Marker    
-                    key ={"me"}
-                            coordinate={position}
-                            title = {"me"}
-              >
-              </Marker>
+
+        
              
    
    
         
-            </MapView> 
-        ):(
-              <Text>{text}</Text>    
-         )}
-
-<Text>{JSON.stringify(position)}</Text> 
-        </Container>
+            </MapView>
+      )}
+        </View>
+    
     )
-
 }
 

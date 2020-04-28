@@ -9,14 +9,15 @@ export const distancePedestrian = (crosswalks,coordsPedestrian) => {
       method:'post',
       body:JSON.stringify({
         crosswalks :crosswalks,
-        pedestrian : coordsPedestrian }),
+        pedestrian : coordsPedestrian,
+        idPedestrian : 1  }), // so para teste
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         },   
     })
     .then((response) => response.json())
-    .then((json) => json.crosswalks);
+    .then((json) => json);
     
   };
 
