@@ -3,24 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var RabbitMQ = require('./rabbitMQ')
+var rabbitMQ = require('./RabbitMQ')
 
-var indexRouter = require('./routes/crosswalks');
+var crossalkRouter = require('./routes/crosswalks');
+var distanceRouter = require('./routes/distance');
 
 var app = express();
-RabbitMQ.rabbitMQ();
-
-var mongoose = require('mongoose');
-
-/****************************
- * MONGO CONNECTION
- ****************************/
-const DATABASE_NAME = 'Crosswalks';
-
-mongoose.connect('mongodb://127.0.0.1:27017/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log(`Connected to Mongo at [${DATABASE_NAME}] database...`))
-  .catch((erro) => console.log(`Mongo: Error connecting to [${DATABASE_NAME}]: ${erro}`))
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/crosswalks', indexRouter);
+app.use('/crosswalks', crossalkRouter);
+app.use('/distance', distanceRouter);
 
 
 // catch 404 and forward to error handler
@@ -51,11 +40,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
 process.on('SIGINT',(code)=>{
-  RabbitMQ.beforeExit()
+  rabbitMQ.beforeExit()
   process.exit()
 })
-
 
 module.exports = app;

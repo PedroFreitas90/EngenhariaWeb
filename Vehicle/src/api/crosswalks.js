@@ -4,13 +4,13 @@ export const getCrosswalks = () => {
     .then((json) => json.crosswalks);
   };
 
-export const distancePedestrian = (crosswalks,coordsPedestrian,id) => {
-    return fetch('http://10.0.2.2:3000/distance/pedestrian',{
+export const distancePedestrian = (crosswalks,coordsVehicle,id) => {
+    return fetch('http://10.0.2.2:3000/distance/vehicle',{
       method:'post',
       body:JSON.stringify({
         crosswalks :crosswalks,
-        pedestrian : coordsPedestrian,
-        idPedestrian : id }), // so para teste
+        vehicle : coordsVehicle,
+        idVehicle : id }), // so para teste
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

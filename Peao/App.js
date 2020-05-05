@@ -36,6 +36,7 @@ export default function App (){
     const [position , setPosition] =useState({latitude : 0 , longitude :0})
     const [watchid,setWatchid] = useState()
 
+    //const uniqueId = getUniqueId()
 
    function success(pos) {
     const location = {
@@ -47,7 +48,7 @@ export default function App (){
       longitude: pos.coords.longitude,
     })
       if(markers.length>0)
-    distancePedestrian(markers,location).then((isNear) => {
+    distancePedestrian(markers,location,10).then((isNear) => {
         if(isNear)
         console.log("SOCKETSSS")
         else {
@@ -147,14 +148,7 @@ export default function App (){
                         coordinate={position}
                         title = {"me"}
           >
-          </Marker>
-
-
-        
-             
-   
-   
-        
+          </Marker>        
             </MapView>
       )}
         </View>
