@@ -1,6 +1,8 @@
 var CrosswalkPedestrian = require('../controllers/crosswalkPedestrianRT')
 var CrosswalkVehicle = require('../controllers/crosswalkVehicleRT')
 var HistoricVehicle = require('../controllers/historicVehicle')
+var Crosswalk = require('../controllers/crosswalks')
+var axios = require ('axios')
 
 
 
@@ -57,17 +59,35 @@ module.exports.handleVehicle = (key, info) => {
   
            })
   
-           .catch(err => console.log(err))
+          .catch(err => console.log(err))
           
           CrosswalkPedestrian.findPedestrianInCrosswalk(info.idCrosswalk)
           .then (pedestrians  => {
-              if(pedestrians.length > 0)
-              console.log("notificar veículo " + info.idVehicle)
-            })
-          })
-  
-          .catch(err => console.log(err)) 
-  
+
+              Crosswalk.getState(info.idCrosswalk)
+              .then(state => {
+
+                  if(pedestrians.length > 0){
+                      console.log("notificar veículo " + info.idVehicle)
+                      axios.post('http://localhost:9091/notifications',{
+                            idVehicle :vei.idVehicle,
+                            trafficLightState : state,
+                            crosswalkState : "Pedestrian Alert"
+                      })
+                  }
+                  else {
+                      console.log("notificar veículo " + info.idVehicle)
+                      axios.post('http://localhost:9091/notifications',{
+                          idVehicle :vei.idVehicle,
+                          trafficLightState : state,
+                          crosswalkState : "Safe to cross"
+                      })
+                  }
+              })
+          }) 
+             
+    })
+
     .catch(err => console.log(err))
   }
   
@@ -77,8 +97,31 @@ module.exports.handleVehicle = (key, info) => {
   
     CrosswalkVehicle.updateCrosswalkVehicleRT(info.idVehicle,info.idCrosswalk,
                         info.vehicle,info.distance,timestamp)
-    // notificações
-    
+
+    CrosswalkPedestrian.findPedestrianInCrosswalk(info.idCrosswalk)
+      .then(pedestrians  => {
+
+          Crosswalk.getState(info.idCrosswalk)
+            .then(state => {
+
+                  if(pedestrians.length > 0){
+                      console.log("notificar veículo " + info.idVehicle)
+                      axios.post('http://localhost:9091/notifications',{
+                            idVehicle :vei.idVehicle,
+                            trafficLightState : state,
+                            crosswalkState : "Pedestrian Alert"
+                      })
+                  }
+                  else {
+                      console.log("notificar veículo " + info.idVehicle)
+                      axios.post('http://localhost:9091/notifications',{
+                          idVehicle :vei.idVehicle,
+                          trafficLightState : state,
+                          crosswalkState : "Safe to cross"
+                      })
+                  }
+              })
+        }) 
     
   }
   

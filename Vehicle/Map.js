@@ -5,9 +5,12 @@ import {Image,View,Text } from 'react-native'
 import { mylocation, removeWatchID } from "./src/location"
 import {styles} from "./src/style"
 import  PubNub  from "pubnub";
+import Constants from 'expo-constants';
+
 
 
 const uuid = PubNub.generateUUID();
+const identifier = Constants.installationId
 
 const pubnub = new PubNub({
   publishKey: "pub-c-627ad9bf-507f-4fae-9a30-6fb40d8eff88",
@@ -25,7 +28,7 @@ export default function Map (){
 
     const publishConfig = {
         channel: "API WEBSOCKETS",
-        message: {sender: uuid, content: "id client"}
+         message :{idVehicle: identifier}
       }
       
     //const uniqueId = getUniqueId()
@@ -61,7 +64,7 @@ export default function Map (){
 
 
       useEffect(() => {
-         mylocation(setPosition,markers)
+         mylocation(setPosition,markers,identifier)
             return function cleanup(){
               removeWatchID()
               console.log("cleaned upffff");

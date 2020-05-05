@@ -1,6 +1,8 @@
 var HistoricPedestrian = require('../controllers/historicPedestrian')
 var CrosswalkPedestrian = require('../controllers/crosswalkPedestrianRT')
 var CrosswalkVehicle = require('../controllers/crosswalkVehicleRT')
+var Crosswalk = require('../controllers/crosswalks')
+var axios = require ('axios')
 
 const create = RegExp('.create');
 const update = RegExp('.update');
@@ -51,9 +53,17 @@ createPedestrianRegister = info =>{
            
           CrosswalkVehicle.findVehicleInCrosswalk(info.idCrosswalk)
           .then (vehicles  => {
-            vehicles.map( vei => {
-              console.log("notificar veículo " + vei.idVehicle)
-            })
+
+              Crosswalk.getState(info.idCrosswalk)
+                .then(state => {
+                  vehicles.map( vei => {
+                    axios.post('http://localhost:9091/notifications',{
+                      idVehicle :vei.idVehicle,
+                      trafficLightState : state,
+                      crosswalkState : "Pedestrian Alert"
+                    })
+                  })
+                }) 
           })
           
           .catch(err => console.log(err))
@@ -71,9 +81,17 @@ createPedestrianRegister = info =>{
     .then(res => {
       CrosswalkVehicle.findVehicleInCrosswalk(info.idCrosswalk)
           .then (vehicles  => {
-            vehicles.map( vei => {
-              console.log("notificar veículo " + vei.idVehicle)
-            })
+
+            Crosswalk.getState(info.idCrosswalk)
+            .then(state => {
+                vehicles.map( vei => {
+                  axios.post('http://localhost:9091/notifications',{
+                      idVehicle :vei.idVehicle,
+                      trafficLightState : state,
+                      crosswalkState : "Pedestrian Alert"
+                  })
+                })
+            }) 
           })
           .catch(err => console.log(err))
     })

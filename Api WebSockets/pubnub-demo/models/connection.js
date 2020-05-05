@@ -8,4 +8,4 @@ var connectionSchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('connections', connectionSchema)
+module.exports = mongoose.model('connection', connectionSchema)

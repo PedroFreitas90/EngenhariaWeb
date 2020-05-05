@@ -11,10 +11,12 @@ module.exports.updateConnection = (idVehicle,uuid) => {
     return Connection
             .updateOne({idVehicle},
                 {$set : { uuid : uuid}})
+            .exec()    
 }
 
 module.exports.findConnection = (idVehicle) => {
-    return Connection.find({idVehicle : idVehicle},{uuid : 1}) 
+    return Connection.findOne({idVehicle : idVehicle},{uuid : 1})
+    .exec() 
 }
 
 

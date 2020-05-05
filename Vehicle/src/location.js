@@ -17,7 +17,7 @@ var watchid
 
 
 
-  export const mylocation = (setPosition,markers) => {
+  export const mylocation = (setPosition,markers,identifier) => {
 
 
     let {status} = Location.requestPermissionsAsync()
@@ -36,7 +36,7 @@ var watchid
         longitude: pos.coords.longitude,
       })
         if(markers.length>0)
-      distancePedestrian(markers,location,10)
+      distancePedestrian(markers,location,identifier)
       .then((isNear) => {})
           
  })        
