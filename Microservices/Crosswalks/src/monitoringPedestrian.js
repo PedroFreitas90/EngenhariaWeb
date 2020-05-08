@@ -59,7 +59,7 @@ createPedestrianRegister = info =>{
                   vehicles.map( vei => {
                     axios.post('http://localhost:9091/notifications',{
                       idVehicle :vei.idVehicle,
-                      trafficLightState : state,
+                      trafficLightsState : state[0].state,
                       crosswalkState : "Pedestrian Alert"
                     })
                   })
@@ -87,7 +87,7 @@ createPedestrianRegister = info =>{
                 vehicles.map( vei => {
                   axios.post('http://localhost:9091/notifications',{
                       idVehicle :vei.idVehicle,
-                      trafficLightState : state,
+                      trafficLightsState : state[0].state,
                       crosswalkState : "Pedestrian Alert"
                   })
                 })

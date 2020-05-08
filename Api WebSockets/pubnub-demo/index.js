@@ -79,10 +79,13 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 
 const handleMsg = (msg) => {
     let info = JSON.parse(msg)
+    console.log(info)
     Connection.findConnection(info.idVehicle)
-    .then( res => pubnub.publish({
-      channel: res.uuid,
-      message : {message : info.text}
-    }))
-
+    .then( res =>{ 
+      console.log(res)
+      pubnub.publish({
+      channel: res[0].uuid,
+      message :info.text
+    })
+  })
 }

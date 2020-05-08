@@ -36,6 +36,7 @@ export default function Map (){
       useEffect(()=>{
         getCrosswalks().then((crosswalks) => {
           setMarkers(crosswalks);
+          console.log(crosswalks)
           setIsLoadingCrosswalks(false);
         })
         
@@ -89,9 +90,9 @@ export default function Map (){
                 latitudeDelta: 0.001,
                 longitudeDelta: 0.001,
             }}>
-               {markers.map(({ latitude, longitude, title, id }) => {
+               {markers.map(({ latitude, longitude, title, _id }) => {
                   return (
-                    <Marker key ={id}
+                    <Marker key ={_id}
                             coordinate={{latitude, longitude}}
                             title = {title}>
                                <Image style = {styles.crosswalk}

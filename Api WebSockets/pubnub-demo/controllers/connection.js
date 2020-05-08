@@ -15,7 +15,7 @@ module.exports.updateConnection = (idVehicle,uuid) => {
 }
 
 module.exports.findConnection = (idVehicle) => {
-    return Connection.findOne({idVehicle : idVehicle},{uuid : 1})
+    return Connection.find({idVehicle : idVehicle},{uuid : 1})
     .exec() 
 }
 

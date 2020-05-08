@@ -1,7 +1,7 @@
 export const getCrosswalks = () => {
     return fetch("http://10.0.2.2:3000/crosswalks")
     .then((response) => response.json())
-    .then((json) => json.crosswalks);
+    .then((json) => json);
   };
 
 export const distancePedestrian = (crosswalks,coordsVehicle,id) => {

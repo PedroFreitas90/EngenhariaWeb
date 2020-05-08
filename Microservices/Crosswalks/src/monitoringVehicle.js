@@ -70,16 +70,16 @@ module.exports.handleVehicle = (key, info) => {
                   if(pedestrians.length > 0){
                       console.log("notificar veículo " + info.idVehicle)
                       axios.post('http://localhost:9091/notifications',{
-                            idVehicle :vei.idVehicle,
-                            trafficLightState : state,
+                            idVehicle :info.idVehicle,
+                            trafficLightsState : state[0].state,
                             crosswalkState : "Pedestrian Alert"
                       })
                   }
                   else {
                       console.log("notificar veículo " + info.idVehicle)
                       axios.post('http://localhost:9091/notifications',{
-                          idVehicle :vei.idVehicle,
-                          trafficLightState : state,
+                          idVehicle :info.idVehicle,
+                          trafficLightsState : state[0].state,
                           crosswalkState : "Safe to cross"
                       })
                   }
@@ -107,16 +107,16 @@ module.exports.handleVehicle = (key, info) => {
                   if(pedestrians.length > 0){
                       console.log("notificar veículo " + info.idVehicle)
                       axios.post('http://localhost:9091/notifications',{
-                            idVehicle :vei.idVehicle,
-                            trafficLightState : state,
+                            idVehicle :info.idVehicle,
+                            trafficLightsState : state[0].state,
                             crosswalkState : "Pedestrian Alert"
                       })
                   }
                   else {
                       console.log("notificar veículo " + info.idVehicle)
                       axios.post('http://localhost:9091/notifications',{
-                          idVehicle :vei.idVehicle,
-                          trafficLightState : state,
+                          idVehicle :info.idVehicle,
+                          trafficLightsState : state[0].state,
                           crosswalkState : "Safe to cross"
                       })
                   }

@@ -11,7 +11,7 @@ module.exports.isNearCrosswalk =(crosswalks,coords,area ) => {
            coords.latitude,coords.longitude,"K" )
         if(range <= area){
 			isNear=true;
-			idCrosswalk = crosswalks[index].id
+			idCrosswalk = crosswalks[index]._id
 			dist = range*1000
 		}
         index++;     
