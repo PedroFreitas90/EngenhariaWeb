@@ -1,18 +1,26 @@
 {
-  "name": "vehicle",
-  "version": "0.0.0",
-  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "amqplib": "^0.5.5",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "mongoose": "^5.9.13",
-    "morgan": "~1.9.1"
-  }
+    "expo": "~37.0.3",
+    "pubnub": "^4.27.6",
+    "pubnub-react": "^2.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "react-native-maps": "^0.27.1",
+    "react-native-web": "~0.11.7",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "~8.1.0",
+    "@babel/core": "^7.8.6"
+  },
+  "private": true
 }
