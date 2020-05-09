@@ -2,8 +2,15 @@
 
 var amqp = require('amqplib/callback_api');
 
+var logic = require('./logic')
+
+
+const CONN_URL ='amqp://localhost'
+var exchange = "events"
+let ch=null
+
 module.exports.rabbitMQ = () => {
-amqp.connect('amqp://localhost', function(error0, connection) {
+amqp.connect(CONN_URL, function(error0, connection) {
     if (error0) {
         throw error0;
     }
@@ -11,7 +18,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        var exchange = 'pedestrian_position';
+        ch=channel
 
         channel.assertExchange(exchange, 'topic', {
             durable: false
@@ -24,14 +31,14 @@ amqp.connect('amqp://localhost', function(error0, connection) {
                 throw error2;
             }
             console.log(' [*] Waiting for logs. To exit press CTRL+C');
-                var key = "pedestrian"
+                var key = "events.Pedestrian.*"
             
                 channel.bindQueue(q.queue, exchange, key);
         
 
             channel.consume(q.queue, function(msg) {
-                console.log(" [x] %s", msg.fields.routingKey);
-                console.log(JSON.parse(msg.content))
+                logic.handlePedestrian(msg.fields.routingKey,msg.content)
+            
             }, {
                 noAck: true
             });
@@ -39,3 +46,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
     });
 });
 }
+module.exports.beforeExit = () =>{
+    ch.close()
+    console.log('Closing rabbitmq channel')
+} 
