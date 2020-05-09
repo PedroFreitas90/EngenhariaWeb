@@ -4,6 +4,9 @@ import { getCrosswalks,distancePedestrian } from "./src/api/crosswalks";
 import MapView, {Marker,Circle} from 'react-native-maps'
 import {StyleSheet, Image,Dimensions,View,Text } from 'react-native'
 import * as Location from 'expo-location';
+import Constants from 'expo-constants';
+
+const identifier = Constants.installationId
 
 
 const styles = StyleSheet.create({
@@ -48,7 +51,7 @@ export default function App (){
       longitude: pos.coords.longitude,
     })
       if(markers.length>0)
-    distancePedestrian(markers,location,10).then((isNear) => {
+    distancePedestrian(markers,location,identifier).then((isNear) => {
         if(isNear)
         console.log("SOCKETSSS")
         else {
@@ -132,9 +135,9 @@ export default function App (){
                 latitudeDelta: 0.001,
                 longitudeDelta: 0.001,
             }}>
-               {markers.map(({ latitude, longitude, title, id }) => {
+               {markers.map(({ latitude, longitude, title, _id }) => {
                   return (
-                    <Marker key ={id}
+                    <Marker key ={_id}
                             coordinate={{latitude, longitude}}
                             title = {title}>
                                <Image style = {styles.crosswalk}

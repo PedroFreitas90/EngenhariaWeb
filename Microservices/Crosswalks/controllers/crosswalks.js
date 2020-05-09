@@ -8,4 +8,9 @@ module.exports.getAll = () => {
     return Crosswalk.find()
 }
 
+module.exports.getByID = id => {
+    return Crosswalk.find({_id : id})
+}
+
+
 

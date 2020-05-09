@@ -11,6 +11,7 @@ const veh = RegExp('.Vehicle.');
 module.exports.handleMsg=  (key,msg) => {
   let info = JSON.parse(msg)
   
+
   if( ped.test(key)){
       MonitoringPedestrian.handlePedestrian(key,info)
   }
