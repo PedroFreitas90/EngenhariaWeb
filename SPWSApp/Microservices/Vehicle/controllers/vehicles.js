@@ -27,5 +27,10 @@ module.exports.createVehicle  = info => {
   return novo.save()  
 } 
 
+module.exports.deleteVehicle = id => {
+  return Vehicle
+            .deleteMany({idVehicle :id})
+            .exec()
+}
 
 

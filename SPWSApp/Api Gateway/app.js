@@ -22,10 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/crosswalks', crosswalkRouter);
+app.use('/Crosswalk', crosswalkRouter);
 app.use('/distance', distanceRouter);
-app.use('/vehicle', vehicleRouter);
-app.use('/pedestrian', pedestrianRouter);
+app.use('/Vehicle', vehicleRouter);
+app.use('/Pedestrian', pedestrianRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

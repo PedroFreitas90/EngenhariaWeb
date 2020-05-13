@@ -6,7 +6,7 @@ var logger = require('morgan');
 var RabbitMQ = require('./rabbitMQ')
 
 
-var indexRouter = require('./routes/vehicles');
+var vehicleRouter = require('./routes/vehicles');
 
 
 var app = express();
@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/vehicles', indexRouter);
+app.use('/vehicles', vehicleRouter);
 
 
 // catch 404 and forward to error handler

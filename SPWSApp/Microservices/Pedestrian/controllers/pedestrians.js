@@ -20,12 +20,16 @@ module.exports.updatePedestrian = (id, latitude ,longitude , timestamp) => {
             .exec() 
 }
 
-
-
 module.exports.createPedestrian  = info => {
   var novo = new Pedestrian(info)
   return novo.save()  
 } 
+
+module.exports.deletePedestrian = id => {
+  return Pedestrian
+            .deleteMany({idPedestrian :id})
+            .exec()
+}
 
 
 
