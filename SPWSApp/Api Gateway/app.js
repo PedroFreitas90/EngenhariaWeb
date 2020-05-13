@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var rabbitMQ = require('./RabbitMQ')
 
-var crossalkRouter = require('./routes/crosswalks');
+var crosswalkRouter = require('./routes/crosswalks');
 var distanceRouter = require('./routes/distance');
+var vehicleRouter = require('./routes/vehicle');
+var pedestrianRouter = require('./routes/pedestrian');
 
 var app = express();
 
@@ -20,9 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/crosswalks', crossalkRouter);
+app.use('/crosswalks', crosswalkRouter);
 app.use('/distance', distanceRouter);
-
+app.use('/vehicle', vehicleRouter);
+app.use('/pedestrian', pedestrianRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

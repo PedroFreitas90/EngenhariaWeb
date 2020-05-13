@@ -12,5 +12,20 @@ module.exports.getByID = id => {
     return Crosswalk.find({_id : id})
 }
 
+module.exports.createCrosswalk = (info) => {
+    var novo = new Crosswalk(info)
+    return novo.save()
+}
+
+module.exports.updateCrosswalk = (id, state, timestamp) => {
+    return Crosswalk
+            .updateOne({_id :id },
+                {$set :{
+                    state : state,
+                    timestamp : timestamp            
+            } })
+            .exec()
+}
+
 
 

@@ -138,7 +138,15 @@ router.put('/Vehicle', function(req,res) {
     .catch(err => res.status(500).send)
 });
 
-
+router.put('/:id',function(req,res){
+  console.log('entrou');
+  id = req.params.id;
+  state = req.body.state;
+  timestamp = Math.floor(Date.now() / 1000);
+  Crosswalk.updateCrosswalk(id,state,timestamp)
+    .then(data => res.jsonp(data))
+    .catch(erro => res.status(500).send)
+});
 
 
 /* POST /crosswalks/historic/Pedestrian */
@@ -163,10 +171,6 @@ router.post('/Historic/Vehicle', function(req,res){
 });
 
 
-
-
-
-
 router.post('/Pedestrian', function(req,res){
   CrosswalkPedestrian.createCrosswalkPedestrianRT(req.body)
     .then(data => {
@@ -188,6 +192,20 @@ router.post('/Vehicle', function(req,res){
 });
 
 
+router.post('/', function(req,res){
+  cw = {}
+  cw.title = req.body.title;
+  cw.latitude = req.body.latitude;
+  cw.longitude = req.body.longitude;
+  cw.state = req.body.state;
+  cw.timestamp = Math.floor(Date.now() / 1000);
+  Crosswalk.createCrosswalk(req.body)
+    .then(data => {
+      console.log(data);
+      res.jsonp(data);
+    })
+    .catch(err => res.status(500).send)
+});
 
 
 router.delete('/Pedestrian/:id', function(req,res) {
