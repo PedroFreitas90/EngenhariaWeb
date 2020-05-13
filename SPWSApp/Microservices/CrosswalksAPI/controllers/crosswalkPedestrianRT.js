@@ -25,11 +25,21 @@ module.exports.deleteCrosswalkPedestrianRT = (id) => {
             .exec()
 }
 
+module.exports.findPedestrianCrosswalk = (idPedestrian,crosswalk_id) => {
+    return CrosswalkPedestrianRT
+            .find({idPedestrian : idPedestrian,idCrosswalk:crosswalk_id})
+            .exec()
+}
+
 module.exports.findPedestrianInCrosswalk = (crosswalk_id) => {
     return CrosswalkPedestrianRT
             .find({idCrosswalk:crosswalk_id})
             .exec()
 }
+
+
+
+
 
 module.exports.findPedestrian = (idPedestrian) => {
     return CrosswalkPedestrianRT

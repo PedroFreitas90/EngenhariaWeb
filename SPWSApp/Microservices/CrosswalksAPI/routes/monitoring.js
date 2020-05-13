@@ -11,7 +11,7 @@ var CrosswalkVehicle = require('../controllers/crosswalkVehicleRT')
 */
 router.get('/Pedestrian/:id', function(req,res){
   if(req.query.idCross){
-    CrosswalkPedestrian.findPedestrianInCrosswalk(req.params.id,req.query.idCross)
+    CrosswalkPedestrian.findPedestrianCrosswalk(req.params.id,req.query.idCross)
       .then(data => {
         console.log(data);
         res.jsonp(data);
@@ -35,7 +35,7 @@ router.get('/Pedestrian/:id', function(req,res){
 */
 router.get('/Vehicle/:id', function(req,res){
   if(req.query.idCross){
-    CrosswalkVehicle.findVehicleInCrosswalk(req.params.id, req.query.idCross)
+    CrosswalkVehicle.findVehicleCrosswalk(req.params.id, req.query.idCross)
       .then(data => {
         console.log(data);
         res.jsonp(data);

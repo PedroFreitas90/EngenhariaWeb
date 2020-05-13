@@ -1,6 +1,6 @@
 var axios = require ('axios')
 
-const url = 'localhost:3004/Crosswalks/'
+const url = 'http://localhost:3004/Crosswalks/'
 const create = RegExp('.create');
 const update = RegExp('.update');
 const del = RegExp('.delete');
@@ -31,29 +31,30 @@ createPedestrianRegister = info =>{
   
   axios.post(url.concat('Pedestrian'),crossPedRT)
   .then(aux => {
-    axios.post(url.concat('/Historic/Pedestrian'), {
-      idPed: info.idPedestrian,
-      idCross: info.idCrosswalk,
-      day: todayDate
-    })
+    axios.get(url.concat('Historic/Pedestrian?idPed=').concat(info.idPedestrian)
+          .concat('&idCross=').concat(info.idCrosswalk)
+          .concat('&day=').concat(todayDate)
+    )
       .then(ress => { 
-        if (ress.length ==0){    
+        if (ress.data.length ==0){    
           let historic = {}
           historic.idPedestrian = info.idPedestrian
           historic.idCrosswalk = info.idCrosswalk
           historic.day = todayDate;
-          axios.post(url.concat('/Historic/Pedestrian',historic)
+          axios.post(url.concat('Historic/Pedestrian'),historic)
             .then(aux => console.log("insert in historic"))
             .catch(err => console.log(err))
-          )
+          
         }
       })
       .catch(err => console.log(err))
         
       axios.get(url.concat('Vehicle?idCrosswalk='.concat(info.idCrosswalk)))
-        .then(vehicles  => {
+        .then(res1  => {
+          var vehicles = res1.data  
           axios.get(url.concat(info.idCrosswalk).concat('/State'))
-            .then(state => {
+            .then(res2 => {
+              var state = res2.data
               vehicles.map( vei => {
                 axios.post('http://localhost:3005/notifications',{
                   idVehicle :vei.idVehicle,
@@ -80,14 +81,16 @@ updatePedestrianRegister = info => {
   })
     .then(res => {
       axios.get(url.concat('Vehicle?idCrosswalk='.concat(info.idCrosswalk)))
-        .then (vehicles  => {
-          axios.get(url.concat(info.idCrosswalk).concat('/State'))
-            .then(state => {
-              vehicles.map( vei => {
-                axios.post('http://localhost:3005/notifications',{
-                    idVehicle :vei.idVehicle,
-                    trafficLightsState : state[0].state,
-                    crosswalkState : "Pedestrian Alert"
+      .then(res1  => {
+        var vehicles = res1.data  
+        axios.get(url.concat(info.idCrosswalk).concat('/State'))
+          .then(res2 => {
+            var state = res2.data
+            vehicles.map( vei => {
+              axios.post('http://localhost:3005/notifications',{
+                idVehicle :vei.idVehicle,
+                trafficLightsState : state[0].state,
+                crosswalkState : "Pedestrian Alert"
                 })
               })
           }) 
@@ -98,7 +101,7 @@ updatePedestrianRegister = info => {
 };
   
 deletePedestrianRegister = info => {
-  axios.delete(url.concat('/Pedestrian/').concat(info.idPedestrian))
+  axios.delete(url.concat('Pedestrian/').concat(info.idPedestrian))
     .then(data => console.log('Pedestrian deleted with success!'))
     .catch(err => console.log(err))
 };

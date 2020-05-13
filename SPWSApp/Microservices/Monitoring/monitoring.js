@@ -1,7 +1,7 @@
 var rabbitMQ = require('./rabbitMQ')
 const axios = require('axios');
 
-const url = 'localhost:3333/Monitoring'
+const url = 'http://localhost:3004/Monitoring/'
 const ped = RegExp('.pedestrian');
 const veh = RegExp('.vehicle');
 
@@ -24,7 +24,7 @@ monitoringPedestrian = info => {
     
     axios.get(url.concat('Pedestrian/'.concat(idPedestrian)).concat('?idCross='.concat(idCrosswalk)))
       .then(res => {
-        if(res.length > 0){ // ja estava perto de uma passadeira
+        if(res.data.length > 0){ // ja estava perto de uma passadeira
           //udpate de coordenadas e distancia  
           rabbitMQ.publish("events.Pedestrian.update",info)  
         }
@@ -37,7 +37,7 @@ monitoringPedestrian = info => {
   else{
     axios.get(url.concat('Pedestrian/'.concat(idPedestrian)))
       .then(res =>{  
-        if(res.length > 0){ // estava perto de uma passadeira
+        if(res.data.length > 0){ // estava perto de uma passadeira
         //update coordenadas e retirar da collection de monitorização
         rabbitMQ.publish("events.Pedestrian.delete",info)    
       } 
@@ -55,7 +55,7 @@ monitoringVehicle = info => {
     
     axios.get(url.concat('Vehicle/'.concat(idVehicle)).concat('?idCross='.concat(idCrosswalk)))
       .then(res => {
-        if(res.length > 0){ // ja estava perto de uma passadeira
+        if(res.data.length > 0){ // ja estava perto de uma passadeira
           //udpate de coordenadas e distancia  
           rabbitMQ.publish("events.Vehicle.update",info)  
         }
@@ -69,7 +69,7 @@ monitoringVehicle = info => {
   else{
     axios.get(url.concat('Vehicle/'.concat(idVehicle)))
       .then(res =>{  
-        if(res.length > 0){ // estava perto de uma passadeira
+        if(res.data.length > 0){ // estava perto de uma passadeira
         //update coordenadas e retirar da collection de monitorização
         rabbitMQ.publish("events.Vehicle.delete",info)    
         } 

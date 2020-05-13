@@ -28,11 +28,19 @@ module.exports.deleteCrosswalkVehicleRT = (id) => {
 
 
 
+module.exports.findVehicleCrosswalk = (idVehicle,crosswalk_id) => {
+    return CrosswalkVehicleRT
+            .find({idVehicle: idVehicle, idCrosswalk:crosswalk_id})
+            .exec()
+}
+
+
 module.exports.findVehicleInCrosswalk = (crosswalk_id) => {
     return CrosswalkVehicleRT
             .find({idCrosswalk:crosswalk_id})
             .exec()
 }
+
 
 module.exports.findVehicle = (idVehicle) => {
     return CrosswalkVehicleRT

@@ -1,6 +1,6 @@
 var axios = require ('axios')
 
-const url = 'localhost:3004/Crosswalks/'
+const url = 'http://localhost:3004/Crosswalks/'
 const create = RegExp('.create');
 const update = RegExp('.update');
 const del = RegExp('.delete');
@@ -32,13 +32,11 @@ createVehicleRegister = info =>{
   
   axios.post(url.concat('Vehicle'),crossVehRT)
     .then(aux => {
-      axios.get(url.concat('Historic/Vehicle'),{
-        idVeh: info.idVehicle,
-        idCross: info.idCrosswalk,
-        day: todayDate
-      })
+      axios.get(url.concat('Historic/Vehicle?idVeh=').concat(info.idVehicle)
+      .concat('&idCross=').concat(info.idCrosswalk)
+      .concat('&day=').concat(todayDate))
         .then(ress => { 
-          if (ress.length ==0){     
+          if (ress.data.length ==0){     
             let historic = {}
             historic.idVehicle = info.idVehicle
             historic.idCrosswalk = info.idCrosswalk
@@ -51,13 +49,15 @@ createVehicleRegister = info =>{
         })
         .catch(err => console.log(err))
 
-      axios.get(url.concat('Pedestrian?idCrosswalk'.concat(info.idCrosswalk)))
-        .then(pedestrians  => {
-          axios.get(url.concat(id).concat('/State'))
-            .then(state => {
+      axios.get(url.concat('Pedestrian?idCrosswalk='.concat(info.idCrosswalk)))
+        .then(res1  => {
+          var pedestrians = res1.data
+          axios.get(url.concat(info.idCrosswalk).concat('/State'))
+            .then(res2 => {
+              var state = res2.data
               if(pedestrians.length > 0){
                 console.log("notificar veículo " + info.idVehicle)
-                axios.post('http://localhost:9091/notifications',{
+                axios.post('http://localhost:3005/notifications',{
                   idVehicle : info.idVehicle,
                   trafficLightsState : state[0].state,
                   crosswalkState : "Pedestrian Alert"
@@ -65,7 +65,7 @@ createVehicleRegister = info =>{
               }
               else {
                 console.log("notificar veículo " + info.idVehicle)
-                axios.post('http://localhost:9091/notifications',{
+                axios.post('http://localhost:3005/notifications',{
                   idVehicle : info.idVehicle,
                   trafficLightsState : state[0].state,
                   crosswalkState : "Safe to cross"
@@ -85,16 +85,19 @@ updateVehicleRegister = info => {
     idVehicle : info.idVehicle,
     idCrosswalk : info.idCrosswalk,
     location : info.location,
-    distance : info.distance
+    distance : info.distance,
+    timestamp : timestamp
   })
 
   axios.get(url.concat('/Pedestrian?idCrosswalk='.concat(info.idCrosswalk)))
-    .then(pedestrians  => {
-      axios.get(url.concat(id).concat('/State'))
-        .then(state => {
+    .then(res1  => {
+      var pedestrians = res1.data
+      axios.get(url.concat(info.idCrosswalk).concat('/State'))
+        .then(res2 => {
+          var state = res2.data
           if(pedestrians.length > 0){
             console.log("notificar veículo " + info.idVehicle)
-            axios.post('http://localhost:9091/notifications',{
+            axios.post('http://localhost:3005/notifications',{
                             idVehicle :info.idVehicle,
                             trafficLightsState : state[0].state,
                             crosswalkState : "Pedestrian Alert"
@@ -102,7 +105,7 @@ updateVehicleRegister = info => {
           }
           else {
             console.log("notificar veículo " + info.idVehicle)
-            axios.post('http://localhost:9091/notifications',{
+            axios.post('http://localhost:3005/notifications',{
                           idVehicle :info.idVehicle,
                           trafficLightsState : state[0].state,
                           crosswalkState : "Safe to cross"
@@ -114,7 +117,7 @@ updateVehicleRegister = info => {
   
   
 deleteVehicleRegister = info => {
-  axios.delete(url.concat('/Vehicle/').concat(info.idVehicle))
+  axios.delete(url.concat('Vehicle/').concat(info.idVehicle))
     .then(data => console.log('Vehicle deleted with success!'))
     .catch(err => console.log(err))
 }

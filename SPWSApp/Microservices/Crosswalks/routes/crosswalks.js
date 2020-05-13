@@ -7,10 +7,9 @@ var axios = require('axios')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  axios.get('localhost:3333/Crosswalks')
+  axios.get('http://localhost:3004/Crosswalks')
   .then(data=> {
-    console.log(data)
-    res.jsonp(data)
+    res.jsonp(data.data)
   })
   .catch(err => res.status(500).send)
 });
