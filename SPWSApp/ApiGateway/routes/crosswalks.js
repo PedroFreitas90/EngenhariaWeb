@@ -4,7 +4,7 @@ var axios = require('axios')
 var domain = 'localhost'
 var port = '3002'
 
-const crosswalkUrl = 'http://192.168.1.11:3002/crosswalks';
+const crosswalkUrl = 'http://crosswalk:3002/crosswalks';
 
 /* GET lista de crosswalks. */
 router.get('/', function(req, res, next) {
