@@ -1,6 +1,6 @@
 
 var amqp = require('amqplib/callback_api');
-const CONN_URL ='amqp://localhost' 
+const CONN_URL ='amqp://rabbitmq' 
 
 let ch = null;
 var exchange = 'distance';

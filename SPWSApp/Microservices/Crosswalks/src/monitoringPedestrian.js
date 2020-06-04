@@ -1,23 +1,14 @@
 var axios = require ('axios')
 
-const url = 'http://localhost:3004/Crosswalks/'
-const create = RegExp('.create');
-const update = RegExp('.update');
-const del = RegExp('.delete');
+var CrosswalkPedestrian = require('../controllers/crosswalkPedestrianRT')
+var HistoricPedestrian = require('../controllers/historicPedestrian')
+var CrosswalkVehicle = require('../controllers/crosswalkVehicleRT')
+var Crosswalk = require('../controllers/crosswalks')
 
-module.exports.handlePedestrian = (key , info) => { 
-    if(create.test(key)){
-      createPedestrianRegister(info)
-    }
-    else if (update.test(key)){
-       updatePedestrianRegister(info) 
-    }
-    else if( del.test(key)){
-      deletePedestrianRegister(info)
-    }
-}
 
-createPedestrianRegister = info =>{
+
+
+module.exports.createPedestrianRegister = info =>{
   let crossPedRT = {}
   
   let timestamp = Math.floor(Date.now() / 1000)
@@ -29,19 +20,18 @@ createPedestrianRegister = info =>{
   crossPedRT.location = info.pedestrian
   crossPedRT.timestamp=timestamp
   
-  axios.post(url.concat('Pedestrian'),crossPedRT)
+ 
+  CrosswalkPedestrian.createCrosswalkPedestrianRT(crossPedRT)
   .then(aux => {
-    axios.get(url.concat('Historic/Pedestrian?idPed=').concat(info.idPedestrian)
-          .concat('&idCross=').concat(info.idCrosswalk)
-          .concat('&day=').concat(todayDate)
-    )
+      HistoricPedestrian.findHistoricPedestrian(info.idPedestrian,info.idCrosswalk,todayDate)
       .then(ress => { 
-        if (ress.data.length ==0){    
+        if (ress.length ==0){    
           let historic = {}
           historic.idPedestrian = info.idPedestrian
           historic.idCrosswalk = info.idCrosswalk
           historic.day = todayDate;
-          axios.post(url.concat('Historic/Pedestrian'),historic)
+          
+          HistoricPedestrian.createHistoricPedestrian(historic)
             .then(aux => console.log("insert in historic"))
             .catch(err => console.log(err))
           
@@ -49,12 +39,12 @@ createPedestrianRegister = info =>{
       })
       .catch(err => console.log(err))
         
-      axios.get(url.concat('Vehicle?idCrosswalk='.concat(info.idCrosswalk)))
-        .then(res1  => {
-          var vehicles = res1.data  
-          axios.get(url.concat(info.idCrosswalk).concat('/State'))
-            .then(res2 => {
-              var state = res2.data
+     
+     CrosswalkVehicle.findVehicleInCrosswalk(info.idCrosswalk)
+        .then(vehicles  => {  
+
+        Crosswalk.getState(info.idCrosswalk)
+            .then(state => {
               vehicles.map( vei => {
                 axios.post('http://localhost:3005/notifications',{
                   idVehicle :vei.idVehicle,
@@ -69,39 +59,31 @@ createPedestrianRegister = info =>{
   .catch(err => console.log(err))
 };
 
-updatePedestrianRegister = info => {
+module.exports.updatePedestrianRegister = info => {
   let timestamp = Math.floor(Date.now() / 1000)
-    
-  axios.put(url.concat('Pedestrian'),{
-    idPedestrian: info.idPedestrian,
-    idCrosswalk: info.idPedestrian,
-    location: info.pedestrian,
-    distance: info.distance,
-    timestamp: timestamp
-  })
+
+  CrosswalkPedestrian.updateCrosswalkPedestrianRT(info.idPedestrian,info.idCrosswalk,info.pedestrian,info.distance,timestamp)
     .then(res => {
-      axios.get(url.concat('Vehicle?idCrosswalk='.concat(info.idCrosswalk)))
-      .then(res1  => {
-        var vehicles = res1.data  
-        axios.get(url.concat(info.idCrosswalk).concat('/State'))
-          .then(res2 => {
-            var state = res2.data
+      CrosswalkVehicle.findVehicleInCrosswalk(info.idCrosswalk)
+      .then(vehicles  => {  
+      Crosswalk.getState(info.idCrosswalk)
+          .then(state => {
             vehicles.map( vei => {
               axios.post('http://localhost:3005/notifications',{
                 idVehicle :vei.idVehicle,
                 trafficLightsState : state[0].state,
                 crosswalkState : "Pedestrian Alert"
-                })
               })
+            })
           }) 
-        })
-        .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))  
 };
   
-deletePedestrianRegister = info => {
-  axios.delete(url.concat('Pedestrian/').concat(info.idPedestrian))
+module.exports.deletePedestrianRegister = info => {
+  CrosswalkPedestrian.deleteCrosswalkPedestrianRT(info.idPedestrian)
     .then(data => console.log('Pedestrian deleted with success!'))
     .catch(err => console.log(err))
 };

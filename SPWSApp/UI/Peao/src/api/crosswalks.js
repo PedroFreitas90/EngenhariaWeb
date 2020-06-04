@@ -1,5 +1,5 @@
 export const getCrosswalks = () => {
-    return fetch("http://10.0.2.2:3000/crosswalks")
+    return fetch("http://10.0.2.2:3000/Crosswalk")
     .then((response) => response.json())
     .then((json) => json);
   };

@@ -1,7 +1,6 @@
 var CrosswalkPedestrianRT = require('../models/crosswalkPedestrianRT')
 
 
-
 module.exports.createCrosswalkPedestrianRT = (info) => {
     var novo = new CrosswalkPedestrianRT(info)
     return novo.save()
@@ -26,9 +25,25 @@ module.exports.deleteCrosswalkPedestrianRT = (id) => {
             .exec()
 }
 
+module.exports.findPedestrianCrosswalk = (idPedestrian,crosswalk_id) => {
+    return CrosswalkPedestrianRT
+            .find({idPedestrian : idPedestrian,idCrosswalk:crosswalk_id})
+            .exec()
+}
+
 module.exports.findPedestrianInCrosswalk = (crosswalk_id) => {
     return CrosswalkPedestrianRT
             .find({idCrosswalk:crosswalk_id})
+            .exec()
+}
+
+
+
+
+
+module.exports.findPedestrian = (idPedestrian) => {
+    return CrosswalkPedestrianRT
+            .find({idPedestrian: idPedestrian})
             .exec()
 }
 

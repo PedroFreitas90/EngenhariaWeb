@@ -1,7 +1,7 @@
 FROM node:13.14.0-alpine3.11
 
 # Create app directory
-WORKDIR /usr/src/crosswalk
+WORKDIR /home/node
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -13,9 +13,7 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY ./ ./
+COPY rabbitMQ.js distance.js CalculateDistance.js app.js ./
 
 
-EXPOSE 3002
-
-CMD [ "node", "./bin/www" ]
+CMD [ "node", "app.js" ]

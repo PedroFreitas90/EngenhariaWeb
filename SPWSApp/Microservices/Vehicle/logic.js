@@ -57,7 +57,7 @@ updateVehicleRegister = info => {
     let longitude = info.vehicle.longitude
     let timestamp = Date.now()
 
-    Pedestrian.updatePedestrian(idVehicle,latitude,longitude,timestamp)
+    Vehicle.updateVehicle(idVehicle,latitude,longitude,timestamp)
     .then(data => console.log("update Vehicle location"))
     .catch(err => console.log(err))
 

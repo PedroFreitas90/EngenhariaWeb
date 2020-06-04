@@ -1,7 +1,7 @@
 FROM node:13.14.0-alpine3.11
 
 # Create app directory
-WORKDIR /usr/src/crosswalk
+WORKDIR /usr/src/gateway
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -16,6 +16,6 @@ RUN npm install
 COPY ./ ./
 
 
-EXPOSE 3002
+EXPOSE 3000
 
 CMD [ "node", "./bin/www" ]

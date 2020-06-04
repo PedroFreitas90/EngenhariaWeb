@@ -23,7 +23,6 @@ amqp.connect(CONN_URL, function(error0, connection) {
 });
 
 const send = not => {
-    console.log('No send')
     ch.sendToQueue(sendQueue, Buffer.from(JSON.stringify(not)));
     console.log(" [x] Sent %s",JSON.stringify(not))
 }

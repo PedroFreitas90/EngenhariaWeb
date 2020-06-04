@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
 var amqp = require('amqplib/callback_api');
-var Monitoring = require('./src/monitoring')
+var Monitoring = require('./monitoring')
 
-const CONN_URL ='amqp://localhost'
+const CONN_URL ='amqp://rabbitmq'
 
-
+let channelProducer=null
 let channelConsumer=null
+var exchangeProducer = "events"
 
-var exchangeConsumer = "events"
+var exchangeConsumer = "monitoring"
 
 module.exports.rabbitMQ = () => {
 amqp.connect(CONN_URL, function(error0, connection) {
@@ -30,7 +31,7 @@ amqp.connect(CONN_URL, function(error0, connection) {
             if (error2) {
                 throw error2;
             }
-                var key = "events.*.*"
+                var key = "monitoring.*"
             
                 channel.bindQueue(q.queue, exchangeConsumer, key);
         
@@ -43,10 +44,31 @@ amqp.connect(CONN_URL, function(error0, connection) {
         });
         channelConsumer =channel
     });
+
+
+    connection.createChannel(function(error1, channelP) {
+        if (error1) {
+            throw error1;
+        }
+
+        channelP.assertExchange(exchangeProducer, 'topic', {
+            durable: false
+        });
+
+        channelProducer = channelP
+       
+    });
 });
 }
 
+module.exports.publish = (key, message) => {
+    channelProducer.publish(exchangeProducer, key,Buffer.from(JSON.stringify(message)));
+    console.log(" [x] Sent %s: '%s'", key, message);
+}
+
+
 module.exports.beforeExit = () =>{
     channelConsumer.close()
+    channelProducer.close()
     console.log('Closing rabbitmq channel')
 }  
