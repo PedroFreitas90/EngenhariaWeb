@@ -17,7 +17,7 @@ var mongoose = require('mongoose');
  ****************************/
 const DATABASE_NAME = 'Crosswalks';
 
-mongoose.connect('mongodb://mongo:27018/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://mongo:27017/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log(`Connected to Mongo at [${DATABASE_NAME}] database...`))
   .catch((erro) => console.log(`Mongo: Error connecting to [${DATABASE_NAME}]: ${erro}`))
 

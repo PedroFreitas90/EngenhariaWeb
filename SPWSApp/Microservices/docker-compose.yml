@@ -10,12 +10,12 @@ services:
 
     mongo:
         image: mongo:latest
-        volumes: 
-            - /data/db:/data/db
         ports:
-            - "27018:27018"
+            - "27017:27017"
         networks:
-            - my-own-network    
+            - my-own-network 
+        volumes: 
+            - ~/mongo/data:/data/db   
 
     distance:
         build: ./Distance
