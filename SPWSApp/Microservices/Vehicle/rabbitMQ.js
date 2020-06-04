@@ -5,7 +5,7 @@ var amqp = require('amqplib/callback_api');
 var logic = require('./logic')
 
 
-const CONN_URL ='amqp://localhost'
+const CONN_URL ='amqp://rabbitmq'
 var exchange = "events"
 let ch=null
 

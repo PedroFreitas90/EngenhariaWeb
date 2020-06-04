@@ -4,7 +4,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 
 /* --------------- Database --------------- */
-mongoose.connect('mongodb://127.0.0.1:27017/notifications', {useNewUrlParser: true ,useUnifiedTopology: true })
+mongoose.connect('mongodb://mongo:27017/notifications', {useNewUrlParser: true ,useUnifiedTopology: true })
     .then (()=> console.log('Mongo state:'+ mongoose.connection.readyState))
     .catch(()=> console.log('Erro'))
 /* --------------- Database --------------- */

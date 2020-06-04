@@ -75,7 +75,7 @@ services:
         build: ./NotificationService
         restart: always
         ports:
-            - '3005/3005'
+            - '3005:3005'
         depends_on:
             - rabbitmq
             - mongo
