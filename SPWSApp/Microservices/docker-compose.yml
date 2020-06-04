@@ -37,7 +37,17 @@ services:
             - rabbitmq
         networks:
             - my-own-network    
-
+    
+    pedestrian:
+        build: ./Pedestrian
+        restart: always
+        ports:
+            - '3001:3001'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network
             
     crosswalk: 
         build: ./Crosswalks
@@ -49,10 +59,28 @@ services:
             - mongo
         networks:
             - my-own-network    
-
             
-
-
+    vehicle:
+        build: ./Vehicle
+        restart: always
+        ports:
+            - '3003:3003'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network
+    
+    notification-service:
+        build: ./NotificationService
+        restart: always
+        ports:
+            - '3005/3005'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network
 
 networks:
     my-own-network:
