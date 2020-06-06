@@ -9,4 +9,5 @@ clean:
 	docker image rmi -f microservices_notification-service
 	docker image rmi -f microservices_vehicle
 	docker image rmi -f microservices_pedestrian
+	docker image rmi -f microservices_pubnub
 

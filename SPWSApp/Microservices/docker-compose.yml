@@ -11,7 +11,7 @@ services:
     mongo:
         image: mongo:latest
         ports:
-            - "27017:27017"
+            - "27018:27017"
         networks:
             - my-own-network 
         
@@ -81,6 +81,19 @@ services:
             - mongo
         networks:
             - my-own-network
+
+    pubnub: 
+        build: ../ApiWebSockets
+        restart: always
+        ports:
+            - '9092:9092'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network   
+
+    
 
 networks:
     my-own-network:

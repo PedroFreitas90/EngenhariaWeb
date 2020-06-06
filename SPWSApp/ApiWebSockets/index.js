@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
  ****************************/
 const DATABASE_NAME = 'Connections';
 
-mongoose.connect('mongodb://127.0.0.1:27017/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://mongo:27017/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log(`Connected to Mongo at [${DATABASE_NAME}] database...`))
   .catch((erro) => console.log(`Mongo: Error connecting to [${DATABASE_NAME}]: ${erro}`))
 
@@ -52,7 +52,7 @@ pubnub.subscribe({
 });
 
 
-amqp.connect('amqp://localhost', function(error0, connection) {
+amqp.connect('amqp://rabbitmq', function(error0, connection) {
     if (error0) {
         throw error0;
     }
