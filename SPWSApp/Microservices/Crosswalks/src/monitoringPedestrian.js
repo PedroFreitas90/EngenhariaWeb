@@ -46,7 +46,7 @@ module.exports.createPedestrianRegister = info =>{
         Crosswalk.getState(info.idCrosswalk)
             .then(state => {
               vehicles.map( vei => {
-                axios.post('http://localhost:3005/notifications',{
+                axios.post('http://notification-service:3005/notifications',{
                   idVehicle :vei.idVehicle,
                   trafficLightsState : state[0].state,
                   crosswalkState : "Pedestrian Alert"
@@ -69,7 +69,7 @@ module.exports.updatePedestrianRegister = info => {
       Crosswalk.getState(info.idCrosswalk)
           .then(state => {
             vehicles.map( vei => {
-              axios.post('http://localhost:3005/notifications',{
+              axios.post('http://notification-service:3005/notifications',{
                 idVehicle :vei.idVehicle,
                 trafficLightsState : state[0].state,
                 crosswalkState : "Pedestrian Alert"

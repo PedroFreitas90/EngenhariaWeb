@@ -1,11 +1,14 @@
+const ip = Platform.OS === 'ios' ? "http://localhost:3000" : "http://10.0.2.2:3000"
+
+
 export const getCrosswalks = () => {
-    return fetch("http://10.0.2.2:3000/Crosswalk")
+    return fetch(ip.concat("/Crosswalk"))
     .then((response) => response.json())
     .then((json) => json);
   };
 
 export const distancePedestrian = (crosswalks,coordsPedestrian,id) => {
-    return fetch('http://10.0.2.2:3000/distance/pedestrian',{
+    return fetch(ip.concat("/distance/pedestrian"),{
       method:'post',
       body:JSON.stringify({
         crosswalks :crosswalks,

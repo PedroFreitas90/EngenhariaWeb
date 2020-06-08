@@ -46,7 +46,7 @@ module.exports.createVehicleRegister = info =>{
             .then(state => {
               if(pedestrians.length > 0){
                 console.log("notificar veículo " + info.idVehicle)
-                axios.post('http://localhost:3005/notifications',{
+                axios.post('http://notification-service:3005/notifications',{
                   idVehicle : info.idVehicle,
                   trafficLightsState : state[0].state,
                   crosswalkState : "Pedestrian Alert"
@@ -54,7 +54,7 @@ module.exports.createVehicleRegister = info =>{
               }
               else {
                 console.log("notificar veículo " + info.idVehicle)
-                axios.post('http://localhost:3005/notifications',{
+                axios.post('http://notification-service:3005/notifications',{
                   idVehicle : info.idVehicle,
                   trafficLightsState : state[0].state,
                   crosswalkState : "Safe to cross"
@@ -79,7 +79,7 @@ Crosswalk.getState(info.idCrosswalk)
     .then(state => {
       if(pedestrians.length > 0){
         console.log("notificar veículo " + info.idVehicle)
-        axios.post('http://localhost:3005/notifications',{
+        axios.post('http://notification-service:3005/notifications',{
           idVehicle : info.idVehicle,
           trafficLightsState : state[0].state,
           crosswalkState : "Pedestrian Alert"
@@ -87,7 +87,7 @@ Crosswalk.getState(info.idCrosswalk)
       }
       else {
         console.log("notificar veículo " + info.idVehicle)
-        axios.post('http://localhost:3005/notifications',{
+        axios.post('http://notification-service:3005/notifications',{
           idVehicle : info.idVehicle,
           trafficLightsState : state[0].state,
           crosswalkState : "Safe to cross"

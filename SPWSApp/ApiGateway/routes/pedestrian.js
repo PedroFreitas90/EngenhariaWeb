@@ -4,7 +4,7 @@ var axios = require('axios')
 var domain = 'localhost'
 var port = '3002'
 
-const pedestrianUrl = 'http://localhost:3001/pedestrians';
+const pedestrianUrl = 'http://pedestrian:3001/pedestrians';
 
 /* GET lista de pedestrians. */
 router.get('/', function(req, res, next) {

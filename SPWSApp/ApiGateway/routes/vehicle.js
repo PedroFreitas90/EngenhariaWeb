@@ -4,7 +4,7 @@ var axios = require('axios')
 var domain = 'localhost'
 var port = '3002'
 
-const vehicleUrl = 'http://localhost:3003/vehicles';
+const vehicleUrl = 'http://vehicle:3003/vehicles';
 
 /* GET lista de vehicles. */
 router.get('/', function(req, res, next) {
