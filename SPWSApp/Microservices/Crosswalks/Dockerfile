@@ -1,7 +1,20 @@
-FROM node:10
-WORKDIR /app
-COPY package.json /app
+FROM node:13.14.0-alpine3.11
+
+# Create app directory
+WORKDIR /usr/src/crosswalk
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
 RUN npm install
-COPY . /app
-CMD node index.js
-EXPOSE 8081
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
+COPY ./ ./
+
+EXPOSE 3002
+
+CMD [ "node", "./bin/www" ]
