@@ -11,3 +11,10 @@ module.exports.findHistoricVehicle = (idVehicle , idCrosswalk,day) => {
             .find({idVehicle:idVehicle, idCrosswalk:idCrosswalk, day : {$eq: day}})
             .exec()
 }
+
+
+module.exports.findHistoric = (idCrosswalk) =>{
+    return HistoricVehicle
+            .find({idCrosswalk:idCrosswalk})
+            .exec()
+}

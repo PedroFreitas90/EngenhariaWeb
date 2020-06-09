@@ -11,3 +11,11 @@ module.exports.findHistoricPedestrian = (idPedestrian , idCrosswalk,day) => {
             .find({idPedestrian:idPedestrian, idCrosswalk:idCrosswalk, day : day})
             .exec()
 }
+
+
+
+module.exports.findHistoric = (idCrosswalk) =>{
+    return HistoricPedestrian
+            .find({idCrosswalk:idCrosswalk})
+            .exec()
+}

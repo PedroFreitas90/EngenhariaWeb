@@ -30,24 +30,18 @@ router.put('/:id', function(req,res){
 
 /* GET /crosswalks/historic */
 router.get('/Historic/Pedestrian', function(req,res){
-  idPed = req.query.idPed;
   idCross = req.query.idCross;
-  day = req.query.day;
-  HistoricPedestrian.findHistoricPedestrian(idPed,idCross,day)
+  HistoricPedestrian.findHistoric(idCross)
     .then(data => {
-      console.log(data);
       res.jsonp(data);
     })
     .catch(err => res.status(500).send)
 });
 
 router.get('/Historic/Vehicle', function(req,res){
-  idVeh = req.query.idVeh;
   idCross = req.query.idCross;
-  day = req.query.day;
-  HistoricVehicle.findHistoricVehicle(idVeh,idCross,day)
+  HistoricVehicle.findHistoric(idCross)
     .then(data => {
-      console.log(data);
       res.jsonp(data);
     })
     .catch(err => res.status(500).send)
