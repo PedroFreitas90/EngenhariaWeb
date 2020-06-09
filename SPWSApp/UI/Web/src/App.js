@@ -6,7 +6,7 @@ import {
   getRTVehicle,
   getHistoricoPedestrian,
   getHistoricoVehicle,
-} from "./crosswalks";
+} from "./api/crosswalks";
 
 import {
   Header,
@@ -18,15 +18,15 @@ import {
 } from "semantic-ui-react";
 import CrosswalksMap from "./CrosswalksMap";
 import CrosswalksList from "./CrosswalksList";
-import { Marker } from "leaflet";
+
 
 function App() {
   const [isLoadingCrosswalks, setIsLoadingCrosswalks] = useState(false);
   const [markers, setMarkers] = useState([]);
   const [viewport, setViewport] = useState({ center: null, zoom: 13 });
   const [info, setInfo] = useState(false);
-  const [historic, setHistoric] = useState([]);
-  const [realTime, setRealTime] = useState([]);
+ // const [historic, setHistoric] = useState([]);
+ // const [realTime, setRealTime] = useState([]);
 
   const submitNewCrosswalk = (title, latitude, longitude, state) => {
     return createCrosswalks(title, latitude, longitude, state).then(
@@ -37,7 +37,7 @@ function App() {
   };
 
   const infoPoint = (title, latitude, long, state) => {
-    console.log("O ID:" + id);
+    //console.log("O ID:" + id);
     console.log("LAT: " + latitude);
     console.log("LONG: " + long);
     console.log("NOME DA PASSADEIRA: " + title);
@@ -45,7 +45,7 @@ function App() {
     return null;
   };
 
-  const infoHistoric = () => {};
+  //const infoHistoric = () => {};
 
   const centerMap = (latitude, longitude) => {
     setViewport({ center: [latitude, longitude] });

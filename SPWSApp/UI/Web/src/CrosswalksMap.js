@@ -4,7 +4,7 @@ import { Form } from "semantic-ui-react";
 
 //ACHO QUE NESTE FICHEIRO FALTA O STATE
 const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
-  const [newCrosswalk, setCrosswalak] = useState();
+  const [newCrosswalk, setNewCrosswalk] = useState();
 
   const handleMapClick = (event) => {
     setNewCrosswalk({
@@ -55,10 +55,10 @@ const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
           </Marker>
         );
       })}
-      {newInterestPoint && (
+      {newCrosswalk && (
         <Popup
-          key={`${newInterestPoint.latitude}-${newInterestPoint.longitude}`}
-          position={[newInterestPoint.latitude, newInterestPoint.longitude]}
+          key={`${newCrosswalk.latitude}-${newCrosswalk.longitude}`}
+          position={[newCrosswalk.latitude, newCrosswalk.longitude]}
         >
           <Form onSubmit={handleNewPointSubmit}>
             <Form.Input
