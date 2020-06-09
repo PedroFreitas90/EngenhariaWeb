@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Form } from "semantic-ui-react";
 
-//ACHO QUE NESTE FICHEIRO FALTA O STATE
 const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
-  const [newCrosswalk, setNewCrosswalk] = useState();
+  const [newCrosswalk, setnewCrosswalk] = useState();
 
   const handleMapClick = (event) => {
-    setNewCrosswalk({
+    setnewCrosswalk({
       title: "",
       latitude: event.latlng.lat,
       longitude: event.latlng.lng,
-      state: "",
+      state: ""
     });
   };
 
   const handleNewPointTitleChange = (event) => {
-    setNewCrosswalk({ ...newCrosswalk, title: event.target.value });
+    setnewCrosswalk({ ...newCrosswalk, title: event.target.value });
   };
 
   const handleNewPointSubmit = (event) => {
@@ -25,9 +24,10 @@ const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
     submitNewCrosswalk(
       newCrosswalk.title,
       newCrosswalk.latitude,
-      newCrosswalk.longitude
+      newCrosswalk.longitude,
+      newCrosswalk.state
     ).then(() => {
-      setNewCrosswalk(undefined);
+      setnewCrosswalk(undefined);
     });
   };
 
@@ -48,9 +48,9 @@ const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
         maxZoom={18}
         accessToken="pk.eyJ1IjoicnVpLWZvbnNlY2EiLCJhIjoiY2s4YTJpN3R2MDBscDNtbXhqeGM3emdndiJ9.3LJzQcbcLzQP1evTVWItOQ"
       />
-      {markers.map(({ latitude, longitude, title, id }) => {
+      {markers.map(({ latitude, longitude, title, _id }) => {
         return (
-          <Marker key={id} position={[latitude, longitude]}>
+          <Marker key={_id} position={[latitude, longitude]}>
             <Popup>{title}</Popup>
           </Marker>
         );

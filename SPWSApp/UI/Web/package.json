@@ -6,10 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
     "leaflet": "^1.6.0",
+    "miragejs": "^0.1.35",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-leaflet": "^2.7.0",
+    "react-leaflet": "^2.6.3",
     "react-scripts": "3.4.1",
     "semantic-ui-react": "^0.88.2"
   },
@@ -17,10 +19,21 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "./node_modules/eslint/bin/eslint.js .",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ],
+    "ignorePatterns": [
+      "node_modules"
+    ]
+  },
+  "prettier": {
+    "printWidth": 90,
+    "trailingComma": "es5"
   },
   "browserslist": {
     "production": [
@@ -33,5 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.2"
   }
 }

@@ -1,14 +1,14 @@
 import React from "react";
 import { List, Button } from "semantic-ui-react";
 
-const CrosswalksList = ({ markers, centerMap, infoPoint }) => {
+const InterestPointsList = ({ markers, centerMap, infoPoint }) => {
   return (
-    <List verticalAlign="middle" divided selection>
-      {markers.map((crosswalk) => {
+    <List divided selection>
+      {markers.map((point) => {
         return (
           <List.Item
-            onClick={() => centerMap(crosswalk.latitude, crosswalk.longitude)}
-            key={crosswalk.id}
+            key={point._id}
+            onClick={() => centerMap(point.latitude, point.longitude)}
           >
             <List.Content floated="right">
               <Button
@@ -16,18 +16,18 @@ const CrosswalksList = ({ markers, centerMap, infoPoint }) => {
                 icon="info"
                 color="blue"
                 onClick={(event) => {
-                  event.preventDefault();
+                  event.stopPropagation();
                   infoPoint(
-                    crosswalk.title,
-                    crosswalk.latitude,
-                    crosswalk.longitude,
-                    crosswalk.state
+                    point.title,
+                    point.latitude,
+                    point.longitude,
+                    point.state
                   );
                 }}
               ></Button>
             </List.Content>
             <List.Content>
-              <List.Header>{crosswalk.title}</List.Header>
+              <List.Header>{point.title}</List.Header>
             </List.Content>
           </List.Item>
         );
@@ -36,4 +36,4 @@ const CrosswalksList = ({ markers, centerMap, infoPoint }) => {
   );
 };
 
-export default CrosswalksList;
+export default InterestPointsList;

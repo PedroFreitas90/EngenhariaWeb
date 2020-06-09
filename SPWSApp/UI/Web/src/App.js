@@ -1,40 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   getCrosswalks,
   createCrosswalks,
-  getRTPedestrian,
-  getRTVehicle,
-  getHistoricoPedestrian,
-  getHistoricoVehicle,
-} from "./api/crosswalks";
-
-import {
-  Header,
+  removeInterestPoint,
+} from "./api/interestPoints";
+import InterestPointsMaps from "./InterestPointsMap";
+import { Header,
   Segment,
   Placeholder,
   Icon,
   Divider,
-  Grid,
-} from "semantic-ui-react";
-import CrosswalksMap from "./CrosswalksMap";
-import CrosswalksList from "./CrosswalksList";
-
+  Grid, } from "semantic-ui-react";
+import "./App.css";
+import InterestPointsList from "./InterestPointsList";
 
 function App() {
-  const [isLoadingCrosswalks, setIsLoadingCrosswalks] = useState(false);
   const [markers, setMarkers] = useState([]);
   const [viewport, setViewport] = useState({ center: null, zoom: 13 });
+  const [isLoadingInterestPoints, setIsLoadingInterestPoints] = useState(false);
   const [info, setInfo] = useState(false);
- // const [historic, setHistoric] = useState([]);
- // const [realTime, setRealTime] = useState([]);
 
-  const submitNewCrosswalk = (title, latitude, longitude, state) => {
-    return createCrosswalks(title, latitude, longitude, state).then(
-      (crosswalk) => {
-        setMarkers((prevMarkers) => [...prevMarkers, crosswalk]);
+  useEffect(() => {
+    setIsLoadingInterestPoints(true);
+    getCrosswalks().then((interestPoints) => {
+      setMarkers(interestPoints);
+      setIsLoadingInterestPoints(false);
+
+      if (interestPoints.length > 0) {
+        const { latitude, longitude } = interestPoints[0];
+        setViewport({ center: [latitude, longitude] });
       }
-    );
-  };
+    });
+  }, []);
 
   const infoPoint = (title, latitude, long, state) => {
     //console.log("O ID:" + id);
@@ -42,28 +39,19 @@ function App() {
     console.log("LONG: " + long);
     console.log("NOME DA PASSADEIRA: " + title);
     setInfo({ title: title, latitude: latitude, long: long, state: state });
-    return null;
   };
 
-  //const infoHistoric = () => {};
+  const submitNewCrosswalk = (title, latitude, longitude, state) => {
+    return createCrosswalks(title, latitude, longitude, state).then((crosswalk) => {
+        setMarkers((prevMarkers) => [...prevMarkers, crosswalk]);
+      }
+    );
+  };
 
   const centerMap = (latitude, longitude) => {
     setViewport({ center: [latitude, longitude] });
   };
 
-  useEffect(() => {
-    setIsLoadingCrosswalks(true);
-    getCrosswalks().then((crosswalks) => {
-      setMarkers(crosswalks);
-
-      if (crosswalks.length > 0) {
-        const { latitude, longitude } = crosswalks[0];
-        setViewport({ center: [latitude, longitude] });
-      }
-
-      setIsLoadingCrosswalks(false);
-    });
-  }, []);
 
   return (
     <React.Fragment>
@@ -77,23 +65,23 @@ function App() {
       <Grid columns={2} stackable>
         <Grid.Column>
           <Segment.Group>
-            <Segment loading={isLoadingCrosswalks}>
-              {isLoadingCrosswalks ? (
+            <Segment loading={isLoadingInterestPoints}>
+              {isLoadingInterestPoints ? (
                 <Placeholder>
                   <Placeholder.Line />
                   <Placeholder.Line />
                   <Placeholder.Line />
                 </Placeholder>
               ) : (
-                <CrosswalksList
+                <InterestPointsList
                   markers={markers}
                   infoPoint={infoPoint}
                   centerMap={centerMap}
                 />
               )}
-            </Segment>
+         </Segment>
             <Segment>
-              <CrosswalksMap
+              <InterestPointsMaps
                 viewport={viewport}
                 markers={markers}
                 submitNewCrosswalk={submitNewCrosswalk}
@@ -106,7 +94,7 @@ function App() {
             {info.latitude} {info.long} {info.title} {info.state}
           </Grid.Column>
         }
-      </Grid>
+        </Grid>
     </React.Fragment>
   );
 }
