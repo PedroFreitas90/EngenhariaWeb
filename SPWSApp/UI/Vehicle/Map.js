@@ -16,6 +16,8 @@ const pubnub = new PubNub({
   publishKey: "pub-c-627ad9bf-507f-4fae-9a30-6fb40d8eff88",
   subscribeKey: "sub-c-2bc1178c-8e5e-11ea-927a-2efbc014b69f",
   uuid: uuid,
+  subscribeRequestTimeout: 60000,
+  presenceTimeout: 122,
   
 });
 
