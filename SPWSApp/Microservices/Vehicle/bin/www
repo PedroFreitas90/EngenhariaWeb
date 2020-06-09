@@ -12,9 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var PORT = '5960'
-
-var port = normalizePort(process.env.PORT || PORT);
+var port = normalizePort(process.env.PORT || '3003');
 app.set('port', port);
 
 /**
@@ -84,5 +82,5 @@ function onError(error) {
  */
 
 function onListening() {
-  console.log("Servidor à escuta na porta " + PORT )
-}
+  console.log("Micro-serviço **Vehicle** à escuta na porta: " + port);
+  }

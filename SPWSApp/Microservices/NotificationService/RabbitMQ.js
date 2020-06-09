@@ -1,5 +1,5 @@
 var amqp = require('amqplib/callback_api');
-const CONN_URL ='amqp://localhost' 
+const CONN_URL ='amqp://rabbitmq'
 
 
 var sendQueue = 'notificationChannel';
@@ -23,7 +23,6 @@ amqp.connect(CONN_URL, function(error0, connection) {
 });
 
 const send = not => {
-    console.log('No send')
     ch.sendToQueue(sendQueue, Buffer.from(JSON.stringify(not)));
     console.log(" [x] Sent %s",JSON.stringify(not))
 }

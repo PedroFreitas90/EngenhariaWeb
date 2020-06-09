@@ -6,7 +6,7 @@ var logger = require('morgan');
 var RabbitMQ = require('./rabbitMQ')
 
 
-var indexRouter = require('./routes/vehicles');
+var vehicleRouter = require('./routes/vehicles');
 
 
 var app = express();
@@ -20,7 +20,7 @@ var mongoose = require('mongoose');
  ****************************/
 const DATABASE_NAME = 'Vehicles';
 
-mongoose.connect('mongodb://127.0.0.1:27017/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://mongo:27017/' + DATABASE_NAME, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log(`Connected to Mongo at [${DATABASE_NAME}] database...`))
   .catch((erro) => console.log(`Mongo: Error connecting to [${DATABASE_NAME}]: ${erro}`))
 
@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/vehicles', indexRouter);
+app.use('/vehicles', vehicleRouter);
 
 
 // catch 404 and forward to error handler

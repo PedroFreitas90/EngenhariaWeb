@@ -1,0 +1,102 @@
+version: '2'
+services:
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+            - '5672:5672'
+            - '15672:15672'
+        networks:
+            - my-own-network 
+
+    mongo:
+        image: mongo:latest
+        ports:
+            - "27018:27017"
+        networks:
+            - my-own-network 
+        
+        volumes: 
+            - ~/mongo/data:/data/db   
+
+    distance:
+        build: ./Distance
+        restart: always
+        ports:
+            - '9091:9091'
+        depends_on:
+            - rabbitmq
+        networks:
+            - my-own-network
+            
+    api_gateway: 
+        build: ../ApiGateway
+        restart: always
+        ports:
+            - '3000:3000'
+        depends_on:
+            - rabbitmq
+        networks:
+            - my-own-network    
+    
+    pedestrian:
+        build: ./Pedestrian
+        restart: always
+        ports:
+            - '3001:3001'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network
+            
+    crosswalk: 
+        build: ./Crosswalks
+        restart: always
+        ports:
+            - '3002:3002'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network    
+            
+    vehicle:
+        build: ./Vehicle
+        restart: always
+        ports:
+            - '3003:3003'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network
+    
+    notification-service:
+        build: ./NotificationService
+        restart: always
+        ports:
+            - '3005:3005'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network
+
+    pubnub: 
+        build: ../ApiWebSockets
+        restart: always
+        ports:
+            - '9092:9092'
+        depends_on:
+            - rabbitmq
+            - mongo
+        networks:
+            - my-own-network   
+
+    
+
+networks:
+    my-own-network:
+        driver: bridge
+
+

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 var location = {
   latitude : Number,
-  longitude :Number
+  longitude : Number
 }
 
 

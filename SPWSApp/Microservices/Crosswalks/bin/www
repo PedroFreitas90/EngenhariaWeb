@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '4545');
+var port = normalizePort(process.env.PORT || '3002');
 app.set('port', port);
 
 /**
@@ -82,5 +82,5 @@ function onError(error) {
  */
 
 function onListening() {
-console.log("servidor á escuta na porta 4545")
+console.log("Micro-serviço **Crosswalk** à escuta na porta: " + port);
 }
