@@ -6,7 +6,7 @@ import {
   getRTVehicle,
   getHistoricoPedestrian,
   getHistoricoVehicle,
-} from "./api/crosswalks";
+} from "./crosswalks";
 
 import {
   Header,
