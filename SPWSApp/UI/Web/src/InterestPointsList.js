@@ -18,6 +18,7 @@ const InterestPointsList = ({ markers, centerMap, infoPoint }) => {
                 onClick={(event) => {
                   event.stopPropagation();
                   infoPoint(
+                    point._id,
                     point.title,
                     point.latitude,
                     point.longitude,

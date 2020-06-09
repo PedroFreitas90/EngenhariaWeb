@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import {
   getCrosswalks,
   createCrosswalks,
-  removeInterestPoint,
+  getRTPedestrian,
+  getRTVehicle,
+  getHistoricoPedestrian,
+  getHistoricoVehicle 
 } from "./api/interestPoints";
 import InterestPointsMaps from "./InterestPointsMap";
 import { Header,
@@ -10,7 +13,8 @@ import { Header,
   Placeholder,
   Icon,
   Divider,
-  Grid, } from "semantic-ui-react";
+  Grid,
+List } from "semantic-ui-react";
 import "./App.css";
 import InterestPointsList from "./InterestPointsList";
 
@@ -19,6 +23,11 @@ function App() {
   const [viewport, setViewport] = useState({ center: null, zoom: 13 });
   const [isLoadingInterestPoints, setIsLoadingInterestPoints] = useState(false);
   const [info, setInfo] = useState(false);
+  const [pedestrianRT, setPedestrianRT] = useState([])
+  const [vehicleRT, setVehicleRT] = useState([])
+  const [historicPedestrian,setHistoricPedestrian] = useState([])
+  const [historicVehicle,setHistoricVehicle] = useState([])
+
 
   useEffect(() => {
     setIsLoadingInterestPoints(true);
@@ -33,12 +42,33 @@ function App() {
     });
   }, []);
 
-  const infoPoint = (title, latitude, long, state) => {
-    //console.log("O ID:" + id);
+  const infoPoint = (id,title, latitude, long, state) => {
     console.log("LAT: " + latitude);
     console.log("LONG: " + long);
     console.log("NOME DA PASSADEIRA: " + title);
-    setInfo({ title: title, latitude: latitude, long: long, state: state });
+    getRTPedestrian(id).then((pedestrianRT) => {
+      getRTVehicle(id).then((vehicleRT) => {
+        getHistoricoPedestrian(id).then((historicPed) => {
+          getHistoricoVehicle(id).then((historicVeh) => {
+            console.log(pedestrianRT)
+            console.log(vehicleRT)
+            console.log(historicPed)
+            console.log(historicVeh)
+
+          setVehicleRT(vehicleRT)
+          setPedestrianRT(pedestrianRT)
+          setHistoricPedestrian(historicPed)
+          setHistoricVehicle(historicVeh)
+          setInfo({ title: title, latitude: latitude, long: long, state: state });
+
+          })
+        })
+      })
+    })
+    
+    
+
+
   };
 
   const submitNewCrosswalk = (title, latitude, longitude, state) => {
@@ -94,6 +124,20 @@ function App() {
             {info.latitude} {info.long} {info.title} {info.state}
           </Grid.Column>
         }
+        <List divided selection>
+         {pedestrianRT.map((pRT) => {
+            return (
+              <List.Item
+                key={pRT._id}
+              > 
+              <List.Content>
+              <List.Header>{pRT.distance}</List.Header>
+            </List.Content>
+            </List.Item>
+            );
+         })}
+         </List>
+
         </Grid>
     </React.Fragment>
   );

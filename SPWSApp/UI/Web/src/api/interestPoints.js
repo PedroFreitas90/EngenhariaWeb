@@ -1,5 +1,3 @@
-const axios = require('axios')
-
 export const getCrosswalks = () => {
   return fetch("http://localhost:3000/Crosswalk")
     .then((response) => response.json())
@@ -15,16 +13,31 @@ export const createCrosswalks = (title, latitude, longitude, state) => {
       longitude: longitude,
       state: state,
     }),
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      },   
   })
     .then((response) => response.json())
     .then((json) => json);
 };
-export const removeInterestPoint = (id) => {
-  return fetch(`/interest-points/${id}`, {
-    method: "DELETE",
-  });
+
+export const getRTPedestrian = (idCrosswalk) => {
+  return fetch("http://localhost:3000/Crosswalk/Pedestrian/" + idCrosswalk)
+    .then((response) => response.json())
+    .then((json) => json);
+};
+
+export const getRTVehicle = (idCrosswalk) => {
+  return fetch("http://localhost:3000/Crosswalk/Vehicle/" + idCrosswalk)
+    .then((response) => response.json())
+    .then((json) => json);
+};
+
+export const getHistoricoPedestrian = (idCrosswalk) => {
+  return fetch("http://localhost:3000/Crosswalk/Historic/Pedestrian/" + idCrosswalk)
+    .then((response) => response.json())
+    .then((json) => json);
+};
+
+export const getHistoricoVehicle = (idCrosswalk) => {
+  return fetch("http://localhost:3000/Crosswalk/Historic/Vehicle/" + idCrosswalk)
+    .then((response) => response.json())
+    .then((json) => json);
 };
