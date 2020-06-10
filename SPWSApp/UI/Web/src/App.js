@@ -186,12 +186,14 @@ function App() {
                                   return (
                                     <List.Item key={pRT._id}>
                                       <List.Content>
-                                        <List.Header>
-                                          Pedestrian: {pRT.idPedestrian}
-                                        </List.Header>
-                                        <List.Description>
-                                          {pRT.distance}
-                                        </List.Description>
+                                        <List.List>
+                                          <List.Header>
+                                            Pedestrian: {pRT.idPedestrian}
+                                          </List.Header>
+                                          <List.Description>
+                                            {pRT.distance}
+                                          </List.Description>
+                                        </List.List>
                                       </List.Content>
                                     </List.Item>
                                   );
@@ -208,12 +210,14 @@ function App() {
                                   return (
                                     <List.Item key={vRT._id}>
                                       <List.Content>
-                                        <List.Header>
-                                          Vehicle: {vRT.idVehicle}
-                                        </List.Header>
-                                        <List.Description>
-                                          {vRT.distance}
-                                        </List.Description>
+                                        <List.List>
+                                          <List.Header>
+                                            Vehicle: {vRT.idVehicle}
+                                          </List.Header>
+                                          <List.Description>
+                                            {vRT.distance}
+                                          </List.Description>
+                                        </List.List>
                                       </List.Content>
                                     </List.Item>
                                   );
@@ -228,7 +232,7 @@ function App() {
                 </List>
               </Grid.Column>
 
-              <Grid.Column width={4}>
+              <Grid.Column width={7}>
                 <Button as="div" labelPosition="right">
                   <Button color="blue">
                     <Icon name="history" />
