@@ -40,6 +40,7 @@ function App() {
         height: 3,
         marginTop: 20,
         marginBottom: 20,
+        marginRight: 10,
       }}
     />
   );
