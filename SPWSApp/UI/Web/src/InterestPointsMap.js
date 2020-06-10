@@ -10,7 +10,7 @@ const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
       title: "",
       latitude: event.latlng.lat,
       longitude: event.latlng.lng,
-      state: ""
+      state: "GREEN"
     });
   };
 

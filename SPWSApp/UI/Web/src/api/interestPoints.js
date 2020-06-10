@@ -13,6 +13,10 @@ export const createCrosswalks = (title, latitude, longitude, state) => {
       longitude: longitude,
       state: state,
     }),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      },   
   })
     .then((response) => response.json())
     .then((json) => json);
