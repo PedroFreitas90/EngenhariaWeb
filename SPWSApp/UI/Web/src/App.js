@@ -184,18 +184,20 @@ function App() {
                               <List.Description>
                                 {pedestrianRT.map((pRT) => {
                                   return (
-                                    <List.Item key={pRT._id}>
-                                      <List.Content>
-                                        <List.List>
-                                          <List.Header>
-                                            Pedestrian: {pRT.idPedestrian}
-                                          </List.Header>
-                                          <List.Description>
-                                            {pRT.distance}
-                                          </List.Description>
-                                        </List.List>
-                                      </List.Content>
-                                    </List.Item>
+                                    <List as="ol">
+                                      <List.Item as="li" value="*" key={pRT._id}>
+                                        <List.Content>
+                                          <List.List>
+                                            <List.Header>
+                                              ID: {pRT.idPedestrian}
+                                            </List.Header>
+                                            <List.Description>
+                                              Distance: {pRT.distance}
+                                            </List.Description>
+                                          </List.List>
+                                        </List.Content>
+                                      </List.Item>
+                                    </List>
                                   );
                                 })}
                               </List.Description>
@@ -208,18 +210,18 @@ function App() {
                               <List.Description>
                                 {vehicleRT.map((vRT) => {
                                   return (
-                                    <List.Item key={vRT._id}>
-                                      <List.Content>
-                                        <List.List>
-                                          <List.Header>
-                                            Vehicle: {vRT.idVehicle}
-                                          </List.Header>
-                                          <List.Description>
-                                            {vRT.distance}
-                                          </List.Description>
-                                        </List.List>
-                                      </List.Content>
-                                    </List.Item>
+                                    <List as="ol">
+                                      <List.Item as="li" value="*" key={vRT._id}>
+                                        <List.Content>
+                                          <List.List>
+                                            <List.Header>ID: {vRT.idVehicle}</List.Header>
+                                            <List.Description>
+                                              Distance: {vRT.distance}
+                                            </List.Description>
+                                          </List.List>
+                                        </List.Content>
+                                      </List.Item>
+                                    </List>
                                   );
                                 })}
                               </List.Description>
@@ -255,11 +257,18 @@ function App() {
                               <List.Description>
                                 {historicPedestrian.map((pH) => {
                                   return (
-                                    <List.Item key={pH._id}>
-                                      <List.Content>
-                                        <List.Header>{pH.idPedestrian}</List.Header>
-                                      </List.Content>
-                                    </List.Item>
+                                    <Segment>
+                                      <List as="ol">
+                                        <List.Item as="li" value="*" key={pH._id}>
+                                          <List.Content>
+                                            <List.Header>Day: {pH.day}</List.Header>
+                                            <List.Description>
+                                              ID: {pH.idPedestrian}
+                                            </List.Description>
+                                          </List.Content>
+                                        </List.Item>
+                                      </List>
+                                    </Segment>
                                   );
                                 })}
                               </List.Description>
@@ -272,11 +281,19 @@ function App() {
                               <List.Description>
                                 {historicVehicle.map((vH) => {
                                   return (
-                                    <List.Item key={vH._id}>
-                                      <List.Content>
-                                        <List.Header>{vH.idVehicle}</List.Header>
-                                      </List.Content>
-                                    </List.Item>
+                                    <Segment>
+                                      <List as="ol">
+                                        <List.Item as="li" value="*" key={vH._id}>
+                                          <List.Content>
+                                            <List.Header>Day: </List.Header>
+                                            {vH.day}
+                                            <List.Description>
+                                              ID: {vH.idVehicle}
+                                            </List.Description>
+                                          </List.Content>
+                                        </List.Item>
+                                      </List>
+                                    </Segment>
                                   );
                                 })}
                               </List.Description>
