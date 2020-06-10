@@ -186,7 +186,12 @@ function App() {
                                   return (
                                     <List.Item key={pRT._id}>
                                       <List.Content>
-                                        <List.Header>{pRT.distance}</List.Header>
+                                        <List.Header>
+                                          Pedestrian: {pRT.idPedestrian}
+                                        </List.Header>
+                                        <List.Description>
+                                          {pRT.distance}
+                                        </List.Description>
                                       </List.Content>
                                     </List.Item>
                                   );
@@ -203,7 +208,12 @@ function App() {
                                   return (
                                     <List.Item key={vRT._id}>
                                       <List.Content>
-                                        <List.Header>{vRT.distance}</List.Header>
+                                        <List.Header>
+                                          Vehicle: {vRT.idVehicle}
+                                        </List.Header>
+                                        <List.Description>
+                                          {vRT.distance}
+                                        </List.Description>
                                       </List.Content>
                                     </List.Item>
                                   );
