@@ -23,7 +23,7 @@ router.post('/', function(req,res){
 
 router.put('/:id', function(req,res){
   timestamp = Math.floor(Date.now() / 1000);
-  Crosswalk.updateCrosswalk(req.paramsid,req.body.state,timestamp)
+  Crosswalk.updateCrosswalk(req.params.id,req.body.state,timestamp)
     .then(data => res.jsonp(data))
     .catch(erro => res.status(500).send(erro))
 });

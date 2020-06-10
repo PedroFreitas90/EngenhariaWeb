@@ -1,6 +1,9 @@
 make:
 	docker-compose up -d
 
+run-mongo:
+	docker exec -it microservices_mongo_1 bash
+
 clean:
 	docker-compose down
 	docker image rmi -f microservices_crosswalk
