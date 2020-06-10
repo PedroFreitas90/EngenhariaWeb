@@ -95,7 +95,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <Divider horizontal>
+      <Divider horizontal style={{ marginRight: 500, marginLeft: 500 }}>
         <Header as="h4">
           <Icon name="crosshairs" />
           Crosswalks
@@ -133,7 +133,7 @@ function App() {
         </Grid.Column>
         {
           <Grid.Column>
-            <List divided relaxed>
+            <List divided relaxed style={{ marginRight: 10 }}>
               <List.Item as="a">
                 <Icon name="sticky note" />
                 <List.Content>
@@ -162,8 +162,150 @@ function App() {
             </List>
 
             <ColoredLine color="black" />
+            <Segment style={{ marginRight: 10 }}>
+              <Header floated="left">
+                <Button as="div" labelPosition="right">
+                  <Button color="blue">
+                    <Icon name="clock" />
+                    Real Time
+                  </Button>
+                  <Label as="a" basic color="blue" pointing="left">
+                    {pedestrianRT.length + vehicleRT.length}
+                  </Label>
+                </Button>
+              </Header>
+              <List>
+                <List.Item>
+                  <List>
+                    <List.Content>
+                      <List.List>
+                        <List.Item>
+                          <List.Icon name="right triangle" />
+                          <List.Content>
+                            <List.Header>Pedestrian</List.Header>
+                            <List.Description>
+                              {pedestrianRT.map((pRT) => {
+                                return (
+                                  <List as="ul">
+                                    <List.Item as="li" key={pRT._id}>
+                                      <List.Content>
+                                        <List.Description>
+                                          <b>ID:</b> {pRT.idPedestrian}
+                                          <br></br>
+                                          <b>Distance:</b> {pRT.distance}m
+                                        </List.Description>
+                                      </List.Content>
+                                    </List.Item>
+                                    <hr></hr>
+                                  </List>
+                                );
+                              })}
+                            </List.Description>
+                          </List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name="right triangle" />
+                          <List.Content>
+                            <List.Header>Vehicle</List.Header>
+                            <List.Description>
+                              {vehicleRT.map((vRT) => {
+                                return (
+                                  <List as="ul">
+                                    <List.Item as="li" key={vRT._id}>
+                                      <List.Content>
+                                        <List.Description>
+                                          <b>ID:</b> {vRT.idVehicle} <br></br>
+                                          <b>Distance:</b> {vRT.distance}m
+                                        </List.Description>
+                                      </List.Content>
+                                    </List.Item>
+                                    <hr></hr>
+                                  </List>
+                                );
+                              })}
+                            </List.Description>
+                          </List.Content>
+                        </List.Item>
+                      </List.List>
+                    </List.Content>
+                  </List>
+                </List.Item>
+              </List>
 
-            <Grid>
+              <Divider section />
+
+              <Header floated="right">
+                <Button as="div" labelPosition="right">
+                  <Button color="blue">
+                    <Icon name="history" />
+                    Historic
+                  </Button>
+                  <Label as="a" basic color="blue" pointing="left">
+                    {historicPedestrian.length + historicVehicle.length}
+                  </Label>
+                </Button>
+              </Header>
+              <List>
+                <List.Item>
+                  <List>
+                    <List.Content>
+                      <List.List>
+                        <List.Item>
+                          <List.Icon name="right triangle" />
+                          <List.Content>
+                            <List.Header>Pedestrian</List.Header>
+                            <List.Description>
+                              {historicPedestrian.map((pH) => {
+                                return (
+                                  <Segment>
+                                    <List as="ul">
+                                      <List.Item as="li" key={pH._id}>
+                                        <List.Content>
+                                          <List.Header>Day: {pH.day}</List.Header>
+                                          <List.Description>
+                                            ID: {pH.idPedestrian}
+                                          </List.Description>
+                                        </List.Content>
+                                      </List.Item>
+                                    </List>
+                                  </Segment>
+                                );
+                              })}
+                            </List.Description>
+                          </List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name="right triangle" />
+                          <List.Content>
+                            <List.Header>Vehicle</List.Header>
+                            <List.Description>
+                              {historicVehicle.map((vH) => {
+                                return (
+                                  <Segment>
+                                    <List as="ul">
+                                      <List.Item as="li" key={vH._id}>
+                                        <List.Content>
+                                          <List.Header>Day: {vH.day}</List.Header>
+                                          <List.Description>
+                                            ID: {vH.idVehicle}
+                                          </List.Description>
+                                        </List.Content>
+                                      </List.Item>
+                                    </List>
+                                  </Segment>
+                                );
+                              })}
+                            </List.Description>
+                          </List.Content>
+                        </List.Item>
+                      </List.List>
+                    </List.Content>
+                  </List>
+                </List.Item>
+              </List>
+            </Segment>
+
+            {/* <Grid>
               <Grid.Column floated="left" width={5}>
                 <Button as="div" labelPosition="right">
                   <Button color="blue">
@@ -189,10 +331,11 @@ function App() {
                                     <List as="ul">
                                       <List.Item as="li" key={pRT._id}>
                                         <List.Content>
-                                            <List.Description>
-                                              <b>ID:</b> {pRT.idPedestrian}<br></br>
-                                              <b>Distance</b>: {pRT.distance}m
-                                            </List.Description>
+                                          <List.Description>
+                                            <b>ID:</b> {pRT.idPedestrian}
+                                            <br></br>
+                                            <b>Distance:</b> {pRT.distance}m
+                                          </List.Description>
                                         </List.Content>
                                       </List.Item>
                                       <hr></hr>
@@ -212,10 +355,10 @@ function App() {
                                     <List as="ul">
                                       <List.Item as="li" key={vRT._id}>
                                         <List.Content>
-                                            <List.Description>
-                                              <b>ID:</b> {vRT.idVehicle} <br></br>
-                                              <b>Distance:</b> {vRT.distance}m
-                                            </List.Description>
+                                          <List.Description>
+                                            <b>ID:</b> {vRT.idVehicle} <br></br>
+                                            <b>Distance:</b> {vRT.distance}m
+                                          </List.Description>
                                         </List.Content>
                                       </List.Item>
                                       <hr></hr>
@@ -283,8 +426,7 @@ function App() {
                                       <List as="ul">
                                         <List.Item as="li" key={vH._id}>
                                           <List.Content>
-                                            <List.Header>Day: </List.Header>
-                                            {vH.day}
+                                            <List.Header>Day: {vH.day}</List.Header>
                                             <List.Description>
                                               ID: {vH.idVehicle}
                                             </List.Description>
@@ -303,7 +445,7 @@ function App() {
                   </List.Item>
                 </List>
               </Grid.Column>
-            </Grid>
+            </Grid>*/}
           </Grid.Column>
         }
       </Grid>
