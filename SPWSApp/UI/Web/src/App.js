@@ -124,6 +124,8 @@ function App() {
               <InterestPointsMaps
                 viewport={viewport}
                 markers={markers}
+                pedestrianRT_markers={pedestrianRT}
+                vehicleRT_markers={vehicleRT}
                 submitNewCrosswalk={submitNewCrosswalk}
               />
             </Segment>
@@ -184,19 +186,16 @@ function App() {
                               <List.Description>
                                 {pedestrianRT.map((pRT) => {
                                   return (
-                                    <List as="ol">
-                                      <List.Item as="li" value="*" key={pRT._id}>
+                                    <List as="ul">
+                                      <List.Item as="li" key={pRT._id}>
                                         <List.Content>
-                                          <List.List>
-                                            <List.Header>
-                                              ID: {pRT.idPedestrian}
-                                            </List.Header>
                                             <List.Description>
-                                              Distance: {pRT.distance}
+                                              <b>ID:</b> {pRT.idPedestrian}<br></br>
+                                              <b>Distance</b>: {pRT.distance}m
                                             </List.Description>
-                                          </List.List>
                                         </List.Content>
                                       </List.Item>
+                                      <hr></hr>
                                     </List>
                                   );
                                 })}
@@ -210,17 +209,16 @@ function App() {
                               <List.Description>
                                 {vehicleRT.map((vRT) => {
                                   return (
-                                    <List as="ol">
-                                      <List.Item as="li" value="*" key={vRT._id}>
+                                    <List as="ul">
+                                      <List.Item as="li" key={vRT._id}>
                                         <List.Content>
-                                          <List.List>
-                                            <List.Header>ID: {vRT.idVehicle}</List.Header>
                                             <List.Description>
-                                              Distance: {vRT.distance}
+                                              <b>ID:</b> {vRT.idVehicle} <br></br>
+                                              <b>Distance:</b> {vRT.distance}m
                                             </List.Description>
-                                          </List.List>
                                         </List.Content>
                                       </List.Item>
+                                      <hr></hr>
                                     </List>
                                   );
                                 })}
@@ -258,8 +256,8 @@ function App() {
                                 {historicPedestrian.map((pH) => {
                                   return (
                                     <Segment>
-                                      <List as="ol">
-                                        <List.Item as="li" value="*" key={pH._id}>
+                                      <List as="ul">
+                                        <List.Item as="li" key={pH._id}>
                                           <List.Content>
                                             <List.Header>Day: {pH.day}</List.Header>
                                             <List.Description>
@@ -282,8 +280,8 @@ function App() {
                                 {historicVehicle.map((vH) => {
                                   return (
                                     <Segment>
-                                      <List as="ol">
-                                        <List.Item as="li" value="*" key={vH._id}>
+                                      <List as="ul">
+                                        <List.Item as="li" key={vH._id}>
                                           <List.Content>
                                             <List.Header>Day: </List.Header>
                                             {vH.day}

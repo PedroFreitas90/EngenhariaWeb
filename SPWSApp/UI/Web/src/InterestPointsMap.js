@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Form } from "semantic-ui-react";
 
-const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
+const CrosswalksMaps = ({ viewport, markers, vehicleRT_markers, pedestrianRT_markers, submitNewCrosswalk }) => {
   const [newCrosswalk, setnewCrosswalk] = useState();
 
   const handleMapClick = (event) => {
@@ -52,6 +52,13 @@ const CrosswalksMaps = ({ viewport, markers, submitNewCrosswalk }) => {
         return (
           <Marker key={_id} position={[latitude, longitude]}>
             <Popup>{title}</Popup>
+            {vehicleRT_markers.map(({ _id, location, idVehicle, idCrosswalk, distance }) => {
+              return (
+                <Marker key={_id} position={[location.latitude, location.longitude]} color="red">
+                  <Popup>Vehicle:{idVehicle} in distance: {distance}</Popup>
+                </Marker>
+              );
+            })}
           </Marker>
         );
       })}
