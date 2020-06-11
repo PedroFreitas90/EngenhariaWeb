@@ -32,6 +32,7 @@ function App() {
   const [historicPedestrian, setHistoricPedestrian] = useState([]);
   const [historicVehicle, setHistoricVehicle] = useState([]);
 
+
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -44,6 +45,73 @@ function App() {
       }}
     />
   );
+
+  const checkHDayArray = (arr, day) =>{
+    console.log('hday: ')
+    console.log(arr)
+    arr.forEach(d =>{
+      console.log(d.day)
+      console.log(day)
+      if (d.day == day)
+        return true;
+    })
+    return false;
+  };
+
+  const checkHDayIndex = (arr, day) =>{
+    console.log(arr)
+    var i = 0;
+    arr.forEach(d =>{
+      if (d.day === day)
+        return i;
+      i+= 1;
+    })
+  };
+
+  const organizeHistoric = (historic) =>{
+    console.log('<ORGANIZAR>')
+    console.log(historic);
+    if (historic.length === 0){
+      console.log('</Organizar>');
+      return [];
+    }
+    else{
+      var ret = []
+      var form = {
+        idCrosswalk: historic[0].idCrosswalk,
+        hday:[]
+      };
+      historic.forEach(h => {
+        var test = h.day.split('-')
+        var aux = test[2]
+        var day = aux[0].concat(aux[1])
+        var n_hd = test[0].concat('-').concat(test[1]).concat('-').concat(day)
+        if(!checkHDayArray(form.hday, n_hd)){ //não existe dia , tenho de criar novo
+          var nd ={ //formato de um doc do array hday
+            day: n_hd,
+            ids:[]
+          };
+          if(h.idPedestrian)
+            nd.ids.push(h.idPedestrian);
+          if(h.idVehicle)
+            nd.ids.push(h.idVehicle)
+          form.hday.push(nd); //adicionao ao hday
+        }
+        else{ //já existe o dia no array hday
+          var index = checkHDayIndex(form.hday, h.day) //tenho o index do hday
+          if(h.idPedestrian)
+            form.hday[index].ids.push(h.idPedestrian);
+          if(h.idVehicle)
+            form.hday[index].push(h.idVehicle)
+        }
+      });
+      ret.push(form);
+    }   
+    console.log('hora da verdade');
+    console.log(ret);
+    console.log('</Organizar>')
+    //ret;
+  }
 
   useEffect(() => {
     setIsLoadingInterestPoints(true);
@@ -68,14 +136,17 @@ function App() {
       getRTVehicle(id).then((vehicleRT) => {
         getHistoricoPedestrian(id).then((historicPed) => {
           getHistoricoVehicle(id).then((historicVeh) => {
-            console.log(pedestrianRT);
-            console.log(vehicleRT);
-            console.log(historicPed);
+            //console.log(pedestrianRT);
+            //console.log(vehicleRT);
+            //console.log(historicPed);
             console.log(historicVeh);
 
             setVehicleRT(vehicleRT);
             setPedestrianRT(pedestrianRT);
+            //organizeHistoric(historicPed);
             setHistoricPedestrian(historicPed);
+            //var nh = organizeHistoric(historicVeh)
+            //organizeHistoric(historicVeh)
             setHistoricVehicle(historicVeh);
             setInfo({ title: title, latitude: latitude, long: long, state: state });
           });
@@ -305,7 +376,7 @@ function App() {
                 </List.Item>
               </List>
             </Segment>
-
+                              
             {/* <Grid>
               <Grid.Column floated="left" width={5}>
                 <Button as="div" labelPosition="right">

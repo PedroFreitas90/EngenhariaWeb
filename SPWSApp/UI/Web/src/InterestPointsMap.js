@@ -59,6 +59,13 @@ const CrosswalksMaps = ({ viewport, markers, vehicleRT_markers, pedestrianRT_mar
                 </Marker>
               );
             })}
+            {pedestrianRT_markers.map(({ _id, location, idPedestrian, idCrosswalk, distance }) => {
+              return (
+                <Marker key={_id} position={[location.latitude, location.longitude]} color="red">
+                  <Popup>Pedestrian:{idPedestrian} in distance: {distance}</Popup>
+                </Marker>
+              );
+            })}
           </Marker>
         );
       })}
