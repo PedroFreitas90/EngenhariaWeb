@@ -307,7 +307,7 @@ function App() {
 
               <Divider section />
 
-              <Header floated="right">
+              <Header floated="left">
                 <Button as="div" labelPosition="right">
                   <Button color="blue">
                     <Icon name="history" />
@@ -364,16 +364,28 @@ function App() {
                           <List.Content>
                             <List.Header>Vehicle</List.Header>
                             <List.Description>
-                              {historicVehicle.map((vH) => {
+                              {hv.map((vH) => {
                                 return (
                                   <Segment>
                                     <List as="ul">
                                       <List.Item as="li" key={vH._id}>
                                         <List.Content>
-                                          <List.Header>Day: {vH.day}</List.Header>
-                                          <List.Description>
-                                            ID: {vH.idVehicle}
-                                          </List.Description>
+                                          {vH.hday.map((hday) => {
+                                            return (
+                                              <List>
+                                                <List.Header>Day: {hday.day}</List.Header>
+                                                <List.Description>
+                                                  {hday.ids.map((ids) => {
+                                                    return (
+                                                      <List.Description>
+                                                        ID: {ids}
+                                                      </List.Description>
+                                                    );
+                                                  })}
+                                                </List.Description>
+                                              </List>
+                                            );
+                                          })}
                                         </List.Content>
                                       </List.Item>
                                     </List>
