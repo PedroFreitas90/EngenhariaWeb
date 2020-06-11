@@ -75,10 +75,9 @@ function App() {
   };
 
   const organizeHistoric = (historic) =>{
-    console.log('<ORGANIZAR>')
-    console.log(historic);
+   
     if (historic.length === 0){
-      console.log('</Organizar>');
+     // console.log('</Organizar>');
       return [];
     }
     else{
@@ -89,11 +88,12 @@ function App() {
       };
       
       historic.forEach(h => {
-        console.log('*-------ORGANIZE_HISTORIC_FOREACH----------------*')
         var test = h.day.split('-')
         var aux = test[2]
         var day = aux[0].concat(aux[1])
         var n_hd = test[0].concat('-').concat(test[1]).concat('-').concat(day)
+
+
         if(!checkHDayArray(form.hday, n_hd)){ //não existe dia , tenho de criar novo
           var nd ={ //formato de um doc do array hday
             day: n_hd,
@@ -115,9 +115,8 @@ function App() {
       });
     }
     ret.push(form);
-    console.log('hora da verdade');
-    console.log(ret);
-    console.log('</Organizar>')
+  //  console.log('hora da verdade');
+   // console.log(ret);
     return ret;
   }
 
@@ -147,7 +146,7 @@ function App() {
             //console.log(pedestrianRT);
             //console.log(vehicleRT);
             //console.log(historicPed);
-            console.log(historicVeh);
+            //console.log(historicVeh);
 
             setVehicleRT(vehicleRT);
             setPedestrianRT(pedestrianRT);
@@ -371,10 +370,27 @@ function App() {
                                     <List as="ul">
                                       <List.Item as="li" key={pH._id}>
                                         <List.Content>
-                                          <List.Header>Day: {pH.day}</List.Header>
-                                          <List.Description>
-                                            ID: {pH.idPedestrian}
-                                          </List.Description>
+                                        {pH.hday.map((hday) => {
+                                            return (
+                                              <List.Header>Day: {hday.day}</List.Header>
+                                              <List.Content>
+                                              {hday.map((ids) => {
+                                                return(
+                                                  <List.Description>
+                                                 ID: {ids}
+                                                 </List.Description> 
+                                              )})}
+                                              </List.Content>
+                                            
+                                              
+
+                                        );
+                                        })}
+                                            
+                                            
+                              
+                                          
+                                         
                                         </List.Content>
                                       </List.Item>
                                     </List>
