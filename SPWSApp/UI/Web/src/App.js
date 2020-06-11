@@ -32,8 +32,7 @@ function App() {
   const [historicPedestrian, setHistoricPedestrian] = useState([]);
   const [historicVehicle, setHistoricVehicle] = useState([]);
   const [hp, setHP] = useState([]);
-  const [hv, setHV] = useState([]); 
-
+  const [hv, setHV] = useState([]);
 
   const ColoredLine = ({ color }) => (
     <hr
@@ -48,77 +47,68 @@ function App() {
     />
   );
 
-  const checkHDayArray = (arr, day) =>{
-    if (arr.length === 0){
+  const checkHDayArray = (arr, day) => {
+    if (arr.length === 0) {
       return false;
     }
     var flag = 0;
-    arr.forEach(d => {
-      if (d.day === day)
-        flag = 1;
+    arr.forEach((d) => {
+      if (d.day === day) flag = 1;
     });
-    
-    if(flag)
-      return true;
-    else
-      return false;
+
+    if (flag) return true;
+    else return false;
   };
 
-  const checkHDayIndex = (arr, day) =>{
+  const checkHDayIndex = (arr, day) => {
     let i = 0;
-    arr.forEach(d =>{
-      if (d.day === day)
-        return i;
-      i+= 1;
-    })
+    arr.forEach((d) => {
+      if (d.day === day) return i;
+      i += 1;
+    });
     return i;
   };
 
-  const organizeHistoric = (historic) =>{
-   
-    if (historic.length === 0){
-     // console.log('</Organizar>');
+  const organizeHistoric = (historic) => {
+    if (historic.length === 0) {
+      // console.log('</Organizar>');
       return [];
-    }
-    else{
-      var ret = []
+    } else {
+      var ret = [];
       var form = {
         idCrosswalk: historic[0].idCrosswalk,
-        hday:[]
+        hday: [],
       };
-      
-      historic.forEach(h => {
-        var test = h.day.split('-')
-        var aux = test[2]
-        var day = aux[0].concat(aux[1])
-        var n_hd = test[0].concat('-').concat(test[1]).concat('-').concat(day)
 
+      historic.forEach((h) => {
+        var test = h.day.split("-");
+        var aux = test[2];
+        var day = aux[0].concat(aux[1]);
+        var n_hd = test[0].concat("-").concat(test[1]).concat("-").concat(day);
 
-        if(!checkHDayArray(form.hday, n_hd)){ //não existe dia , tenho de criar novo
-          var nd ={ //formato de um doc do array hday
+        if (!checkHDayArray(form.hday, n_hd)) {
+          //não existe dia , tenho de criar novo
+          var nd = {
+            //formato de um doc do array hday
             day: n_hd,
-            ids:[]
+            ids: [],
           };
-          if(h.idPedestrian)
-            nd.ids.push(h.idPedestrian);
-          if(h.idVehicle)
-            nd.ids.push(h.idVehicle)
+          if (h.idPedestrian) nd.ids.push(h.idPedestrian);
+          if (h.idVehicle) nd.ids.push(h.idVehicle);
           form.hday.push(nd); //adicionao ao hday
-        }
-        else { //já existe o dia no array hday
-          var index = checkHDayIndex(form.hday, n_hd) //tenho o index do hday
-          if(h.idPedestrian)
-            form.hday[index].ids.push(h.idPedestrian);
-          if(h.idVehicle)
-            form.hday[index].ids.push(h.idVehicle)
+        } else {
+          //já existe o dia no array hday
+          var index = checkHDayIndex(form.hday, n_hd); //tenho o index do hday
+          if (h.idPedestrian) form.hday[index].ids.push(h.idPedestrian);
+          if (h.idVehicle) form.hday[index].ids.push(h.idVehicle);
         }
       });
     }
     ret.push(form);
-  //  console.log('hora da verdade');
-   // console.log(ret);
+    //  console.log('hora da verdade');
+    // console.log(ret);
     return ret;
-  }
+  };
 
   useEffect(() => {
     setIsLoadingInterestPoints(true);
@@ -151,14 +141,14 @@ function App() {
             setVehicleRT(vehicleRT);
             setPedestrianRT(pedestrianRT);
             var n_p_h = organizeHistoric(historicPed);
-            console.log(n_p_h)
-            var n_v_h = organizeHistoric(historicVeh)
-            console.log(n_v_h)
+            console.log(n_p_h);
+            var n_v_h = organizeHistoric(historicVeh);
+            console.log(n_v_h);
             setHistoricPedestrian(historicPed);
-            setHistoricVehicle(historicVeh)
+            setHistoricVehicle(historicVeh);
             setHP(n_p_h);
             setHV(n_v_h);
-            
+
             setInfo({ title: title, latitude: latitude, long: long, state: state });
           });
         });
@@ -338,65 +328,34 @@ function App() {
                           <List.Content>
                             <List.Header>Pedestrian</List.Header>
                             <List.Description>
-                              {/*(hp.hday).map((hd) =>{
-                                return(
-                                  <Segment>
-                                    <List as="ul">
-                                      <List.Item>
-                                        <List.Content>
-                                          <List.Header>Day: {hd.day}</List.Header>
-                                          <List.Description>
-                                            {hd.map((my_id)=>{
-                                              return(
-                                                <List as="li" key={my_id}>
-                                                  <b>ID:</b> {my_id}
-                                                </List>
-                                              )
-                                            })}
-                                          </List.Description>
-                                        </List.Content>
-                                      </List.Item>
-                                    </List>
-                                  </Segment>
-                                )
-                              })
-
-                            */}
-                              
-                              
                               {hp.map((pH) => {
                                 return (
                                   <Segment>
                                     <List as="ul">
                                       <List.Item as="li" key={pH._id}>
                                         <List.Content>
-                                        {pH.hday.map((hday) => {
+                                          {pH.hday.map((hday) => {
                                             return (
-                                              <List.Header>Day: {hday.day}</List.Header>
-                                              <List.Content>
-                                              {hday.map((ids) => {
-                                                return(
-                                                  <List.Description>
-                                                 ID: {ids}
-                                                 </List.Description> 
-                                              )})}
-                                              </List.Content>
-                                            
-                                              
-
-                                        );
-                                        })}
-                                            
-                                            
-                              
-                                          
-                                         
+                                              <List>
+                                                <List.Header>Day: {hday.day}</List.Header>
+                                                <List.Description>
+                                                  {hday.map((ids) => {
+                                                    return (
+                                                      <List.Description>
+                                                        ID: {ids}
+                                                      </List.Description>
+                                                    );
+                                                  })}
+                                                </List.Description>
+                                              </List>
+                                            );
+                                          })}
                                         </List.Content>
                                       </List.Item>
                                     </List>
                                   </Segment>
                                 );
-                              })}}
+                              })}
                             </List.Description>
                           </List.Content>
                         </List.Item>
@@ -430,7 +389,7 @@ function App() {
                 </List.Item>
               </List>
             </Segment>
-                              
+
             {/* <Grid>
               <Grid.Column floated="left" width={5}>
                 <Button as="div" labelPosition="right">
