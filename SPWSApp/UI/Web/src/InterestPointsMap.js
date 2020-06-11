@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Form } from "semantic-ui-react";
+import {  iconMarker, iconPerson, iconCar } from './icon';
+
+
 
 const CrosswalksMaps = ({ viewport, markers, vehicleRT_markers, pedestrianRT_markers, submitNewCrosswalk }) => {
   const [newCrosswalk, setnewCrosswalk] = useState();
-
   const handleMapClick = (event) => {
     setnewCrosswalk({
       title: "",
@@ -50,18 +52,18 @@ const CrosswalksMaps = ({ viewport, markers, vehicleRT_markers, pedestrianRT_mar
       />
       {markers.map(({ latitude, longitude, title, _id }) => {
         return (
-          <Marker key={_id} position={[latitude, longitude]}>
+          <Marker key={_id} position={[latitude, longitude]} icon={iconMarker}>
             <Popup>{title}</Popup>
             {vehicleRT_markers.map(({ _id, location, idVehicle, idCrosswalk, distance }) => {
               return (
-                <Marker key={_id} position={[location.latitude, location.longitude]} color="red">
+                <Marker key={_id} position={[location.latitude, location.longitude]} icon={ iconCar }>
                   <Popup>Vehicle:{idVehicle} in distance: {distance}</Popup>
                 </Marker>
               );
             })}
             {pedestrianRT_markers.map(({ _id, location, idPedestrian, idCrosswalk, distance }) => {
               return (
-                <Marker key={_id} position={[location.latitude, location.longitude]} color="red">
+                <Marker key={_id} position={[location.latitude, location.longitude]} icon={ iconPerson }>
                   <Popup>Pedestrian:{idPedestrian} in distance: {distance}</Popup>
                 </Marker>
               );
