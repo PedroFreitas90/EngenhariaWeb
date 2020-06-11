@@ -177,7 +177,7 @@ function App() {
 
       <Grid columns={2} stackable>
         <Grid.Column>
-          <Segment.Group>
+          <Segment.Group style={{ marginLeft: 10 }}>
             <Segment loading={isLoadingInterestPoints}>
               {isLoadingInterestPoints ? (
                 <Placeholder>
