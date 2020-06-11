@@ -339,7 +339,7 @@ function App() {
                                               <List>
                                                 <List.Header>Day: {hday.day}</List.Header>
                                                 <List.Description>
-                                                  {hday.map((ids) => {
+                                                  {hday.ids.map((ids) => {
                                                     return (
                                                       <List.Description>
                                                         ID: {ids}
