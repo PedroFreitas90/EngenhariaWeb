@@ -16,8 +16,8 @@ mongoose.connect('mongodb://mongo:27017/' + DATABASE_NAME, { useNewUrlParser: tr
 
 
 const pubnub = new PubNub({
-  publishKey: "pub-c-627ad9bf-507f-4fae-9a30-6fb40d8eff88",
-  subscribeKey: "sub-c-2bc1178c-8e5e-11ea-927a-2efbc014b69f",
+  publishKey: /* É preciso uma chave de pubnub*/,
+  subscribeKey: /* É preciso uma chave de pubnub*/,
   uuid: uuid
 });
 
