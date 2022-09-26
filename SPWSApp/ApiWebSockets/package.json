@@ -12,6 +12,6 @@
   "dependencies": {
     "amqplib": "^0.5.5",
     "mongoose": "^5.9.12",
-    "pubnub": "^4.27.6"
+    "pubnub": "^4.37.0"
   }
 }
